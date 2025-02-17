@@ -1,11 +1,18 @@
 import { BUILT_IN_SYMBOL, Button, Line, Render, Text, View } from "lvgljs-ui";
-import React, { useRef } from "react";
+import React, {useRef} from "react";
 
 const dark = "#303030";
 const light = "#f3f3f3";
 
 function Root() {
+  const ref = useRef()
   const apps: String[] = ["wryyy", "awoo", "nanana", "bone"];
+
+  apps.map((app, index) => {
+    console.log(app);
+    console.log(index % 2);
+    console.log(Math.floor(index / 2));
+  });
 
   return (
     <View style={Object.assign(style.window, style.home)}>
@@ -13,15 +20,19 @@ function Root() {
         const gridPos = {
           "grid-row-pos": Math.floor(index / 2),
           "grid-column-pos": index % 2,
-        };
+        }
         return (
           <Button
+            ref={ref}
             style={{
               ...style.appButton,
+              ...gridPos
+            }},
+            onPressedStyle={{
+              ...style.appButton,
               ...gridPos,
+              ...style.pressed
             }}
-            onPressedStyle={style.pressed}
-            onPressed={() => console.log("button onPressed")}
           >
             <Text style={{ "text-color": light, "font-size": 24 }}>{app}</Text>
           </Button>
@@ -62,10 +73,10 @@ const style = {
     "align-content": "center",
   },
   pressed: {
-    "border-width": 2,
+    "border-width": 1,
     "border-color": dark,
-    "background-color": light,
-  },
+    "background-color": light
+  }
 };
 
 Render.render(<Root />);
