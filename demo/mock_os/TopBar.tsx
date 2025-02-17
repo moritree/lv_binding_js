@@ -10,7 +10,7 @@ interface TopBarProps {
 export default function TopBar(props: TopBarProps) {
   return (
     <View style={style.bar}>
-      <Text>{props.title}</Text>
+      <Text style={style.title}>{props.title}</Text>
     </View>
   );
 }
@@ -20,7 +20,8 @@ const style = {
     width: "100%",
     height: "40px",
     "background-color": Colors.dark,
-    padding: 0,
+    padding: "2px",
+    margin: 0,
     "border-radius": 0,
     "border-width": 0,
     overflow: "hidden",
