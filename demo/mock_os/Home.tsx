@@ -11,7 +11,7 @@ interface HomeProps {
 
 export default function Home(props: HomeProps) {
   return (
-    <View style={{ ...style.window, ...style.home }}>
+    <View style={style.home}>
       {Array.from(props.apps.keys()).map((app, index) => {
         const gridPos = {
           "grid-row-pos": Math.floor(index / 2),
@@ -35,16 +35,13 @@ export default function Home(props: HomeProps) {
 }
 
 const style = {
-  window: {
+  home: {
     width: "320px",
     height: "240px",
     "background-color": Colors.light,
-    padding: 0,
     "border-radius": 0,
     "border-width": 0,
     overflow: "hidden",
-  },
-  home: {
     display: "grid",
     "grid-template-columns": "1fr 1fr",
     "grid-template-rows": "1fr 1fr",
