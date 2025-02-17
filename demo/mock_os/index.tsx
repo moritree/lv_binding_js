@@ -1,35 +1,51 @@
-import { BUILT_IN_SYMBOL, Button, Line, Render, Text, View } from "lvgljs-ui";
+import MessageApp from "./MessageApp";
+import { Button, Render, Text, View } from "lvgljs-ui";
 import React, { useState } from "react";
 
 const dark = "#303030";
 const light = "#f3f3f3";
 
 function Root() {
-  const apps: String[] = ["wryyy", "awoo", "nanana", "bone"];
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState<string | null>(null);
+
+  const apps = new Map<string, () => JSX.Element | null>([
+    ["messages", () => <MessageApp />],
+  ]);
+
+  // Fill up to 4th space with empty keys bc the grid has to be filled
+  let keys: (string | null)[] = Array.from(apps.keys());
+  for (let i = 4 - (apps.size % 4); i > 0; i--) keys.push(null);
 
   return (
-    (active == null && (
-      <View style={Object.assign(style.window, style.home)}>
-        {apps.map((app, index) => {
-          const gridPos = {
-            "grid-row-pos": Math.floor(index / 2),
-            "grid-column-pos": index % 2,
-          };
-          return (
-            <Button
-              style={{ ...style.appButton, ...gridPos }}
-              onPressedStyle={style.pressed}
-              onPressed={() => setActive(app)}
-            >
-              <Text style={{ "text-color": light, "font-size": 24 }}>
-                {app}
-              </Text>
-            </Button>
-          );
-        })}
-      </View>
-    )) || <Text>{active}</Text>
+    <>
+      {active ? (
+        apps.get(active)?.()
+      ) : (
+        <View style={Object.assign(style.window, style.home)}>
+          {Array.from(apps.keys()).map((app, index) => {
+            const gridPos = {
+              "grid-row-pos": Math.floor(index / 2),
+              "grid-column-pos": index % 2,
+            };
+            return app != null ? (
+              <Button
+                key={app}
+                style={{ ...style.appButton, ...gridPos }}
+                onPressedStyle={style.pressed}
+                onPressed={() => setActive(app)}
+              >
+                <Text style={{ "text-color": light, "font-size": 24 }}>
+                  {" "}
+                  {app}{" "}
+                </Text>
+              </Button>
+            ) : (
+              <View key={index} style={{ ...style.appButton, ...gridPos }} />
+            );
+          })}
+        </View>
+      )}
+    </>
   );
 }
 
