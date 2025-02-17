@@ -1,50 +1,55 @@
 import MessageApp from "./MessageApp";
+import TopBar from "./TopBar";
+import Colors from "./colors";
 import { Button, Render, Text, View } from "lvgljs-ui";
 import React, { useState } from "react";
 
-const dark = "#303030";
-const light = "#f3f3f3";
+console.log("INDEX TSX???");
+
+const dark = Colors.dark;
+const light = Colors.light;
+
+const apps = new Map<string, () => JSX.Element | null>([
+  ["messages", () => <MessageApp />],
+]);
+const keys = Array.from(apps.keys());
+// const keys = Array.from<string | null>(apps.keys()).concat(new Array<null>(3));
+console.log(apps);
+console.log(keys);
 
 function Root() {
   const [active, setActive] = useState<string | null>(null);
 
-  const apps = new Map<string, () => JSX.Element | null>([
-    ["messages", () => <MessageApp />],
-  ]);
-
-  // Fill up to 4th space with empty keys bc the grid has to be filled
-  // TODO later: support multiple pages
-  let keys: (string | null)[] = Array.from(apps.keys());
-  for (let i = 4 - (apps.size % 4); i > 0; i--) keys.push(null);
-
-  console.log(keys);
-
   return (
     <>
       {active ? (
-        apps.get(active)?.()
+        <View
+          style={{
+            ...style.window,
+            ...{ display: "flex", "flex-direction": "column" },
+          }}
+        >
+          <TopBar title={active} exit={() => setActive(null)} />
+          apps.get(active)?.()
+        </View>
       ) : (
-        <View style={Object.assign(style.window, style.home)}>
-          {Array.from(apps.keys()).map((app, index) => {
+        <View style={{ ...style.window, ...style.home }}>
+          {keys.map((app, index) => {
+            console.log(app, index);
             const gridPos = {
               "grid-row-pos": Math.floor(index / 2),
               "grid-column-pos": index % 2,
             };
-            return app != null ? (
-              <Button
-                key={app}
-                style={{ ...style.appButton, ...gridPos }}
-                onPressedStyle={style.pressed}
-                onClick={() => setActive(app)}
-              >
-                <Text style={{ "text-color": light, "font-size": 24 }}>
-                  {" "}
-                  {app}{" "}
-                </Text>
-              </Button>
-            ) : (
-              <View key={index} style={{ ...style.appButton, ...gridPos }} />
-            );
+            <Button
+              key={app}
+              style={{ ...style.appButton, ...gridPos }}
+              onPressedStyle={style.pressed}
+              onClick={() => setActive(app)}
+            >
+              <Text style={{ "text-color": light, "font-size": 24 }}>
+                {app}
+              </Text>
+            </Button>;
           })}
         </View>
       )}

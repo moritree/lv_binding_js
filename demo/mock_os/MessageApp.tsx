@@ -8,6 +8,9 @@ export default function MessageApp() {
   return (
     <View style={style.base}>
       <Text>Messages</Text>
+      <Text>Messages</Text>
+      <Text>Messages</Text>
+      <Text>Messages</Text>
     </View>
   );
 }
@@ -20,5 +23,7 @@ const style = {
     "border-radius": 0,
     "border-width": 0,
     overflow: "hidden",
+    display: "flex",
+    "flex-direction": "column",
   },
 };
