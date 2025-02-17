@@ -3,7 +3,6 @@ import MessageApp from "./MessageApp";
 import { Render } from "lvgljs-ui";
 import React, { useState } from "react";
 
-console.log("INDEX TSX");
 const apps = new Map<string, () => JSX.Element>([
   ["messages", () => <MessageApp />],
 ]);

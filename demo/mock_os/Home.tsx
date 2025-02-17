@@ -2,8 +2,6 @@ import Colors from "./colors";
 import { Button, Text, View } from "lvgljs-ui";
 import React from "react";
 
-console.log("HOME TSX");
-
 interface HomeProps {
   apps: Map<string, () => JSX.Element | null>;
   activate: (app: string) => void;
