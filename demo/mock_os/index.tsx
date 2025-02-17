@@ -1,10 +1,10 @@
 import MessageApp from "./MessageApp";
-import TopBar from "./TopBar";
+import Colors from "./colors";
 import { Button, Render, Text, View } from "lvgljs-ui";
 import React, { useState } from "react";
 
-const dark = "#303030";
-const light = "#f3f3f3";
+const dark = Colors.dark;
+const light = Colors.light;
 
 function Root() {
   const [active, setActive] = useState<string | null>(null);
