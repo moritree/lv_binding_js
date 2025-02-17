@@ -1,33 +1,35 @@
 import { BUILT_IN_SYMBOL, Button, Line, Render, Text, View } from "lvgljs-ui";
-import React, { useRef } from "react";
+import React, { useState } from "react";
 
 const dark = "#303030";
 const light = "#f3f3f3";
 
 function Root() {
   const apps: String[] = ["wryyy", "awoo", "nanana", "bone"];
+  const [active, setActive] = useState(null);
 
   return (
-    <View style={Object.assign(style.window, style.home)}>
-      {apps.map((app, index) => {
-        const gridPos = {
-          "grid-row-pos": Math.floor(index / 2),
-          "grid-column-pos": index % 2,
-        };
-        return (
-          <Button
-            style={{
-              ...style.appButton,
-              ...gridPos,
-            }}
-            onPressedStyle={style.pressed}
-            onPressed={() => console.log("button onPressed")}
-          >
-            <Text style={{ "text-color": light, "font-size": 24 }}>{app}</Text>
-          </Button>
-        );
-      })}
-    </View>
+    (active == null && (
+      <View style={Object.assign(style.window, style.home)}>
+        {apps.map((app, index) => {
+          const gridPos = {
+            "grid-row-pos": Math.floor(index / 2),
+            "grid-column-pos": index % 2,
+          };
+          return (
+            <Button
+              style={{ ...style.appButton, ...gridPos }}
+              onPressedStyle={style.pressed}
+              onPressed={() => setActive(app)}
+            >
+              <Text style={{ "text-color": light, "font-size": 24 }}>
+                {app}
+              </Text>
+            </Button>
+          );
+        })}
+      </View>
+    )) || <Text>{active}</Text>
   );
 }
 
