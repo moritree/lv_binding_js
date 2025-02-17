@@ -8,18 +8,11 @@ const apps = new Map<string, () => JSX.Element | null>([
   ["messages", () => <MessageApp />],
 ]);
 
-function App() {
+function Root() {
   const [active, setActive] = useState<string | null>(null);
 
-  return (
-    <>
-      {active ? (
-        apps.get(active)?.()
-      ) : (
-        <Home apps={apps} activate={(app) => setActive(app)} />
-      )}
-    </>
-  );
+  if (active && apps.get(active)) return apps.get(active)?.()!;
+  return <Home apps={apps} activate={(app) => setActive(app)} />;
 }
 
-Render.render(<App />);
+Render.render(<Root />);
