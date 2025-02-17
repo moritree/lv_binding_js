@@ -61,6 +61,9 @@ const style = {
     "grid-child": true,
     "justify-self": "stretch",
     "align-self": "stretch",
+    display: "flex",
+    "justify-content": "center",
+    "align-content": "center",
   },
 };
 
