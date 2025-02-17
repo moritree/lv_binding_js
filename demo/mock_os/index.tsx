@@ -13,8 +13,11 @@ function Root() {
   ]);
 
   // Fill up to 4th space with empty keys bc the grid has to be filled
+  // TODO later: support multiple pages
   let keys: (string | null)[] = Array.from(apps.keys());
   for (let i = 4 - (apps.size % 4); i > 0; i--) keys.push(null);
+
+  console.log(keys);
 
   return (
     <>
@@ -32,7 +35,7 @@ function Root() {
                 key={app}
                 style={{ ...style.appButton, ...gridPos }}
                 onPressedStyle={style.pressed}
-                onPressed={() => setActive(app)}
+                onClick={() => setActive(app)}
               >
                 <Text style={{ "text-color": light, "font-size": 24 }}>
                   {" "}
