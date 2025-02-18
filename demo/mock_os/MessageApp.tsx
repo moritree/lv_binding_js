@@ -54,6 +54,5 @@ const style = {
     width: "100%",
     "border-color": Colors.dark,
     padding: "2px",
-    "background-color": "#ff0000",
   },
 };
