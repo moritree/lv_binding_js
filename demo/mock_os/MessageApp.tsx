@@ -12,6 +12,14 @@ const messages: Message[] = [
   { from: "Ben", content: "Saying stuff" },
   { from: "Someone", content: "Words" },
   { from: "You", content: "Other things" },
+  { from: "You", content: "So much to say" },
+  { from: "Baby", content: "WAA WAA" },
+  { from: "USA", content: "Superbowl eagle fireworks" },
+  { from: "You", content: "Noooooooo" },
+  { from: "Vader", content: "NOOOOOOOO" },
+  { from: "Jeffandrew", content: "stuff" },
+  { from: "You", content: "Lorem ipsum" },
+  { from: "You", content: "dolor sit amet..." },
 ];
 
 export default function MessageApp() {
@@ -23,7 +31,13 @@ export default function MessageApp() {
 
         return (
           <View key={index} style={viewStyle}>
-            <Text style={style.messageText}> {msg.from} </Text>
+            {msg.from !== "You" ? (
+              <View style={style.labelView}>
+                <Text style={style.labelText}> {msg.from} </Text>
+              </View>
+            ) : (
+              <></>
+            )}
             <Text style={style.messageText}> {msg.content} </Text>
           </View>
         );
@@ -39,12 +53,25 @@ const style = {
     padding: "2px",
     "border-radius": 0,
     "border-width": 0,
-    overflow: "hidden",
+    overflow: "auto",
     display: "flex",
     "flex-direction": "column",
     margin: 0,
     "flex-grow": 1,
     "background-color": Colors.light,
+    "scroll-dir": "bottom",
+  },
+  labelView: {
+    "border-width": "0px",
+    "border-radius": "0px",
+    padding: 0,
+    margin: 0,
+    "background-color": Colors.dark,
+    width: "auto",
+    height: "auto",
+  },
+  labelText: {
+    "text-color": Colors.light,
   },
   message: {
     "border-width": "0px",
