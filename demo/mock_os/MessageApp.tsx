@@ -18,14 +18,14 @@ export default function MessageApp() {
   return (
     <View style={style.base}>
       {messages.map((msg, index) => {
-        let msgStyle = style.message;
-        if (msg.from == "You") msgStyle = { ...style.message, ...style.you };
-        console.log(msgStyle);
+        let viewStyle = style.message;
+        if (msg.from == "You") viewStyle = { ...viewStyle, ...style.you };
 
         return (
-          <Text key={index} style={msgStyle}>
-            {msg.content}
-          </Text>
+          <View key={index} style={viewStyle}>
+            <Text style={style.messageText}> {msg.from} </Text>
+            <Text style={style.messageText}> {msg.content} </Text>
+          </View>
         );
       })}
     </View>
@@ -47,6 +47,18 @@ const style = {
     "background-color": Colors.light,
   },
   message: {
+    "border-width": "0px",
+    "border-radius": "0px",
+    display: "flex",
+    "flex-direction": "row",
+    width: "100%",
+    overflow: "hidden",
+    margin: "0",
+    padding: "0",
+    "background-color": Colors.light,
+    height: "auto",
+  },
+  messageText: {
     "text-color": Colors.dark,
   },
   you: {
