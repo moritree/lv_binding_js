@@ -11,7 +11,6 @@ const apps = new Map<string, () => JSX.Element>([
 function Root() {
   const [active, setActive] = useState<string | null>(null);
 
-  // if (active) return apps.get(active)?.()!;
   if (active)
     return (
       <AppContainer
