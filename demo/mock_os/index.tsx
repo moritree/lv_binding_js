@@ -1,4 +1,5 @@
 import AppContainer from "./AppContainer";
+import CalendarApp from "./Calendar/CalendarApp";
 import Home from "./Home";
 import MessageApp from "./MessageApp";
 import { Render } from "lvgljs-ui";
@@ -6,6 +7,7 @@ import React, { useState } from "react";
 
 const apps = new Map<string, () => JSX.Element>([
   ["messages", () => <MessageApp />],
+  ["calendar", () => <CalendarApp />],
 ]);
 
 function Root() {
