@@ -2,14 +2,32 @@ import Colors from "./colors";
 import { Text, View } from "lvgljs-ui";
 import React from "react";
 
-const messages = ["Text", "Saying stuff", "Words", "Other things"];
+interface Message {
+  from: string;
+  content: string;
+}
+
+const messages: Message[] = [
+  { from: "You", content: "Text" },
+  { from: "Ben", content: "Saying stuff" },
+  { from: "Someone", content: "Words" },
+  { from: "You", content: "Other things" },
+];
 
 export default function MessageApp() {
   return (
     <View style={style.base}>
-      {messages.map((msg) => (
-        <Text style={style.message}>{msg}</Text>
-      ))}
+      {messages.map((msg, index) => {
+        let msgStyle = style.message;
+        if (msg.from == "You") msgStyle = { ...style.message, ...style.you };
+        console.log(msgStyle);
+
+        return (
+          <Text key={index} style={msgStyle}>
+            {msg.content}
+          </Text>
+        );
+      })}
     </View>
   );
 }
@@ -30,5 +48,12 @@ const style = {
   },
   message: {
     "text-color": Colors.dark,
+  },
+  you: {
+    "border-width": "1px",
+    width: "100%",
+    "border-color": Colors.dark,
+    padding: "2px",
+    "background-color": "#ff0000",
   },
 };
