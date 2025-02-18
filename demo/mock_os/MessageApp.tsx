@@ -1,16 +1,15 @@
+import Colors from "./colors";
 import { Text, View } from "lvgljs-ui";
 import React from "react";
 
-const dark = "#303030";
-const light = "#f3f3f3";
+const messages = ["Text", "Saying stuff", "Words", "Other things"];
 
 export default function MessageApp() {
   return (
     <View style={style.base}>
-      <Text>Messages</Text>
-      <Text>Messages</Text>
-      <Text>Messages</Text>
-      <Text>Messages</Text>
+      {messages.map((msg) => (
+        <Text style={style.message}>{msg}</Text>
+      ))}
     </View>
   );
 }
@@ -27,5 +26,9 @@ const style = {
     "flex-direction": "column",
     margin: 0,
     "flex-grow": 1,
+    "background-color": Colors.light,
+  },
+  message: {
+    "text-color": Colors.dark,
   },
 };
