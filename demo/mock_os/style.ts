@@ -112,7 +112,7 @@ const Style = {
     'flex-direction': 'column',
   },
   boxMessage: {  // Black box with width and height that adjust to the content inside.
-    'width': 'fit-content',
+    'width': '100%',
     'height': 'auto',
     'background-color': Colors.dark,
     'border-radius': 0,

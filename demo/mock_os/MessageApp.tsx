@@ -25,26 +25,6 @@ const messages: Message[] = [
 
 export default function MessageApp() {
   return (
-    /* <View style={Style.root}>
-      {messages.map((msg, index) => {
-        let viewStyle = Style.message;
-        if (msg.from == "You") viewStyle = { ...viewStyle, ...Style.you };
-
-        return (
-          <View key={index} style={viewStyle}>
-            {msg.from !== "You" ? (
-              <View style={Style.boxBlack}>
-                <Text style={Style.textSmallWhite}>{msg.from}</Text>
-              </View>
-            ) : (
-              <></>
-            )}
-            <Text style={Style.textSmallWhite}>{msg.content}</Text>
-          </View>
-        );
-      })}
-    </View> */
-
     <View style={Style.containerMain}>
       {messages.map((msg, index) => (
         <View key={index} style={Style.containerBlank}>
