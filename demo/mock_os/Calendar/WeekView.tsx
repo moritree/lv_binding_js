@@ -1,4 +1,5 @@
 import Colors from "../colors";
+import CalendarEvent from "./CalendarEvent";
 import { daysOfWeek, monthsOfYear } from "./dateUtils";
 import { Text, View } from "lvgljs-ui";
 import React from "react";
@@ -6,6 +7,7 @@ import React from "react";
 interface WeekViewProps {
   today: Date;
   weekdays: Date[];
+  events: CalendarEvent[];
 }
 
 export default function WeekView(props: WeekViewProps) {
@@ -14,9 +16,11 @@ export default function WeekView(props: WeekViewProps) {
       {props.weekdays.map((day, index) => {
         let viewStyle = style.day;
         let dateStyle = style.dateLabel;
+        let eventStyle = style.eventText;
         if (day.getDay() == props.today.getDay()) {
           viewStyle = { ...viewStyle, ...style.today };
           dateStyle = { ...dateStyle, ...style.today };
+          eventStyle = { ...eventStyle, ...style.today };
         }
 
         return (
@@ -49,10 +53,15 @@ const style = {
   },
   day: {
     width: "100%",
+    height: "40px",
+    overflow: "hidden",
+    padding: "2px",
     "background-color": Colors.light,
     "border-width": "1px",
     "border-radius": 0,
     "border-color": Colors.dark,
+    display: "flex",
+    "align-content": "center",
   },
   today: {
     "background-color": Colors.dark,
@@ -60,5 +69,6 @@ const style = {
   },
   dateLabel: {
     "text-color": Colors.dark,
+    "font-size": "18px",
   },
 };

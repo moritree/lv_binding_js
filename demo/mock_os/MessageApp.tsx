@@ -60,6 +60,7 @@ const style = {
     "flex-grow": 1,
     "background-color": Colors.light,
     "scroll-dir": "bottom",
+    "row-spacing": "2px",
   },
   labelView: {
     "border-width": "0px",
