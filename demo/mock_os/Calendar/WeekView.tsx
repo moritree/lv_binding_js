@@ -1,9 +1,10 @@
+import { ViewMetadata } from "..";
 import Colors from "../colors";
 import CalendarEvent from "./CalendarEvent";
 import EventsView from "./EventsView";
 import { daysOfWeek, monthsOfYear } from "./dateUtils";
 import { Text, View } from "lvgljs-ui";
-import React, { useState } from "react";
+import React from "react";
 
 export function organizeWeek(weekdays: Date[], events: CalendarEvent[]) {
   // TODO: suuuuper slow lmao
@@ -18,7 +19,7 @@ export function organizeWeek(weekdays: Date[], events: CalendarEvent[]) {
 interface WeekViewProps {
   today: Date;
   weekdays: WeekDay[];
-  push: (app: JSX.Element) => void;
+  push: (view: ViewMetadata) => void;
 }
 
 interface WeekDay {
@@ -43,7 +44,10 @@ export default function WeekView(props: WeekViewProps) {
             style={viewStyle}
             onClick={() => {
               if (day.events.length)
-                props.push(<EventsView events={day.events} />);
+                props.push({
+                  title: "on this day...",
+                  view: <EventsView events={day.events} />,
+                });
             }}
           >
             <Text style={dateStyle}>

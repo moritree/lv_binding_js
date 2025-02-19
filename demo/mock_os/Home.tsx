@@ -1,29 +1,30 @@
+import { ViewMetadata } from ".";
 import Colors from "./colors";
 import { Button, Text, View } from "lvgljs-ui";
 import React from "react";
 
 interface HomeProps {
-  apps: Map<string, () => JSX.Element | null>;
-  activate: (app: string) => void;
+  apps: ViewMetadata[];
+  push: (app: ViewMetadata) => void;
 }
 
 export default function Home(props: HomeProps) {
   return (
     <View style={style.home}>
-      {Array.from(props.apps.keys()).map((app, index) => {
+      {props.apps.map((app, index) => {
         const gridPos = {
           "grid-row-pos": Math.floor(index / 2),
           "grid-column-pos": index % 2,
         };
         return (
           <Button
-            key={app}
+            key={index}
             style={{ ...style.appButton, ...gridPos }}
             onPressedStyle={style.pressed}
-            onClick={() => props.activate(app)}
+            onClick={() => props.push(app)}
           >
             <Text style={{ "text-color": Colors.light, "font-size": 24 }}>
-              {app}
+              {app.title!}
             </Text>
           </Button>
         );

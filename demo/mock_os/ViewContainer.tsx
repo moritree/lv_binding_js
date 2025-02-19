@@ -1,20 +1,19 @@
+import { ViewMetadata } from ".";
 import TopBar from "./TopBar";
 import Colors from "./colors";
 import { View } from "lvgljs-ui";
 import React from "react";
 
-interface AppContainerProps {
-  title: string;
-  app: JSX.Element;
+interface ViewContainerProps {
+  meta: ViewMetadata;
   exit: () => void;
-  push: (app: JSX.Element) => void;
 }
 
-export default function AppContainer(props: AppContainerProps) {
+export default function ViewContainer(props: ViewContainerProps) {
   return (
     <View style={style}>
-      <TopBar title={props.title} exit={props.exit} />
-      {props.app}
+      <TopBar title={props.meta.title || ""} exit={props.exit} />
+      {props.meta.view}
     </View>
   );
 }

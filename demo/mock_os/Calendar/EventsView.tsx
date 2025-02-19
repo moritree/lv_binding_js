@@ -8,6 +8,9 @@ interface EventsViewProps {
 }
 
 export default function EventsView(props: EventsViewProps) {
+  console.log("EVENTS VIEW");
+  console.log(props.events);
+
   return (
     <View style={style.root}>
       {props.events.map((event) => (

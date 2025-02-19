@@ -1,36 +1,38 @@
-import AppContainer from "./AppContainer";
 import CalendarApp from "./Calendar/CalendarApp";
 import Home from "./Home";
 import MessageApp from "./MessageApp";
+import ViewContainer from "./ViewContainer";
 import { Render } from "lvgljs-ui";
 import React, { useState } from "react";
 
-function Root() {
-  const apps = new Map<string, () => JSX.Element>([
-    ["messages", () => <MessageApp />],
-    ["calendar", () => <CalendarApp push={(view) => pushStack(view)} />],
+export interface ViewMetadata {
+  title?: string;
+  view: JSX.Element;
+}
+
+function Root(): JSX.Element {
+  const apps: ViewMetadata[] = [
+    { title: "messages", view: <MessageApp /> },
+    {
+      title: "calendar",
+      view: <CalendarApp push={(view) => pushStack(view)} />,
+    },
+  ];
+
+  const [stack, setStack] = useState<ViewMetadata[]>([
+    { view: <Home apps={apps} push={(app) => pushStack(app)} /> },
   ]);
 
-  const [stack, setStack] = useState<JSX.Element[]>([
-    <Home
-      apps={apps}
-      activate={(app) => {
-        pushStack(apps.get(app)?.()!);
-      }}
-    />,
-  ]);
-
-  function pushStack(view: JSX.Element): void {
+  function pushStack(view: ViewMetadata): void {
+    // console.log("PUSHING " + (view.title || "untitled"));
     setStack((prevStack) => [...prevStack, view]);
   }
 
-  if (stack.length == 1) return stack.at(0)!;
+  if (stack.length == 1) return stack.at(0)!.view;
   return (
-    <AppContainer
-      title={"Test"}
-      app={stack.at(-1)!}
+    <ViewContainer
+      meta={stack.at(-1)!}
       exit={() => setStack(stack.slice(0, -1))}
-      push={(view) => pushStack(view)}
     />
   );
 }
