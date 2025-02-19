@@ -6,7 +6,7 @@ const style = {
 
     // Containers
 
-  mainContainer: { // Main container for all elements.
+  containerMain: { // Main container for all elements.
     'width': 320,
     'height': 240,
     'background-color': Colors.light,
@@ -16,42 +16,7 @@ const style = {
     'border-width': 0,
     'display': 'flex',
   },
-  blackBox: { // Black section for titles etc.
-    'width': '100%',
-    'height': 'auto',
-    'background-color': Colors.dark,
-    'border-radius': 0,
-    'border-width': 0,
-    'padding': PIXEL,
-    'display': 'flex',
-    'flex-direction': 'row',
-    'flex-wrap': 'wrap',
-    'gap': PIXEL,
-    'justify-content': 'space-between',
-  },
-  blackBoxColumn: { // Black section with a column layout.
-    'width': '100%',
-    'height': 'auto',
-    'background-color': Colors.dark,
-    'border-radius': 0,
-    'border-width': 0,
-    'padding': PIXEL,
-    'display': 'flex',
-    'flex-direction': 'column',
-  },
-  whiteBox: { // White section, fits inside blackBox.
-    'flex-grow': 1,
-    'flex-basis': 0,
-    'flex-shrink': 1,
-    'height': 'auto',
-    'background-color': Colors.light,
-    'border-radius': 0,
-    'border-width': 0,
-    'padding': PIXEL,
-    'display': 'flex', 
-    'flex-direction': 'column',
-  },
-  blankContainer: { // Invisible container for text not already in a container with pixel padding on left-hand side.
+  containerBlank: { // Invisible container for text not already in a container with pixel padding on left-hand side.
     'padding-left': PIXEL,
     'padding-right': 0,
     'padding-top': 0, 
@@ -64,7 +29,7 @@ const style = {
     'display': 'flex', 
     'flex-direction': 'column',
   },
-  paddedContainer: { // Invisible container for buttons and other elements that need extra padding to not cut off shadows etc.
+  containerPadded: { // Invisible container for buttons and other elements that need extra padding to not cut off shadows etc.
     'padding-left': PIXEL,
     'padding-right': PIXEL,
     'padding-top': PIXEL, 
@@ -77,7 +42,7 @@ const style = {
     'display': 'flex', 
     'flex-direction': 'column',
   },
-  sliderContainer: {
+  containerSlider: {
     'padding-left': PIXEL * 3,
     'padding-right': PIXEL * 3,
     'padding-top': PIXEL * 2, 
@@ -90,7 +55,7 @@ const style = {
     'display': 'flex', 
     'flex-direction': 'column',
   },
-  sliderThickContainer: { // Needs 1px extra padding on sides to accomadate for thicker indicator.
+  containerSliderThick: { // Needs 1px extra padding on sides to accomadate for thicker indicator.
     'padding-left': PIXEL * 4,
     'padding-right': PIXEL * 4,
     'padding-top': PIXEL * 2, 
@@ -104,23 +69,61 @@ const style = {
     'flex-direction': 'column',
   },
 
+  // Boxes
+
+  boxBlack: { // Black section for titles etc.
+    'width': '100%',
+    'height': 'auto',
+    'background-color': Colors.dark,
+    'border-radius': 0,
+    'border-width': 0,
+    'padding': PIXEL,
+    'display': 'flex',
+    'flex-direction': 'row',
+    'flex-wrap': 'wrap',
+    'gap': PIXEL,
+    'justify-content': 'space-between',
+  },
+  boxBlackColumn: { // Black section with a column layout.
+    'width': '100%',
+    'height': 'auto',
+    'background-color': Colors.dark,
+    'border-radius': 0,
+    'border-width': 0,
+    'padding': PIXEL,
+    'display': 'flex',
+    'flex-direction': 'column',
+  },
+  boxWhite: { // White section, fits inside blackBox.
+    'flex-grow': 1,
+    'flex-basis': 0,
+    'flex-shrink': 1,
+    'height': 'auto',
+    'background-color': Colors.light,
+    'border-radius': 0,
+    'border-width': 0,
+    'padding': PIXEL,
+    'display': 'flex', 
+    'flex-direction': 'column',
+  },
+
   // Text
 
-  title: { // Large title text.
+  textTitle: { // Large title text.
     'font-size': 32,
     'text-color': Colors.light,
     'width': '100%',
     'text-wrap': 1,
     'text-align': 'center',
   },
-  body: { // Body text.
+  textBody: { // Body text.
     'font-size': 16,
     'text-color': Colors.dark,
     'width': '100%',
     'text-wrap': 1,
     'text-align': 'justify', 
   },
-  small: { // Small text.
+  textSmall: { // Small text.
     'font-size': 12,
     'text-color': Colors.dark,
     'width': '100%',
@@ -193,19 +196,19 @@ const style = {
     'text-color': Colors.light,  // This will affect the label text
     'font-size': 14,
   },
-  indicator: {
+  checkboxIndicator: {
     'border-radius': 0,
     'border-width': PIXEL,
     'border-color': Colors.dark,
     'background-color': Colors.light,
   },
-  indicatorDisabled: {
+  checkboxIndicatorDisabled: {
     'border-radius': 0,
     'border-width': 0,
     'background-color': Colors.dark,
     'overlay-color': null,  
   },
-  indicatorChecked: {
+  checkboxIndicatorChecked: {
     'border-radius': 0,
     'border-width': PIXEL,
     'background-image': null,
@@ -232,28 +235,28 @@ const style = {
     'border-color': Colors.dark,
     'padding': PIXEL
   },
-  indicatorStyle: {
+  sliderIndicatorStyle: {
     'border-radius': 0,
     'background-color': Colors.dark,
   },
-  knobStyle: {
+  sliderIndicatorPressedStyle: {
+    'border-radius': 0,
+    'background-color': Colors.highlight,
+  },
+  sliderKnobStyle: {
     'border-radius': 0,
     'border-width': PIXEL,
     'background-color': Colors.light,
     'padding': PIXEL,
-  },
-  indicatorPressedStyle: {
-    'border-radius': 0,
-    'background-color': Colors.highlight,
-  },
-  knobPressedStyle: {
+  },  
+  sliderKnobPressedStyle: {
     'border-radius': 0,
     'border-width': PIXEL,
     'background-color': Colors.light,
     'padding': PIXEL,
   },
 
-  // Switches - not working properly.
+  // Switches - not able to be styled properly, commented out for now.
 
   // switch: {
   //   'border-radius': 0,
@@ -275,11 +278,11 @@ const style = {
 
   // Lines
 
-  whiteLine: { // Thin white line to seperate sections.
+  lineWhite: { // Thin white line to seperate sections.
     'line-color': Colors.light,
     'line-width': PIXEL
   },
-  blackLine: { // Thin Colors.dark line to seperate sections.
+  lineBlack: { // Thin Colors.dark line to seperate sections.
     'line-color': Colors.dark,
     'line-width': PIXEL
   },
