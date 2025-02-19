@@ -24,7 +24,7 @@ const messages: Message[] = [
 
 export default function MessageApp() {
   return (
-    <View style={style.base}>
+    <View style={style.root}>
       {messages.map((msg, index) => {
         let viewStyle = style.message;
         if (msg.from == "You") viewStyle = { ...viewStyle, ...style.you };
@@ -47,20 +47,20 @@ export default function MessageApp() {
 }
 
 const style = {
-  base: {
+  root: {
     width: "100%",
     height: "100%",
     padding: "2px",
-    "border-radius": 0,
-    "border-width": 0,
+    margin: 0,
     overflow: "auto",
     display: "flex",
     "flex-direction": "column",
-    margin: 0,
     "flex-grow": 1,
-    "background-color": Colors.light,
-    "scroll-dir": "bottom",
     "row-spacing": "2px",
+    "scroll-dir": "bottom",
+    "border-radius": 0,
+    "border-width": 0,
+    "background-color": Colors.light,
   },
   labelView: {
     "border-width": "0px",
