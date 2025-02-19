@@ -21,7 +21,8 @@ function Root(): JSX.Element {
   return (
     <ViewContainer
       meta={stack.at(-1)!}
-      exit={() => setStack(stack.slice(0, -1))}
+      back={() => setStack(stack.slice(0, -1))}
+      topLevel={stack.length == 2}
     />
   );
 }
