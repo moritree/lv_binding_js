@@ -1,34 +1,45 @@
 import { ViewMetadata } from ".";
+import CalendarView from "./Calendar/CalendarApp";
+import MessageApp from "./MessageApp";
 import Colors from "./colors";
 import { Button, Text, View } from "lvgljs-ui";
 import React from "react";
 
 interface HomeProps {
-  apps: ViewMetadata[];
   push: (app: ViewMetadata) => void;
 }
+
+const apps: ((push: (app: ViewMetadata) => void) => ViewMetadata)[] = [
+  (_) => ({ title: "messages", view: <MessageApp /> }),
+  (push) => ({
+    title: "calendar",
+    view: <CalendarView push={push} />,
+  }),
+];
 
 export default function Home(props: HomeProps) {
   return (
     <View style={style.home}>
-      {props.apps.map((app, index) => {
-        const gridPos = {
-          "grid-row-pos": Math.floor(index / 2),
-          "grid-column-pos": index % 2,
-        };
-        return (
-          <Button
-            key={index}
-            style={{ ...style.appButton, ...gridPos }}
-            onPressedStyle={style.pressed}
-            onClick={() => props.push(app)}
-          >
-            <Text style={{ "text-color": Colors.light, "font-size": 24 }}>
-              {app.title!}
-            </Text>
-          </Button>
-        );
-      })}
+      {apps
+        .map((app) => app(props.push))
+        .map((app, index) => {
+          const gridPos = {
+            "grid-row-pos": Math.floor(index / 2),
+            "grid-column-pos": index % 2,
+          };
+          return (
+            <Button
+              key={index}
+              style={{ ...style.appButton, ...gridPos }}
+              onPressedStyle={style.pressed}
+              onClick={() => props.push(app)}
+            >
+              <Text style={{ "text-color": Colors.light, "font-size": 24 }}>
+                {app.title!}
+              </Text>
+            </Button>
+          );
+        })}
     </View>
   );
 }

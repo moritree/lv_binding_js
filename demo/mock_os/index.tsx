@@ -11,20 +11,11 @@ export interface ViewMetadata {
 }
 
 function Root(): JSX.Element {
-  const apps: ViewMetadata[] = [
-    { title: "messages", view: <MessageApp /> },
-    {
-      title: "calendar",
-      view: <CalendarApp push={(view) => pushStack(view)} />,
-    },
-  ];
-
   const [stack, setStack] = useState<ViewMetadata[]>([
-    { view: <Home apps={apps} push={(app) => pushStack(app)} /> },
+    { view: <Home push={(app) => pushStack(app)} /> },
   ]);
 
   function pushStack(view: ViewMetadata): void {
-    // console.log("PUSHING " + (view.title || "untitled"));
     setStack((prevStack) => [...prevStack, view]);
   }
 
