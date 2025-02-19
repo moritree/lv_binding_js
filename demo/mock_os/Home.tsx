@@ -1,5 +1,5 @@
 import { ViewMetadata } from ".";
-import CalendarView from "./Calendar/CalendarApp";
+import CalendarApp from "./Calendar/CalendarApp";
 import MessageApp from "./MessageApp";
 import Colors from "./colors";
 import { Button, Text, View } from "lvgljs-ui";
@@ -13,7 +13,7 @@ const apps: ((push: (app: ViewMetadata) => void) => ViewMetadata)[] = [
   (_) => ({ title: "messages", view: <MessageApp /> }),
   (push) => ({
     title: "calendar",
-    view: <CalendarView push={push} />,
+    view: <CalendarApp push={push} />,
   }),
 ];
 

@@ -10,11 +10,11 @@ const sunday = getDateBefore(today, weekday);
 
 const events: CalendarEvent[] = [{ date: new Date(), title: "Right now!" }];
 
-interface CalendarViewProps {
+interface CalendarAppProps {
   push: (app: ViewMetadata) => void;
 }
 
-export default function CalendarView(props: CalendarViewProps) {
+export default function CalendarApp(props: CalendarAppProps) {
   return (
     <WeekView
       today={today}

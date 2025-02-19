@@ -1,6 +1,4 @@
-import CalendarApp from "./Calendar/CalendarApp";
 import Home from "./Home";
-import MessageApp from "./MessageApp";
 import ViewContainer from "./ViewContainer";
 import { Render } from "lvgljs-ui";
 import React, { useState } from "react";
