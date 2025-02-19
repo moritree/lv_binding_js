@@ -115,14 +115,11 @@ const Style = {
     'width': '100%',
     'height': 'auto',
     'background-color': Colors.dark,
-    'border-radius': 0,
+    'border-radius': PIXEL,
     'border-width': 0,
     'padding': PIXEL,
     'display': 'flex', 
   },
-  boxMessageRight: { // Right-aligned message box.
-    'align-self': 'flex-end',
-  }, 
 
   /*********************
    *      TEXT
@@ -147,6 +144,8 @@ const Style = {
     'text-color': Colors.dark,
     'width': '100%',
     'text-wrap': 1,
+    'padding-top': PIXEL,
+    'padding-bottom': -PIXEL,
   },
   textTitleWhite: { // Large title text.
     'font-size': 32,
