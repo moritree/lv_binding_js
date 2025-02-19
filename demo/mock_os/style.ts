@@ -2,7 +2,7 @@ import Colors from "./colors";
 
 const PIXEL = 4;
 
-const style = {
+const Style = {
 
 /*********************
  *      CONTAINERS
@@ -30,6 +30,7 @@ const style = {
     'background-color': Colors.light,
     'display': 'flex', 
     'flex-direction': 'column',
+    'align-items': 'flex-start',
   },
   containerPadded: { // Invisible container for buttons and other elements that need extra padding to not cut off shadows etc.
     'padding-left': PIXEL,
@@ -110,28 +111,60 @@ const style = {
     'display': 'flex', 
     'flex-direction': 'column',
   },
+  boxMessage: {  // Black box with width and height that adjust to the content inside.
+    'width': 'fit-content',
+    'height': 'auto',
+    'background-color': Colors.dark,
+    'border-radius': 0,
+    'border-width': 0,
+    'padding': PIXEL,
+    'display': 'flex', 
+  },
+  boxMessageRight: { // Right-aligned message box.
+    'align-self': 'flex-end',
+  }, 
 
   /*********************
    *      TEXT
    *********************/
 
-  textTitle: { // Large title text.
+  textTitleBlack: { // Large title text.
     'font-size': 32,
-    'text-color': Colors.light,
+    'text-color': Colors.dark,
     'width': '100%',
     'text-wrap': 1,
     'text-align': 'center',
   },
-  textBody: { // Body text.
+  textBodyBlack: { // Body text.
     'font-size': 16,
     'text-color': Colors.dark,
     'width': '100%',
     'text-wrap': 1,
     'text-align': 'justify', 
   },
-  textSmall: { // Small text.
+  textSmallBlack: { // Small text.
     'font-size': 12,
     'text-color': Colors.dark,
+    'width': '100%',
+    'text-wrap': 1,
+  },
+  textTitleWhite: { // Large title text.
+    'font-size': 32,
+    'text-color': Colors.light,
+    'width': '100%',
+    'text-wrap': 1,
+    'text-align': 'center',
+  },
+  textBodyWhite: { // Body text.
+    'font-size': 16,
+    'text-color': Colors.light,
+    'width': '100%',
+    'text-wrap': 1,
+    'text-align': 'justify', 
+  },
+  textSmallWhite: { // Small text.
+    'font-size': 12,
+    'text-color': Colors.highlight,
     'width': '100%',
     'text-wrap': 1,
   },
@@ -289,6 +322,59 @@ const style = {
     'width': 'auto',
     'height': 'auto',
   },
+
+   /*********************
+   *      MESSAGE
+   *********************/
+
+  root: {
+    width: "100%",
+    height: "100%",
+    padding: "2px",
+    margin: 0,
+    overflow: "auto",
+    display: "flex",
+    "flex-direction": "column",
+    "flex-grow": 1,
+    "row-spacing": "2px",
+    "scroll-dir": "bottom",
+    "border-radius": 0,
+    "border-width": 0,
+    "background-color": Colors.light,
+  },
+  labelView: {
+    "border-width": "0px",
+    "border-radius": "0px",
+    padding: 0,
+    margin: 0,
+    "background-color": Colors.dark,
+    width: "auto",
+    height: "auto",
+  },
+  labelText: {
+    "text-color": Colors.light,
+  },
+  message: {
+    "border-width": "0px",
+    "border-radius": "0px",
+    display: "flex",
+    "flex-direction": "row",
+    width: "100%",
+    overflow: "hidden",
+    margin: "0",
+    padding: "0",
+    "background-color": Colors.light,
+    height: "auto",
+  },
+  messageText: {
+    "text-color": Colors.dark,
+  },
+  you: {
+    "border-width": "1px",
+    width: "100%",
+    "border-color": Colors.dark,
+    padding: "2px",
+  },
 }
 
-export default style;
+export default Style;
