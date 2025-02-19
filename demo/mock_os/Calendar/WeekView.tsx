@@ -43,7 +43,11 @@ export default function WeekView(props: WeekViewProps) {
               }`}
             </Text>
             {day.events.length ? (
-              <View style={style.eventBox} />
+              <View style={style.eventBox}>
+                <Text style={{ "text-color": Colors.light }}>
+                  {day.events.length}
+                </Text>
+              </View>
             ) : (
               <Text> </Text>
             )}
@@ -74,8 +78,7 @@ const style = {
     width: "100%",
     height: "40px",
     overflow: "hidden",
-
-    padding: "8px",
+    padding: "6px",
     "background-color": Colors.light,
     "border-width": "1px",
     "border-radius": 0,
@@ -93,11 +96,14 @@ const style = {
     "font-size": "18px",
   },
   eventBox: {
-    width: "24px",
-    height: "24px",
+    width: "28px",
+    height: "28px",
     overflow: "hidden",
     "border-width": 0,
     "border-radius": 0,
     "background-color": Colors.highlight,
+    display: "flex",
+    "justify-content": "center",
+    "align-content": "center",
   },
 };
