@@ -4,9 +4,11 @@ const PIXEL = 4;
 
 const style = {
 
-    // Containers
+/*********************
+ *      CONTAINERS
+ *********************/
 
-  containerMain: { // Main container for all elements.
+  containerMain: { // Main container that wraps all other elements.
     'width': 320,
     'height': 240,
     'background-color': Colors.light,
@@ -16,9 +18,9 @@ const style = {
     'border-width': 0,
     'display': 'flex',
   },
-  containerBlank: { // Invisible container for text not already in a container with pixel padding on left-hand side.
+  containerBlank: { // Invisible container for elements not in a box - has pixel padding on left and right-hand side.
     'padding-left': PIXEL,
-    'padding-right': 0,
+    'padding-right': PIXEL,
     'padding-top': 0, 
     'padding-bottom': 0,
     'width': '100%',
@@ -42,7 +44,7 @@ const style = {
     'display': 'flex', 
     'flex-direction': 'column',
   },
-  containerSlider: {
+  containerSlider: { // Invisible container with extra padding for sliders.
     'padding-left': PIXEL * 3,
     'padding-right': PIXEL * 3,
     'padding-top': PIXEL * 2, 
@@ -55,7 +57,7 @@ const style = {
     'display': 'flex', 
     'flex-direction': 'column',
   },
-  containerSliderThick: { // Needs 1px extra padding on sides to accomadate for thicker indicator.
+  containerSliderThick: { // Needs 1px extra padding on left and right for thick sides to accomadate for thicker indicator.
     'padding-left': PIXEL * 4,
     'padding-right': PIXEL * 4,
     'padding-top': PIXEL * 2, 
@@ -69,9 +71,11 @@ const style = {
     'flex-direction': 'column',
   },
 
-  // Boxes
+  /*********************
+   *      BOXES
+   *********************/
 
-  boxBlack: { // Black section for titles etc.
+  boxBlack: { // Black box for titles or other elements that need impact.
     'width': '100%',
     'height': 'auto',
     'background-color': Colors.dark,
@@ -84,7 +88,7 @@ const style = {
     'gap': PIXEL,
     'justify-content': 'space-between',
   },
-  boxBlackColumn: { // Black section with a column layout.
+  boxBlackColumn: { // Black box with a column layout, for side-by-side text boxes, buttons, etc.
     'width': '100%',
     'height': 'auto',
     'background-color': Colors.dark,
@@ -94,7 +98,7 @@ const style = {
     'display': 'flex',
     'flex-direction': 'column',
   },
-  boxWhite: { // White section, fits inside blackBox.
+  boxWhite: { // White box, fits nicely inside boxBlack.
     'flex-grow': 1,
     'flex-basis': 0,
     'flex-shrink': 1,
@@ -107,7 +111,9 @@ const style = {
     'flex-direction': 'column',
   },
 
-  // Text
+  /*********************
+   *      TEXT
+   *********************/
 
   textTitle: { // Large title text.
     'font-size': 32,
@@ -130,7 +136,9 @@ const style = {
     'text-wrap': 1,
   },
 
-  // Buttons
+  /*********************
+   *      BUTTONS
+   *********************/
 
   buttonBlack: { // Black button with white text.
     'background-color': Colors.dark,
@@ -146,7 +154,7 @@ const style = {
     'transition-delay': '0',
     'shadow-opacity': 0,
   },
-  buttonBlackPressed: {
+  buttonBlackPressed: { // Pressed state for black button.
     'background-color': Colors.highlight,
     'border-radius': 0, 
     'border-width': 0,
@@ -155,7 +163,7 @@ const style = {
     'transition-timing-function': 'linear',
     'transition-delay': '0',
   },
-  buttonBlackText: {
+  buttonBlackText: { // Text for black button.
     'text-color': Colors.light,
   },
   buttonWhite: { // White button with black text and drop-shadow.
@@ -176,7 +184,7 @@ const style = {
     'shadow-offset-y': 6,
     'shadow-opacity': 1,
   },
-  buttonWhitePressed: {
+  buttonWhitePressed: { // Pressed state for white button.
     'background-color': Colors.highlight,
     'border-radius': 0, 
     'border-width': 2,
@@ -186,38 +194,42 @@ const style = {
     'transition-delay': '0',
     'shadow-opacity': 0,
   },
-  buttonWhiteText: {
+  buttonWhiteText: { // Text for white button.
     'text-color': Colors.dark,
   },
 
-  // Checkboxes
+  /*********************
+   *      CHECKBOXES
+   *********************/
 
   checkbox: {  // Main checkbox container style
-    'text-color': Colors.light,  // This will affect the label text
+    'text-color': Colors.light, 
     'font-size': 14,
   },
-  checkboxIndicator: {
+  checkboxIndicator: { // Tickable area of checkbox.
     'border-radius': 0,
     'border-width': PIXEL,
     'border-color': Colors.dark,
     'background-color': Colors.light,
   },
-  checkboxIndicatorDisabled: {
+  checkboxIndicatorDisabled: { // Disabled state for checkbox.
     'border-radius': 0,
     'border-width': 0,
     'background-color': Colors.dark,
     'overlay-color': null,  
   },
-  checkboxIndicatorChecked: {
+  checkboxIndicatorChecked: { // Checked state for checkbox.
     'border-radius': 0,
     'border-width': PIXEL,
     'background-image': null,
     'background-color': Colors.highlight,
   },
 
-  //Sliders
+  /*********************
+   *      SLIDERS
+   *********************/
 
-  slider: {
+  slider: { // Main slider container.
     'width': '100%',
     'height': 24,
     'background-color': Colors.light,
@@ -226,7 +238,7 @@ const style = {
     'border-color': Colors.dark,
     'padding': PIXEL * 2,
   },
-  sliderThick: {
+  sliderThick: { // Thick variant of slider.
     'width': '100%',
     'height': 24,
     'background-color': Colors.light,
@@ -235,64 +247,48 @@ const style = {
     'border-color': Colors.dark,
     'padding': PIXEL
   },
-  sliderIndicatorStyle: {
+  sliderIndicator: { // Indicator of slider.
     'border-radius': 0,
     'background-color': Colors.dark,
   },
-  sliderIndicatorPressedStyle: {
+  sliderIndicatorPressed: { // Pressed state for slider indicator.
     'border-radius': 0,
     'background-color': Colors.highlight,
   },
-  sliderKnobStyle: {
+  sliderKnob: { // The movable of slider.
     'border-radius': 0,
     'border-width': PIXEL,
     'background-color': Colors.light,
     'padding': PIXEL,
   },  
-  sliderKnobPressedStyle: {
+  sliderKnobPressed: { // Pressed state for slider knob.
     'border-radius': 0,
     'border-width': PIXEL,
     'background-color': Colors.light,
     'padding': PIXEL,
   },
 
-  // Switches - not able to be styled properly, commented out for now.
-
-  // switch: {
-  //   'border-radius': 0,
-  //   'border-width': PIXEL,
-  //   'background-color': Colors.light,
-  // },
-  // switchChecked: {
-  //   'border-radius': 0,
-  //   'border-width': PIXEL,
-  //   'background-color': Colors.dark,
-  //   'padding': PIXEL,
-  // },
-  // switchKnob: {
-  //   'border-radius': 0,
-  //   'border-width': PIXEL,
-  //   'border-color': Colors.highlight,
-  //   'background-color': Colors.highlight,
-  // },
-
-  // Lines
+  /*********************
+   *      LINES
+   *********************/
 
   lineWhite: { // Thin white line to seperate sections.
     'line-color': Colors.light,
     'line-width': PIXEL
   },
-  lineBlack: { // Thin Colors.dark line to seperate sections.
+  lineBlack: { // Thin dark line to seperate sections.
     'line-color': Colors.dark,
     'line-width': PIXEL
   },
 
-  // Images
+  /*********************
+   *      IMAGES
+   *********************/
 
-  image: {
+  image: { // Image.
     'width': 'auto',
     'height': 'auto',
-}
+  },
 }
 
 export default style;
