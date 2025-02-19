@@ -1,5 +1,5 @@
 import Colors from "../colors";
-import { monthString, weekdayString } from "./dateUtils";
+import { daysOfWeek, monthsOfYear } from "./dateUtils";
 import { Text, View } from "lvgljs-ui";
 import React from "react";
 
@@ -18,11 +18,9 @@ export default function WeekView(props: WeekViewProps) {
         return (
           <View key={index} style={viewStyle}>
             <Text>
-              {weekdayString(day.getDay()) +
-                " " +
-                day.getDate() +
-                " " +
-                monthString(day.getMonth())}
+              {`${daysOfWeek[day.getDay()]} ${day.getDate()} ${
+                monthsOfYear[day.getMonth()]
+              }`}
             </Text>
           </View>
         );
