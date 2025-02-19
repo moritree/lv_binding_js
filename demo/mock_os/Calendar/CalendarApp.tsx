@@ -7,9 +7,10 @@ const today = new Date();
 const weekday = today.getDay();
 const sunday = getDateBefore(today, weekday);
 
-enum CalendarView {
+export enum CalendarView {
   Month,
   Week,
+  Events,
 }
 
 const events: CalendarEvent[] = [{ date: new Date(), title: "Right now!" }];

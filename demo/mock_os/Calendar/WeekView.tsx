@@ -1,8 +1,9 @@
 import Colors from "../colors";
 import CalendarEvent from "./CalendarEvent";
+import EventsView from "./EventsView";
 import { daysOfWeek, monthsOfYear } from "./dateUtils";
 import { Text, View } from "lvgljs-ui";
-import React from "react";
+import React, { useState } from "react";
 
 export function organizeWeek(weekdays: Date[], events: CalendarEvent[]) {
   // TODO: suuuuper slow lmao
@@ -25,6 +26,12 @@ interface WeekDay {
 }
 
 export default function WeekView(props: WeekViewProps) {
+  const [eventsSubview, setEventsSubview] = useState<CalendarEvent[] | null>(
+    null,
+  );
+
+  if (eventsSubview) return <EventsView events={eventsSubview} />;
+
   return (
     <View style={style.root}>
       {props.weekdays.map((day, index) => {
@@ -36,7 +43,13 @@ export default function WeekView(props: WeekViewProps) {
         }
 
         return (
-          <View key={index} style={viewStyle}>
+          <View
+            key={index}
+            style={viewStyle}
+            onClick={() => {
+              if (day.events.length) setEventsSubview(day.events);
+            }}
+          >
             <Text style={dateStyle}>
               {`${daysOfWeek[day.date.getDay()]} ${day.date.getDate()} ${
                 monthsOfYear[day.date.getMonth()]
