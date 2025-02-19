@@ -1,5 +1,5 @@
 import CalendarEvent from "./CalendarEvent";
-import WeekView from "./WeekView";
+import WeekView, { organizeWeek } from "./WeekView";
 import { getDateAfter, getDateBefore } from "./dateUtils";
 import React, { useState } from "react";
 
@@ -20,8 +20,10 @@ export default function CalendarApp() {
   return (
     <WeekView
       today={today}
-      weekdays={[...new Array(7)].map((_, i) => getDateAfter(sunday, i))}
-      events={events}
+      weekdays={organizeWeek(
+        [...new Array(7)].map((_, i) => getDateAfter(sunday, i)),
+        events,
+      )}
     />
   );
 }
