@@ -1,7 +1,7 @@
 const Colors = {
-  dark: "#333333",
+  dark: "#000000",
   light: "#f3f3f3",
-  highlight: "#ff00aa",
+  highlight: "#f0f6f0",
 }
 
 export default Colors;
