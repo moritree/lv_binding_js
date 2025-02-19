@@ -21,10 +21,3 @@ export default function CalendarApp() {
     />
   );
 }
-
-const style = {
-  calendar: {
-    width: 285,
-    height: 285,
-  },
-};
