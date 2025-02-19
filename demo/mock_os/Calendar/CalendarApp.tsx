@@ -15,7 +15,11 @@ export enum CalendarView {
 
 const events: CalendarEvent[] = [{ date: new Date(), title: "Right now!" }];
 
-export default function CalendarApp() {
+interface CalendarViewProps {
+  push: (app: JSX.Element) => void;
+}
+
+export default function CalendarApp(props: CalendarViewProps) {
   const [view, setView] = useState<CalendarView>(CalendarView.Week);
 
   return (
@@ -25,6 +29,7 @@ export default function CalendarApp() {
         [...new Array(7)].map((_, i) => getDateAfter(sunday, i)),
         events,
       )}
+      push={props.push}
     />
   );
 }

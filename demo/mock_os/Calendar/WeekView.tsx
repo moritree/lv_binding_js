@@ -18,6 +18,7 @@ export function organizeWeek(weekdays: Date[], events: CalendarEvent[]) {
 interface WeekViewProps {
   today: Date;
   weekdays: WeekDay[];
+  push: (app: JSX.Element) => void;
 }
 
 interface WeekDay {
@@ -26,12 +27,6 @@ interface WeekDay {
 }
 
 export default function WeekView(props: WeekViewProps) {
-  const [eventsSubview, setEventsSubview] = useState<CalendarEvent[] | null>(
-    null,
-  );
-
-  if (eventsSubview) return <EventsView events={eventsSubview} />;
-
   return (
     <View style={style.root}>
       {props.weekdays.map((day, index) => {
@@ -47,7 +42,8 @@ export default function WeekView(props: WeekViewProps) {
             key={index}
             style={viewStyle}
             onClick={() => {
-              if (day.events.length) setEventsSubview(day.events);
+              if (day.events.length)
+                props.push(<EventsView events={day.events} />);
             }}
           >
             <Text style={dateStyle}>

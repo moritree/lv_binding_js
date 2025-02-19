@@ -7,6 +7,7 @@ interface AppContainerProps {
   title: string;
   app: JSX.Element;
   exit: () => void;
+  push: (app: JSX.Element) => void;
 }
 
 export default function AppContainer(props: AppContainerProps) {
