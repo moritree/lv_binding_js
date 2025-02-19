@@ -42,6 +42,11 @@ export default function WeekView(props: WeekViewProps) {
                 monthsOfYear[day.date.getMonth()]
               }`}
             </Text>
+            {day.events.length ? (
+              <View style={style.eventBox} />
+            ) : (
+              <Text> </Text>
+            )}
           </View>
         );
       })}
@@ -69,6 +74,7 @@ const style = {
     width: "100%",
     height: "40px",
     overflow: "hidden",
+
     padding: "8px",
     "background-color": Colors.light,
     "border-width": "1px",
@@ -87,7 +93,11 @@ const style = {
     "font-size": "18px",
   },
   eventBox: {
-    "background-color": Colors.highlight,
+    width: "24px",
+    height: "24px",
+    overflow: "hidden",
     "border-width": 0,
+    "border-radius": 0,
+    "background-color": Colors.highlight,
   },
 };
