@@ -13,11 +13,15 @@ export default function WeekView(props: WeekViewProps) {
     <View style={style.root}>
       {props.weekdays.map((day, index) => {
         let viewStyle = style.day;
-        if (day == props.today) viewStyle = { ...viewStyle, ...style.today };
+        let dateStyle = style.dateLabel;
+        if (day.getDay() == props.today.getDay()) {
+          viewStyle = { ...viewStyle, ...style.today };
+          dateStyle = { ...dateStyle, ...style.today };
+        }
 
         return (
           <View key={index} style={viewStyle}>
-            <Text>
+            <Text style={dateStyle}>
               {`${daysOfWeek[day.getDay()]} ${day.getDate()} ${
                 monthsOfYear[day.getMonth()]
               }`}
@@ -52,6 +56,9 @@ const style = {
   },
   today: {
     "background-color": Colors.dark,
-    opacity: 0.5,
+    "text-color": Colors.light,
+  },
+  dateLabel: {
+    "text-color": Colors.dark,
   },
 };
