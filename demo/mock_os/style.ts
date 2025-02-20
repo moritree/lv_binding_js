@@ -9,66 +9,67 @@ const Style = {
  *********************/
 
   containerMain: { // Main container that wraps all other elements.
-    'width': 320,
-    'height': 240,
+    'width': '100%',
+    'height': '100%',
     'background-color': Colors.light,
     'flex-direction': 'column',
     'padding': 0,
     'border-radius': 0,
     'border-width': 0,
     'display': 'flex',
+    'flex-grow': 1
   },
   containerBlank: { // Invisible container for elements not in a box - has pixel padding on left and right-hand side.
     'padding-left': PIXEL,
     'padding-right': PIXEL,
-    'padding-top': 0, 
+    'padding-top': 0,
     'padding-bottom': 0,
     'width': '100%',
     'height': 'auto',
     'border-width': 0,
     'border-radius': 0,
     'background-color': Colors.light,
-    'display': 'flex', 
+    'display': 'flex',
     'flex-direction': 'column',
     'align-items': 'flex-start',
   },
   containerPadded: { // Invisible container for buttons and other elements that need extra padding to not cut off shadows etc.
     'padding-left': PIXEL,
     'padding-right': PIXEL,
-    'padding-top': PIXEL, 
+    'padding-top': PIXEL,
     'padding-bottom': PIXEL * 2,
     'width': '100%',
     'height': 'auto',
     'border-width': 0,
     'border-radius': 0,
     'background-color': Colors.light,
-    'display': 'flex', 
+    'display': 'flex',
     'flex-direction': 'column',
   },
   containerSlider: { // Invisible container with extra padding for sliders.
     'padding-left': PIXEL * 3,
     'padding-right': PIXEL * 3,
-    'padding-top': PIXEL * 2, 
+    'padding-top': PIXEL * 2,
     'padding-bottom': PIXEL * 2,
     'width': '100%',
     'height': 'auto',
     'border-width': 0,
     'border-radius': 0,
     'background-color': Colors.light,
-    'display': 'flex', 
+    'display': 'flex',
     'flex-direction': 'column',
   },
   containerSliderThick: { // Needs 1px extra padding on left and right for thick sides to accomadate for thicker indicator.
     'padding-left': PIXEL * 4,
     'padding-right': PIXEL * 4,
-    'padding-top': PIXEL * 2, 
+    'padding-top': PIXEL * 2,
     'padding-bottom': PIXEL * 2,
     'width': '100%',
     'height': 'auto',
     'border-width': 0,
     'border-radius': 0,
     'background-color': Colors.light,
-    'display': 'flex', 
+    'display': 'flex',
     'flex-direction': 'column',
   },
 
@@ -108,7 +109,7 @@ const Style = {
     'border-radius': 0,
     'border-width': 0,
     'padding': PIXEL,
-    'display': 'flex', 
+    'display': 'flex',
     'flex-direction': 'column',
   },
   boxMessage: {  // Black box with width and height that adjust to the content inside.
@@ -118,7 +119,7 @@ const Style = {
     'border-radius': PIXEL,
     'border-width': 0,
     'padding': PIXEL,
-    'display': 'flex', 
+    'display': 'flex',
   },
 
   /*********************
@@ -137,7 +138,7 @@ const Style = {
     'text-color': Colors.dark,
     'width': '100%',
     'text-wrap': 1,
-    'text-align': 'justify', 
+    'text-align': 'justify',
   },
   textSmallBlack: { // Small text.
     'font-size': 12,
@@ -159,7 +160,7 @@ const Style = {
     'text-color': Colors.light,
     'width': '100%',
     'text-wrap': 1,
-    'text-align': 'justify', 
+    'text-align': 'justify',
   },
   textSmallWhite: { // Small text.
     'font-size': 12,
@@ -174,7 +175,7 @@ const Style = {
 
   buttonBlack: { // Black button with white text.
     'background-color': Colors.dark,
-    'border-radius': 0, 
+    'border-radius': 0,
     'border-width': 0,
     'padding-left': PIXEL * 2,
     'padding-right': PIXEL * 2,
@@ -188,7 +189,7 @@ const Style = {
   },
   buttonBlackPressed: { // Pressed state for black button.
     'background-color': Colors.highlight,
-    'border-radius': 0, 
+    'border-radius': 0,
     'border-width': 0,
     'transition-property': 'background-color',
     'transition-duration': '0',
@@ -200,7 +201,7 @@ const Style = {
   },
   buttonWhite: { // White button with black text and drop-shadow.
     'background-color': Colors.light,
-    'border-radius': 0, 
+    'border-radius': 0,
     'border-width': 2,
     'padding-left': PIXEL * 2,
     'padding-right': PIXEL * 2,
@@ -218,7 +219,7 @@ const Style = {
   },
   buttonWhitePressed: { // Pressed state for white button.
     'background-color': Colors.highlight,
-    'border-radius': 0, 
+    'border-radius': 0,
     'border-width': 2,
     'transition-property': 'background-color',
     'transition-duration': '0',
@@ -235,7 +236,7 @@ const Style = {
    *********************/
 
   checkbox: {  // Main checkbox container style
-    'text-color': Colors.light, 
+    'text-color': Colors.light,
     'font-size': 14,
   },
   checkboxIndicator: { // Tickable area of checkbox.
@@ -248,7 +249,7 @@ const Style = {
     'border-radius': 0,
     'border-width': 0,
     'background-color': Colors.dark,
-    'overlay-color': null,  
+    'overlay-color': null,
   },
   checkboxIndicatorChecked: { // Checked state for checkbox.
     'border-radius': 0,
@@ -292,7 +293,7 @@ const Style = {
     'border-width': PIXEL,
     'background-color': Colors.light,
     'padding': PIXEL,
-  },  
+  },
   sliderKnobPressed: { // Pressed state for slider knob.
     'border-radius': 0,
     'border-width': PIXEL,
