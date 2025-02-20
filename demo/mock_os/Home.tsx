@@ -1,7 +1,7 @@
 import { ViewMetadata } from ".";
-import CalendarApp from "./Calendar/calendar-app";
-import MessageApp from "./message-app";
+import CalendarApp from "./calendar/calendar-app";
 import Colors from "./colors";
+import MessageApp from "./message-app";
 import { Button, Text, View } from "lvgljs-ui";
 import React from "react";
 
