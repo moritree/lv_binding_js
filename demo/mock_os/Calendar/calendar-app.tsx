@@ -1,7 +1,7 @@
 import { ViewMetadata } from "..";
-import CalendarEvent from "./CalendarEvent";
-import WeekView, { organizeWeek } from "./WeekView";
-import { getDateAfter, getDateBefore } from "./dateUtils";
+import CalendarEvent from "./calendar-event";
+import WeekView, { organizeWeek } from "./week-view";
+import { getDateAfter, getDateBefore } from "./date-utils";
 import React from "react";
 
 const today = new Date();

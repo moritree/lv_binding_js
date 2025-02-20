@@ -89,4 +89,4 @@ export default function MessageApp() {
       })}
     </View>
   );
-} // todo: figure out why boxes arent aligning properly.
+}

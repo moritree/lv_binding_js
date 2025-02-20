@@ -1,8 +1,8 @@
 import { ViewMetadata } from "..";
 import Colors from "../colors";
-import CalendarEvent from "./CalendarEvent";
-import EventsView from "./EventsView";
-import { daysOfWeek, monthsOfYear } from "./dateUtils";
+import CalendarEvent from "./calendar-event";
+import EventsView from "./events-view";
+import { daysOfWeek, monthsOfYear } from "./date-utils";
 import { Text, View } from "lvgljs-ui";
 import React from "react";
 

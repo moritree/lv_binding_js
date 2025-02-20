@@ -1,5 +1,5 @@
 import Home from "./Home";
-import ViewContainer from "./ViewContainer";
+import ViewContainer from "./view-container";
 import { Render } from "lvgljs-ui";
 import React, { useState } from "react";
 
