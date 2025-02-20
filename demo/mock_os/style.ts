@@ -79,7 +79,7 @@ const Style = {
   boxBlack: { // Black box for titles or other elements that need impact.
     'width': '100%',
     'height': 'auto',
-    'background-color': Colors.dark,
+    'background-color': Colors.highlight,
     'border-radius': 0,
     'border-width': 0,
     'padding': PIXEL,
@@ -88,11 +88,13 @@ const Style = {
     'flex-wrap': 'wrap',
     'gap': PIXEL,
     'justify-content': 'space-between',
+    'overflow': 'hidden',
+    'flex-grow': 0,
   },
   boxBlackColumn: { // Black box with a column layout, for side-by-side text boxes, buttons, etc.
     'width': '100%',
     'height': 'auto',
-    'background-color': Colors.dark,
+    'background-color': Colors.highlight,
     'border-radius': 0,
     'border-width': 0,
     'padding': PIXEL,
@@ -128,7 +130,6 @@ const Style = {
   textTitleBlack: { // Large title text.
     'font-size': 32,
     'text-color': Colors.dark,
-    'width': '100%',
     'text-wrap': 1,
     'text-align': 'center',
   },
@@ -150,7 +151,6 @@ const Style = {
   textTitleWhite: { // Large title text.
     'font-size': 32,
     'text-color': Colors.light,
-    'width': '100%',
     'text-wrap': 1,
     'text-align': 'center',
   },

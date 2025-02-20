@@ -2,6 +2,7 @@ import { ViewMetadata } from ".";
 import Colors from "./colors";
 import { BUILT_IN_SYMBOL, Button, Text, View } from "lvgljs-ui";
 import React from "react";
+import Style from "./style";
 
 interface ViewContainerProps {
   meta: ViewMetadata;
@@ -18,7 +19,7 @@ export default function ViewContainer(props: ViewContainerProps) {
             {props.topLevel ? BUILT_IN_SYMBOL.close : BUILT_IN_SYMBOL.left}
           </Text>
         </Button>
-        <Text style={style.title}>{props.meta.title || ""}</Text>
+          <Text style={style.title}>{(props.meta.title || "").charAt(0).toUpperCase() + (props.meta.title || "").slice(1)}</Text>
       </View>
       {props.meta.view}
     </View>
@@ -46,22 +47,22 @@ const style = {
     margin: 0,
     "border-radius": 0,
     "border-width": 0,
-    overflow: "hidden",
-    "flex-grow": 0,
-    display: "flex",
-    "flex-direction": "row",
   },
   title: {
-    "font-size": "32px",
+    "font-size": "20px",
     "text-color": Colors.light,
+    "padding-top": 4,
+    "text-align": "center",
+    "width": "100%",
   },
   button: {
-    "font-size": "24",
-    "text-color": Colors.light,
     "background-color": Colors.dark,
-    height: "36px",
-    width: "36px",
+    height: "34px",
+    width: "34px",
     "shadow-opacity": 0.0,
     "flex-grow": 0,
+    display: "flex",
+    "justify-content": "center",
+    "align-items": "center"
   },
 };
