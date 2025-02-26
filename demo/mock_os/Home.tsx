@@ -35,7 +35,7 @@ export default function Home(props: {
               onClick={() => props.push(app.view, app.title)}
             >
               <Text style={{ "text-color": Colors.light, "font-size": 24 }}>
-                {app.title!}
+                {app.title}
               </Text>
             </Button>
           );

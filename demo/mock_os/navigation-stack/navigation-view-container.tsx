@@ -16,7 +16,7 @@ export default function NavigationViewContainer(props: {
             {props.topLevel ? BUILT_IN_SYMBOL.close : BUILT_IN_SYMBOL.left}
           </Text>
         </Button>
-        <Text style={style.title}>{props.title || ""}</Text>
+        {props.title && <Text style={style.title}>{props.title}</Text>}
       </View>
       {props.view}
     </View>
