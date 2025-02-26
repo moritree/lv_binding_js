@@ -1,11 +1,9 @@
 import NavigationViewContainer from "./navigation-view-container";
 import React, { useState } from "react";
 
-interface NavigationStackProps {
+export default function NavigationStack(props: {
   root: (push: (app: JSX.Element, title?: string) => void) => JSX.Element;
-}
-
-export default function NavigationStack(props: NavigationStackProps) {
+}) {
   const [stack, setStack] = useState<{ title?: string; view: JSX.Element }[]>([
     {
       view: props.root((app: JSX.Element, title?: string) =>

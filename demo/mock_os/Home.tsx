@@ -15,11 +15,9 @@ const apps: ((push: (app: JSX.Element, title?: string) => void) => {
   }),
 ];
 
-interface HomeProps {
+export default function Home(props: {
   push: (app: JSX.Element, title?: string) => void;
-}
-
-export default function Home(props: HomeProps) {
+}) {
   return (
     <View style={style.home}>
       {apps

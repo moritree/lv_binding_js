@@ -2,16 +2,12 @@ import Colors from "../colors";
 import { BUILT_IN_SYMBOL, Button, Text, View } from "lvgljs-ui";
 import React from "react";
 
-interface NavigationViewContainerProps {
+export default function NavigationViewContainer(props: {
   view: JSX.Element;
   title?: string;
   back: () => void;
   topLevel: boolean;
-}
-
-export default function NavigationViewContainer(
-  props: NavigationViewContainerProps,
-) {
+}) {
   return (
     <View style={style.root}>
       <View style={style.bar}>
