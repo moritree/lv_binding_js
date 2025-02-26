@@ -4,16 +4,16 @@ import React from "react";
 
 export default function GridSelect(props: {
   push: (app: JSX.Element, title?: string) => void;
-  apps: ((push: (app: JSX.Element, title?: string) => void) => {
+  options: ((push: (app: JSX.Element, title?: string) => void) => {
     title: string;
     view: JSX.Element;
   })[];
 }) {
   return (
     <View style={style.home}>
-      {props.apps
-        .map((app) => app(props.push))
-        .map((app, index) => {
+      {props.options
+        .map((opt) => opt(props.push))
+        .map((opt, index) => {
           const gridPos = {
             "grid-row-pos": Math.floor(index / 2),
             "grid-column-pos": index % 2,
@@ -23,10 +23,10 @@ export default function GridSelect(props: {
               key={index}
               style={{ ...style.appButton, ...gridPos }}
               onPressedStyle={style.pressed}
-              onClick={() => props.push(app.view, app.title)}
+              onClick={() => props.push(opt.view, opt.title)}
             >
               <Text style={{ "text-color": Colors.light, "font-size": 24 }}>
-                {app.title}
+                {opt.title}
               </Text>
             </Button>
           );

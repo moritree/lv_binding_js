@@ -17,5 +17,7 @@ const apps: ((push: (app: JSX.Element, title?: string) => void) => {
 ];
 
 Render.render(
-  <NavigationStack root={(push) => <GridSelect push={push} apps={apps} />} />,
+  <NavigationStack
+    root={(push) => <GridSelect push={push} options={apps} />}
+  />,
 );
