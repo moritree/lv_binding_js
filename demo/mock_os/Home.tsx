@@ -2,7 +2,7 @@ import CalendarApp from "./calendar/calendar-app";
 import Colors from "./colors";
 import MessageApp from "./message-app";
 import { Button, Text, View } from "lvgljs-ui";
-import React, { useState } from "react";
+import React from "react";
 
 const apps: ((push: (app: JSX.Element, title?: string) => void) => {
   title: string;

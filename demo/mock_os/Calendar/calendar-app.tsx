@@ -9,7 +9,12 @@ const sunday = getDateBefore(today, weekday);
 
 const events: CalendarEvent[] = [
   { date: new Date(), title: "Right now!" },
-  { date: new Date(), title: "Right now also" },
+  {
+    date: new Date(),
+    title: "Right now also",
+    description:
+      "But this one also has a description. A longer description, which forces line wrap.",
+  },
   { date: getDateBefore(new Date(), 3), title: "3 days ago" },
 ];
 

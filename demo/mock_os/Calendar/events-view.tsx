@@ -8,15 +8,17 @@ interface EventsViewProps {
 }
 
 export default function EventsView(props: EventsViewProps) {
-  console.log("EVENTS VIEW");
-  console.log(props.events);
-
   return (
     <View style={style.root}>
       {props.events.map((event) => (
         <View style={style.event}>
-          <Text style={style.text}>{event.date.toTimeString()}</Text>
-          <Text style={style.text}>{event.title}</Text>
+          <View style={style.eventHeader}>
+            <Text style={style.text}>{event.date.toTimeString()}</Text>
+            <Text style={style.text}>{event.title}</Text>
+          </View>
+          {event.description && (
+            <Text style={style.eventDescription}>{event.description}</Text>
+          )}
         </View>
       ))}
     </View>
@@ -41,13 +43,24 @@ const style = {
   },
   event: {
     width: "100%",
-    height: "40px",
-    overflow: "hidden",
+    height: "auto",
     padding: "6px",
     "background-color": Colors.light,
     "border-width": "1px",
     "border-radius": 0,
     "border-color": Colors.dark,
+    display: "flex",
+    "flex-direction": "column",
+  },
+  eventHeader: {
+    width: "100%",
+    height: "auto",
+    overflow: "hidden",
+    padding: 0,
+    margin: 0,
+    "background-color": Colors.light,
+    "border-width": 0,
+    "border-radius": 0,
     display: "flex",
     "flex-direction": "row",
     "justify-content": "space-between",
@@ -55,5 +68,11 @@ const style = {
   },
   text: {
     "text-color": Colors.dark,
+  },
+  eventDescription: {
+    width: "100%",
+    height: "auto",
+    "background-color": Colors.dark,
+    "font-size": 12,
   },
 };
