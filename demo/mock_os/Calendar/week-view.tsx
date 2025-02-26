@@ -1,5 +1,5 @@
-import { ViewMetadata } from "..";
 import Colors from "../colors";
+import { NavigationMetadata } from "../navigation-stack";
 import CalendarEvent from "./calendar-event";
 import { daysOfWeek, monthsOfYear } from "./date-utils";
 import EventsView from "./events-view";
@@ -19,7 +19,7 @@ export function organizeWeek(weekdays: Date[], events: CalendarEvent[]) {
 interface WeekViewProps {
   today: Date;
   weekdays: WeekDay[];
-  push: (view: ViewMetadata) => void;
+  push: (view: NavigationMetadata) => void;
 }
 
 interface WeekDay {

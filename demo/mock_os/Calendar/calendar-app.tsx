@@ -1,4 +1,4 @@
-import { ViewMetadata } from "..";
+import { NavigationMetadata } from "../navigation-stack";
 import CalendarEvent from "./calendar-event";
 import { getDateAfter, getDateBefore } from "./date-utils";
 import WeekView, { organizeWeek } from "./week-view";
@@ -15,7 +15,7 @@ const events: CalendarEvent[] = [
 ];
 
 interface CalendarAppProps {
-  push: (app: ViewMetadata) => void;
+  push: (app: NavigationMetadata) => void;
 }
 
 export default function CalendarApp(props: CalendarAppProps) {
