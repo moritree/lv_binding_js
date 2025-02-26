@@ -1,26 +1,17 @@
-import CalendarApp from "./calendar/calendar-app";
 import Colors from "./colors";
-import MessageApp from "./message-app";
 import { Button, Text, View } from "lvgljs-ui";
 import React from "react";
 
-const apps: ((push: (app: JSX.Element, title?: string) => void) => {
-  title: string;
-  view: JSX.Element;
-})[] = [
-  (_) => ({ title: "messages", view: <MessageApp /> }),
-  (push) => ({
-    title: "calendar",
-    view: <CalendarApp push={push} />,
-  }),
-];
-
-export default function Home(props: {
+export default function GridSelect(props: {
   push: (app: JSX.Element, title?: string) => void;
+  apps: ((push: (app: JSX.Element, title?: string) => void) => {
+    title: string;
+    view: JSX.Element;
+  })[];
 }) {
   return (
     <View style={style.home}>
-      {apps
+      {props.apps
         .map((app) => app(props.push))
         .map((app, index) => {
           const gridPos = {
