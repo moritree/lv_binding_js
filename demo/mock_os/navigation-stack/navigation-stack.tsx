@@ -15,10 +15,12 @@ export default function NavigationStack(props: NavigationStackProps) {
   ]);
 
   if (stack.length == 1) return stack.at(0)!.view;
+
+  const top = stack.at(-1)!;
   return (
     <NavigationViewContainer
-      view={stack.at(-1)!.view}
-      title={stack.at(-1)!.title}
+      view={top.view}
+      title={top.title}
       back={() => setStack(stack.slice(0, -1))}
       topLevel={stack.length == 2}
     />
