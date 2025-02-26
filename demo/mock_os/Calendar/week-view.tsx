@@ -1,5 +1,4 @@
 import Colors from "../colors";
-import { NavigationMetadata } from "../navigation-stack";
 import CalendarEvent from "./calendar-event";
 import { daysOfWeek, monthsOfYear } from "./date-utils";
 import EventsView from "./events-view";
@@ -19,7 +18,7 @@ export function organizeWeek(weekdays: Date[], events: CalendarEvent[]) {
 interface WeekViewProps {
   today: Date;
   weekdays: WeekDay[];
-  push: (view: NavigationMetadata) => void;
+  push: (app: JSX.Element, title?: string) => void;
 }
 
 interface WeekDay {
@@ -44,10 +43,10 @@ export default function WeekView(props: WeekViewProps) {
             style={viewStyle}
             onClick={() => {
               if (day.events.length)
-                props.push({
-                  title: "on this day...",
-                  view: <EventsView events={day.events} />,
-                });
+                props.push(
+                  <EventsView events={day.events} />,
+                  "on this day...",
+                );
             }}
           >
             <Text style={dateStyle}>

@@ -1,16 +1,17 @@
-import { ViewMetadata } from ".";
-import Colors from "./colors";
+import Colors from "../colors";
 import { BUILT_IN_SYMBOL, Button, Text, View } from "lvgljs-ui";
 import React from "react";
-import Style from "./style";
 
-interface ViewContainerProps {
-  meta: ViewMetadata;
+interface NavigationViewContainerProps {
+  view: JSX.Element;
+  title?: string;
   back: () => void;
   topLevel: boolean;
 }
 
-export default function ViewContainer(props: ViewContainerProps) {
+export default function NavigationViewContainer(
+  props: NavigationViewContainerProps,
+) {
   return (
     <View style={style.root}>
       <View style={style.bar}>
@@ -19,9 +20,9 @@ export default function ViewContainer(props: ViewContainerProps) {
             {props.topLevel ? BUILT_IN_SYMBOL.close : BUILT_IN_SYMBOL.left}
           </Text>
         </Button>
-          <Text style={style.title}>{(props.meta.title || "").charAt(0).toUpperCase() + (props.meta.title || "").slice(1)}</Text>
+        <Text style={style.title}>{props.title || ""}</Text>
       </View>
-      {props.meta.view}
+      {props.view}
     </View>
   );
 }
@@ -53,7 +54,7 @@ const style = {
     "text-color": Colors.light,
     "padding-top": 4,
     "text-align": "center",
-    "width": "100%",
+    width: "100%",
   },
   button: {
     "background-color": Colors.dark,
@@ -63,6 +64,6 @@ const style = {
     "flex-grow": 0,
     display: "flex",
     "justify-content": "center",
-    "align-items": "center"
+    "align-items": "center",
   },
 };

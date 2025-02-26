@@ -1,21 +1,23 @@
-import { ViewMetadata } from ".";
 import CalendarApp from "./calendar/calendar-app";
 import Colors from "./colors";
 import MessageApp from "./message-app";
 import { Button, Text, View } from "lvgljs-ui";
-import React from "react";
+import React, { useState } from "react";
 
-interface HomeProps {
-  push: (app: ViewMetadata) => void;
-}
-
-const apps: ((push: (app: ViewMetadata) => void) => ViewMetadata)[] = [
+const apps: ((push: (app: JSX.Element, title?: string) => void) => {
+  title: string;
+  view: JSX.Element;
+})[] = [
   (_) => ({ title: "messages", view: <MessageApp /> }),
   (push) => ({
     title: "calendar",
     view: <CalendarApp push={push} />,
   }),
 ];
+
+interface HomeProps {
+  push: (app: JSX.Element, title?: string) => void;
+}
 
 export default function Home(props: HomeProps) {
   return (
@@ -32,7 +34,7 @@ export default function Home(props: HomeProps) {
               key={index}
               style={{ ...style.appButton, ...gridPos }}
               onPressedStyle={style.pressed}
-              onClick={() => props.push(app)}
+              onClick={() => props.push(app.view, app.title)}
             >
               <Text style={{ "text-color": Colors.light, "font-size": 24 }}>
                 {app.title!}

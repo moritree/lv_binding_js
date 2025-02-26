@@ -1,4 +1,3 @@
-import { NavigationMetadata } from "../navigation-stack";
 import CalendarEvent from "./calendar-event";
 import { getDateAfter, getDateBefore } from "./date-utils";
 import WeekView, { organizeWeek } from "./week-view";
@@ -14,11 +13,9 @@ const events: CalendarEvent[] = [
   { date: getDateBefore(new Date(), 3), title: "3 days ago" },
 ];
 
-interface CalendarAppProps {
-  push: (app: NavigationMetadata) => void;
-}
-
-export default function CalendarApp(props: CalendarAppProps) {
+export default function CalendarApp(props: {
+  push: (app: JSX.Element, title?: string) => void;
+}) {
   return (
     <WeekView
       today={today}
