@@ -59,7 +59,7 @@ const messages: Message[] = [
 ]
 
 const style = {
-  messageUserYou: { // Text sent by "You" - aligned right.
+  messageUserYou: { // "You" name - aligned right.
     'font-size': 12,
     'text-color': Colors.dark,
     'width': '100%',
@@ -68,7 +68,7 @@ const style = {
     'padding-bottom': -PIXEL,
     'text-align': 'right',
   },
-  messageUserOther: { // Text sent by others - aligned left.
+  messageUserOther: { // Other user's name - aligned left.
     'font-size': 12,
     'text-color': Colors.dark,
     'width': '100%',
@@ -76,14 +76,14 @@ const style = {
     'padding-top': PIXEL * 2,
     'padding-bottom': -PIXEL,
   },
-  messageBodyYou: { // Body text.
+  messageBodyYou: { // Message sent by "You" - aligned right.
     'font-size': 16,
     'text-color': Colors.light,
     'width': '100%',
     'text-wrap': 1,
     'text-align': 'right',
   },
-  messageBodyOther: { // Body text.
+  messageBodyOther: { // Message sent by others - aligned left.
     'font-size': 16,
     'text-color': Colors.light,
     'width': '100%',
