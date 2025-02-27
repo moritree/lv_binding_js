@@ -25,30 +25,58 @@ export default function WifiApp() {
       </View>
 
       <View style={Style.containerBlank}>
-        <Text style={Style.textBodyBlack}>Wifi Name:</Text>
+        <Text style={Style.textBodyBlack}>Hypercomplex Wifi Paramaters: </Text>
+        <Text style={{...Style.textSmallBlack, 'padding-top': '-4px', 'padding-bottom': '4px'}}>(DO NOT TOUCH!)</Text>
       </View>
 
-      <View style={Style.containerSlider}>
+      <View style={Style.containerSliderThick}>
         <Slider
-          style={Style.slider}
+          style={Style.sliderThick}
           indicatorStyle={Style.sliderIndicator}
           knobStyle={Style.sliderKnob}
           onIndicatorPressedStyle={Style.sliderIndicatorPressed}
           onKnobPressedStyle={Style.sliderKnobPressed}
+          value={80}
         />
       </View>
-
-      <View style={Style.containerBlank}>
-        <Text style={Style.textBodyBlack}>Wifi Password:</Text>
-      </View>
-
-      <View style={Style.containerSlider}>
+      <View style={Style.containerSliderThick}>
         <Slider
-          style={Style.slider}
+          style={Style.sliderThick}
           indicatorStyle={Style.sliderIndicator}
           knobStyle={Style.sliderKnob}
           onIndicatorPressedStyle={Style.sliderIndicatorPressed}
           onKnobPressedStyle={Style.sliderKnobPressed}
+          value={30}
+        />
+      </View>
+      <View style={Style.containerSliderThick}>
+        <Slider
+          style={Style.sliderThick}
+          indicatorStyle={Style.sliderIndicator}
+          knobStyle={Style.sliderKnob}
+          onIndicatorPressedStyle={Style.sliderIndicatorPressed}
+          onKnobPressedStyle={Style.sliderKnobPressed}
+          value={60}
+        />
+      </View>
+      <View style={Style.containerSliderThick}>
+        <Slider
+          style={Style.sliderThick}
+          indicatorStyle={Style.sliderIndicator}
+          knobStyle={Style.sliderKnob}
+          onIndicatorPressedStyle={Style.sliderIndicatorPressed}
+          onKnobPressedStyle={Style.sliderKnobPressed}
+          value={15}
+        />
+      </View>
+      <View style={Style.containerSliderThick}>
+        <Slider
+          style={Style.sliderThick}
+          indicatorStyle={Style.sliderIndicator}
+          knobStyle={Style.sliderKnob}
+          onIndicatorPressedStyle={Style.sliderIndicatorPressed}
+          onKnobPressedStyle={Style.sliderKnobPressed}
+          value={90}
         />
       </View>
 
