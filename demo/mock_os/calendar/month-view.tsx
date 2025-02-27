@@ -14,26 +14,24 @@ interface MonthViewProps {
 }
 
 export default function MonthView(props: MonthViewProps) {
-  const [firstDay] = useState(
-    getDateBefore(props.today, props.today.getDate() - 1),
-  );
-  const [weekdayOfFirst] = useState(firstDay.getDay());
-  const [daysInMonth] = useState(
-    [...new Array(31)]
-      .map((_, index) => getDateAfter(firstDay, index).getMonth())
-      .findIndex((month) => month != props.today.getMonth()),
-  );
-
-  console.log("DAYS IN MONTH");
-  console.log(daysInMonth);
-
-  const gridDays = [...new Array(daysInMonth)].map((_, index) => {
-    const gridPos = {
-      "grid-row-pos": Math.floor((index + weekdayOfFirst) / 7),
-      "grid-column-pos": (index + weekdayOfFirst) % 7,
-    };
-    return <View key={index} style={{ ...style.day, ...gridPos }} />;
-  });
+  // TODO: are these being computed way too often? do I need to use state instead?
+  const firstDay = getDateBefore(props.today, props.today.getDate() - 1);
+  const weekdayOfFirst = firstDay.getDay();
+  const daysInMonth = [...new Array(31)]
+    .map((_, index) => getDateAfter(firstDay, index).getMonth())
+    .findIndex((month) => month != props.today.getMonth());
+  const gridDays = [...new Array(daysInMonth)].map((_, index) => (
+    <View
+      key={index}
+      style={{
+        ...style.day,
+        ...{
+          "grid-row-pos": Math.floor((index + weekdayOfFirst) / 7),
+          "grid-column-pos": (index + weekdayOfFirst) % 7,
+        },
+      }}
+    />
+  ));
 
   return <View style={style.root}>{gridDays}</View>;
 }
