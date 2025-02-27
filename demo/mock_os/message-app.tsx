@@ -58,35 +58,42 @@ const messages: Message[] = [
 
 export default function MessageApp() {
   return (
-    <View style={Style.containerMain}>
-      {messages.map((msg, index) => {
-        const prevMsg = index > 0 ? messages[index - 1] : null;
-        const showFrom = !prevMsg || prevMsg.from !== msg.from;
-        
-        return (
-          <View key={index} style={Style.containerBlank}>
-            {msg.from === "You" ? (
-              <>
-                {showFrom && (
-                  <Text style={{...Style.textSmallBlack, 'text-align': 'right'}}>{msg.from}</Text>
-                )}
-                <View style={Style.boxMessage}>
-                  <Text style={{...Style.textBodyWhite, 'text-align': 'right'}}>{msg.content}</Text> 
-                </View>
-              </>
-            ) : (
-              <>
-                {showFrom && (
-                  <Text style={Style.textSmallBlack}>{msg.from}</Text>
-                )}
-                <View style={Style.boxMessage}>
-                  <Text style={Style.textBodyWhite}>{msg.content}</Text>
-                </View>
-              </>
-            )}
-          </View>
-        );
-      })}
+    <View style={Style.root}>
+        <View style={Style.containerMain}>
+            {messages.map((msg, index) => {
+                const prevMsg = index > 0 ? messages[index - 1] : null;
+                const showFrom = !prevMsg || prevMsg.from !== msg.from;
+                
+                return (
+                    <View key={index} style={Style.containerBlank}>
+                        {msg.from === "You" ? (
+                            <>
+                                {showFrom && (
+                                    <Text style={{...Style.textSmallBlack, 'text-align': 'right', 'padding-top': '8px'}}>{msg.from}</Text>
+                                )}
+                                <View style={Style.boxMessage}>
+                                    <Text style={{...Style.textBodyWhite, 'text-align': 'right'}}>{msg.content}</Text> 
+                                </View>
+                            </>
+                        ) : (
+                            <>
+                                {showFrom && (
+                                    <Text style={{...Style.textSmallBlack, 'padding-top': '8px'}}>{msg.from}</Text>
+                                )}
+                                <View style={Style.boxMessage}>
+                                    <Text style={Style.textBodyWhite}>{msg.content}</Text>
+                                </View>
+                            </>
+                        )}
+                    </View>
+                );
+            })}
+        </View>
+        <View style={{...Style.boxBlack, height: '40px'}}>
+            <View style={{...Style.boxBlack, 'padding': 8}}> 
+                <Text style={Style.textSmallWhite}>Message sending currenty not suported. haha.</Text> 
+            </View> 
+        </View> 
     </View>
   );
 }

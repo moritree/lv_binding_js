@@ -7,7 +7,6 @@ const Style = {
 /*********************
  *      CONTAINERS
  *********************/
-
   containerMain: { // Main container that wraps all other elements.
     'width': '100%',
     'height': '100%',
@@ -17,7 +16,8 @@ const Style = {
     'border-radius': 0,
     'border-width': 0,
     'display': 'flex',
-    'flex-grow': 1
+    'flex-grow': 1,
+    'row-spacing': 2,
   },
   containerBlank: { // Invisible container for elements not in a box - has pixel padding on left and right-hand side.
     'padding-left': PIXEL,
@@ -80,7 +80,7 @@ const Style = {
   boxBlack: { // Black box for titles or other elements that need impact.
     'width': '100%',
     'height': 'auto',
-    'background-color': Colors.highlight,
+    'background-color': Colors.dark,
     'border-radius': 0,
     'border-width': 0,
     'padding': PIXEL,
@@ -95,7 +95,7 @@ const Style = {
   boxBlackColumn: { // Black box with a column layout, for side-by-side text boxes, buttons, etc.
     'width': '100%',
     'height': 'auto',
-    'background-color': Colors.highlight,
+    'background-color': Colors.dark,
     'border-radius': 0,
     'border-width': 0,
     'padding': PIXEL,
@@ -164,7 +164,7 @@ const Style = {
   },
   textSmallWhite: { // Small text.
     'font-size': 12,
-    'text-color': Colors.highlight,
+    'text-color': Colors.light,
     'width': '100%',
     'text-wrap': 1,
   },
@@ -330,13 +330,13 @@ const Style = {
   root: {
     width: "100%",
     height: "100%",
-    padding: "2px",
+    padding: 0,
     margin: 0,
     overflow: "auto",
     display: "flex",
     "flex-direction": "column",
     "flex-grow": 1,
-    "row-spacing": "2px",
+    "row-spacing": PIXEL,
     "scroll-dir": "bottom",
     "border-radius": 0,
     "border-width": 0,
