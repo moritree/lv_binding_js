@@ -336,7 +336,7 @@ const Style = {
     display: "flex",
     "flex-direction": "column",
     "flex-grow": 1,
-    "row-spacing": PIXEL,
+    "row-spacing": 0,
     "scroll-dir": "bottom",
     "border-radius": 0,
     "border-width": 0,
