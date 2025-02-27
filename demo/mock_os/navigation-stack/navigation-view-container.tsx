@@ -9,6 +9,8 @@ export default function NavigationViewContainer(props: {
   topLevel: boolean;
   secondLevel: boolean;
   onBluetoothClick?: () => void;
+  onWiFiClick?: () => void;
+  onBatteryClick?: () => void;
 }) {
   return (
     <View style={style.root}>
@@ -33,12 +35,12 @@ export default function NavigationViewContainer(props: {
               {BUILT_IN_SYMBOL.bluetooth}
             </Text>
           </Button>
-          <Button style={style.button}>
+          <Button style={style.button} onClick={props.onWiFiClick || (() => {})}>
             <Text>
               {BUILT_IN_SYMBOL.wifi}
             </Text>
           </Button>
-          <Button style={style.button}>
+          <Button style={style.button} onClick={props.onBatteryClick || (() => {})}>
             <Text>
               {BUILT_IN_SYMBOL.battery_2}
             </Text>

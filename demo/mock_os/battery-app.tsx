@@ -2,14 +2,14 @@ import { Button, Slider, Text, View } from "lvgljs-ui";
 import React, { useState } from "react";
 import Style from "./style";
 
-export default function BluetoothApp() {
+export default function BatteryApp() {
   const [isPairingEnabled, setIsPairingEnabled] = useState(true);
 
   return (
     <View style={Style.root}>
 
     <View style={Style.containerBlank}>
-        <Text style={Style.textBodyBlack}>Bluetooth Settings:</Text>
+        <Text style={Style.textBodyBlack}>Battery Settings:</Text>
       </View>
         
       <View style={Style.containerPadded}>
@@ -25,7 +25,7 @@ export default function BluetoothApp() {
       </View>
 
       <View style={Style.containerBlank}>
-        <Text style={Style.textBodyBlack}>Blueness:</Text>
+        <Text style={Style.textBodyBlack}>Battery Percentage:</Text>
       </View>
 
       <View style={Style.containerSlider}>
@@ -39,7 +39,7 @@ export default function BluetoothApp() {
       </View>
 
       <View style={Style.containerBlank}>
-        <Text style={Style.textBodyBlack}>Toothsomness:</Text>
+        <Text style={Style.textBodyBlack}>Battery Charging:</Text>
       </View>
 
       <View style={Style.containerSlider}>
