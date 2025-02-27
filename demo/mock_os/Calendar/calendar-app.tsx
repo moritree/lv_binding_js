@@ -38,6 +38,7 @@ const views: ((push: (app: JSX.Element, title?: string) => void) => {
     ),
   }),
   (push) => ({
+    buttonTitle: "month view",
     title:
       monthsOfYear[today.getMonth()].slice(0, 3) + " " + today.getFullYear(),
     view: <MonthView today={today} push={push} />,
