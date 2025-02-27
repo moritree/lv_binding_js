@@ -18,6 +18,7 @@ export default function NavigationStack(props: {
       title={current.title}
       back={() => stack.length > 1 && setStack(stack.slice(0, -1))}
       topLevel={stack.length <= 1}
+      secondLevel={stack.length <= 2}
     />
   );
 }

@@ -7,6 +7,7 @@ export default function NavigationViewContainer(props: {
   title?: string;
   back: () => void;
   topLevel: boolean;
+  secondLevel: boolean;
 }) {
   return (
     <View style={style.root}>
@@ -15,12 +16,13 @@ export default function NavigationViewContainer(props: {
         <View style={style.barSection}>
           <Button style={style.button} onClick={() => props.back()}>
             <Text>
-              {props.topLevel ? BUILT_IN_SYMBOL.close : BUILT_IN_SYMBOL.left}
+              {props.topLevel ? BUILT_IN_SYMBOL.bars : props.secondLevel ? BUILT_IN_SYMBOL.close : BUILT_IN_SYMBOL.left}
             </Text>
           </Button>
+          <Text style={style.title}>{new Date().toLocaleTimeString().split(':').slice(0,2).join(':').replace(/^0/, '')}</Text>
         </View>
 
-        <View style={style.barSection}>
+        <View style={{...style.barSection, 'justify-content': 'center'}}>
           <Text style={style.title}>{props.title || "ZuniBax OS"}</Text>
         </View>
 
@@ -92,7 +94,7 @@ const style = {
     'padding-top': '2px',
     "font-size": "14px",
     "text-color": Colors.light,
-    width: "100%",
+    width: "fit-content",
     "text-align": "center",
   },
   button: {
