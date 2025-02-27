@@ -7,6 +7,7 @@ export default function GridSelect(props: {
   options: ((push: (app: JSX.Element, title?: string) => void) => {
     title: string;
     view: JSX.Element;
+    buttonTitle?: string;
   })[];
   height?: string;
 }) {
@@ -31,7 +32,7 @@ export default function GridSelect(props: {
               onClick={() => props.push(opt.view, opt.title)}
             >
               <Text style={{ "text-color": Colors.light, "font-size": 24 }}>
-                {opt.title}
+                {opt.buttonTitle || opt.title}
               </Text>
             </Button>
           );
