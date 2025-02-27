@@ -124,11 +124,9 @@ export default function MessageApp() {
                 );
             })}
         </View>
-        <View style={{...Style.boxBlack, height: '40px'}}>
-            <View style={{...Style.boxBlack, 'padding': 8}}> 
+        <View style={{...Style.boxBlack, height: '40px', 'padding': PIXEL * 3}}>
                 <Text style={Style.textSmallWhite}>Message sending currenty not suported. haha.</Text> 
-            </View> 
-        </View> 
+          </View> 
     </View>
   );
 }
