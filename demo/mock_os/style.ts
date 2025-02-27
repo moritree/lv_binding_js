@@ -16,7 +16,8 @@ const Style = {
     'border-radius': 0,
     'border-width': 0,
     'display': 'flex',
-    'flex-grow': 1
+    'flex-grow': 1,
+    'row-spacing': 2,
   },
   containerBlank: { // Invisible container for elements not in a box - has pixel padding on left and right-hand side.
     'padding-left': PIXEL,

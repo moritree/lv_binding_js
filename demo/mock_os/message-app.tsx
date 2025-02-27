@@ -69,7 +69,7 @@ export default function MessageApp() {
                         {msg.from === "You" ? (
                             <>
                                 {showFrom && (
-                                    <Text style={{...Style.textSmallBlack, 'text-align': 'right'}}>{msg.from}</Text>
+                                    <Text style={{...Style.textSmallBlack, 'text-align': 'right', 'padding-top': '8px'}}>{msg.from}</Text>
                                 )}
                                 <View style={Style.boxMessage}>
                                     <Text style={{...Style.textBodyWhite, 'text-align': 'right'}}>{msg.content}</Text> 
@@ -78,7 +78,7 @@ export default function MessageApp() {
                         ) : (
                             <>
                                 {showFrom && (
-                                    <Text style={Style.textSmallBlack}>{msg.from}</Text>
+                                    <Text style={{...Style.textSmallBlack, 'padding-top': '8px'}}>{msg.from}</Text>
                                 )}
                                 <View style={Style.boxMessage}>
                                     <Text style={Style.textBodyWhite}>{msg.content}</Text>
@@ -90,7 +90,7 @@ export default function MessageApp() {
             })}
         </View>
         <View style={{...Style.boxBlack, height: '40px'}}>
-            <View style={{...Style.boxBlack, 'padding': 10}}> 
+            <View style={{...Style.boxBlack, 'padding': 8}}> 
                 <Text style={Style.textSmallWhite}>Message sending currenty not suported. haha.</Text> 
             </View> 
         </View> 
