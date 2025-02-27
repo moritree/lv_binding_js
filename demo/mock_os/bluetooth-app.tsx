@@ -35,6 +35,7 @@ export default function BluetoothApp() {
           knobStyle={Style.sliderKnob}
           onIndicatorPressedStyle={Style.sliderIndicatorPressed}
           onKnobPressedStyle={Style.sliderKnobPressed}
+          value={80}
         />
       </View>
 
@@ -49,6 +50,7 @@ export default function BluetoothApp() {
           knobStyle={Style.sliderKnob}
           onIndicatorPressedStyle={Style.sliderIndicatorPressed}
           onKnobPressedStyle={Style.sliderKnobPressed}
+          value={65}
         />
       </View>
 

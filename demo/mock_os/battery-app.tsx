@@ -17,7 +17,7 @@ export default function BatteryApp() {
         <Button 
           style={Style.buttonBlack} 
           onPressedStyle={Style.buttonBlackPressed}
-          onClick={() => {setPowerSavingMode(!powerSavingMode); setPowerWastingMode(false)}}
+          onClick={() => {setPowerSavingMode(!powerSavingMode); setPowerWastingMode(true)}}
         >
           <Text style={Style.buttonBlackText}>
             Power Saving Mode: {powerSavingMode ? 'enabled' : 'disabled'}
@@ -29,7 +29,7 @@ export default function BatteryApp() {
           onClick={() => {setPowerWastingMode(!powerWastingMode); setPowerSavingMode(false)}}
         >
           <Text style={Style.buttonBlackText}>
-            Power Wasting Mode: {powerWastingMode ? 'enabled' : 'disabled'}
+            Power Wasting Mode: {powerWastingMode ? 'disabled' : 'enabled'}
           </Text>
         </Button>
       </View>
@@ -45,6 +45,7 @@ export default function BatteryApp() {
           knobStyle={Style.sliderKnob}
           onIndicatorPressedStyle={Style.sliderIndicatorPressed}
           onKnobPressedStyle={Style.sliderKnobPressed}
+          value={10}
         />
       </View>
 
