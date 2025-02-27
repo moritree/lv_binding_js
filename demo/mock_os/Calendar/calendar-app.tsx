@@ -1,6 +1,6 @@
 import GridSelect from "../grid-select";
 import CalendarEvent from "./calendar-event";
-import { getDateAfter, getDateBefore } from "./date-utils";
+import { getDateAfter, getDateBefore, monthsOfYear } from "./date-utils";
 import MonthView from "./month-view";
 import WeekView, { organizeWeek } from "./week-view";
 import React from "react";
@@ -38,7 +38,8 @@ const views: ((push: (app: JSX.Element, title?: string) => void) => {
     ),
   }),
   (push) => ({
-    title: "month view",
+    title:
+      monthsOfYear[today.getMonth()].slice(0, 3) + " " + today.getFullYear(),
     view: <MonthView today={today} push={push} />,
   }),
 ];
