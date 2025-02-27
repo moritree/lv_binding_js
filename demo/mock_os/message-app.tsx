@@ -94,6 +94,6 @@ export default function MessageApp() {
                 <Text style={Style.textSmallWhite}>Message sending currenty not suported. haha.</Text> 
             </View> 
         </View> 
-    </View>// Fix style later
+    </View>
   );
 }

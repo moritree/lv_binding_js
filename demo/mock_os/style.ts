@@ -7,18 +7,6 @@ const Style = {
 /*********************
  *      CONTAINERS
  *********************/
-  root: {
-    width: "320px",
-    height: "240px",
-    "background-color": Colors.light,
-    "border-radius": 0,
-    "border-width": 0,
-    overflow: "hidden",
-    display: "flex",
-    "flex-direction": "column",
-    "row-spacing": 0,
-    padding: 0,
-  },
   containerMain: { // Main container that wraps all other elements.
     'width': '100%',
     'height': '100%',
@@ -341,13 +329,13 @@ const Style = {
   root: {
     width: "100%",
     height: "100%",
-    padding: "2px",
+    padding: 0,
     margin: 0,
     overflow: "auto",
     display: "flex",
     "flex-direction": "column",
     "flex-grow": 1,
-    "row-spacing": "2px",
+    "row-spacing": PIXEL,
     "scroll-dir": "bottom",
     "border-radius": 0,
     "border-width": 0,
