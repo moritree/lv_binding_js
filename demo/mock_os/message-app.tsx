@@ -3,6 +3,8 @@ import { Text, View } from "lvgljs-ui";
 import React from "react";
 import Style from "./style";
 
+const PIXEL = 4;
+
 interface Message {
   from: string;
   content: string;
@@ -56,6 +58,39 @@ const messages: Message[] = [
     { from: "Ben", content: "I’M GOING TO FIRE YOU BOTH AND REPLACE YOU WITH A ROCK AND A CALCULATOR." }
 ]
 
+const style = {
+  messageUserYou: { // Text sent by "You" - aligned right.
+    'font-size': 12,
+    'text-color': Colors.dark,
+    'width': '100%',
+    'text-wrap': 1,
+    'padding-top': PIXEL * 2,
+    'padding-bottom': -PIXEL,
+    'text-align': 'right',
+  },
+  messageUserOther: { // Text sent by others - aligned left.
+    'font-size': 12,
+    'text-color': Colors.dark,
+    'width': '100%',
+    'text-wrap': 1,
+    'padding-top': PIXEL * 2,
+    'padding-bottom': -PIXEL,
+  },
+  messageBodyYou: { // Body text.
+    'font-size': 16,
+    'text-color': Colors.light,
+    'width': '100%',
+    'text-wrap': 1,
+    'text-align': 'right',
+  },
+  messageBodyOther: { // Body text.
+    'font-size': 16,
+    'text-color': Colors.light,
+    'width': '100%',
+    'text-wrap': 1,
+  },
+}
+
 export default function MessageApp() {
   return (
     <View style={Style.root}>
@@ -69,19 +104,19 @@ export default function MessageApp() {
                         {msg.from === "You" ? (
                             <>
                                 {showFrom && (
-                                    <Text style={{...Style.textSmallBlack, 'text-align': 'right', 'padding-top': '8px'}}>{msg.from}</Text>
+                                    <Text style={style.messageUserYou}>{msg.from}</Text>
                                 )}
                                 <View style={Style.boxMessage}>
-                                    <Text style={{...Style.textBodyWhite, 'text-align': 'right'}}>{msg.content}</Text> 
+                                    <Text style={style.messageBodyYou}>{msg.content}</Text> 
                                 </View>
                             </>
                         ) : (
                             <>
                                 {showFrom && (
-                                    <Text style={{...Style.textSmallBlack, 'padding-top': '8px'}}>{msg.from}</Text>
+                                    <Text style={style.messageUserOther}>{msg.from}</Text>
                                 )}
                                 <View style={Style.boxMessage}>
-                                    <Text style={Style.textBodyWhite}>{msg.content}</Text>
+                                    <Text style={style.messageBodyOther}>{msg.content}</Text>
                                 </View>
                             </>
                         )}

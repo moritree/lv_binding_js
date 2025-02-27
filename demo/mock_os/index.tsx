@@ -9,9 +9,9 @@ const apps: ((push: (app: JSX.Element, title?: string) => void) => {
   title: string;
   view: JSX.Element;
 })[] = [
-  (_) => ({ title: "messages", view: <MessageApp /> }),
+  (_) => ({ title: "Messages", view: <MessageApp /> }),
   (push) => ({
-    title: "calendar",
+    title: "Calendar",
     view: <CalendarApp push={push} />,
   }),
 ];
