@@ -1,7 +1,12 @@
 import Colors from "../colors";
-import { daysOfWeek, monthsOfYear } from "./date-utils";
+import {
+  daysOfWeek,
+  getDateAfter,
+  getDateBefore,
+  monthsOfYear,
+} from "./date-utils";
 import { Text, View } from "lvgljs-ui";
-import React from "react";
+import React, { useState } from "react";
 
 interface MonthViewProps {
   today: Date;
@@ -9,6 +14,27 @@ interface MonthViewProps {
 }
 
 export default function MonthView(props: MonthViewProps) {
+  const [firstDay] = useState(
+    getDateBefore(props.today, props.today.getDate() - 1),
+  );
+  const [weekdayOfFirst] = useState(firstDay.getDay());
+  const [daysInMonth] = useState(
+    [...new Array(31)]
+      .map((_, index) => getDateAfter(firstDay, index).getMonth())
+      .findIndex((month) => month != props.today.getMonth()),
+  );
+
+  console.log("DAYS IN MONTH");
+  console.log(daysInMonth);
+
+  const gridDays = [...new Array(daysInMonth)].map((_, index) => {
+    const gridPos = {
+      "grid-row-pos": Math.floor((index + weekdayOfFirst) / 7),
+      "grid-column-pos": (index + weekdayOfFirst) % 7,
+    };
+    return <View key={index} style={{ ...style.day, ...gridPos }} />;
+  });
+
   return <View style={style.root}>{gridDays}</View>;
 }
 
@@ -43,11 +69,3 @@ const style = {
     "align-content": "center",
   },
 };
-
-const gridDays = [...new Array(42)].map((_, index) => {
-  const gridPos = {
-    "grid-row-pos": Math.floor(index / 7),
-    "grid-column-pos": index % 7,
-  };
-  return <View style={{ ...style.day, ...gridPos }} />;
-});
