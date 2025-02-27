@@ -3,8 +3,6 @@ import { Button, Slider, Text, View } from "lvgljs-ui";
 import React, { useState } from "react";
 import Style from "./style";
 
-const style = {}
-
 export default function SettingsApp() {
   const [isPairingEnabled, setIsPairingEnabled] = useState(true);
 
