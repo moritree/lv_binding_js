@@ -5,6 +5,8 @@ import Style from "./style";
 export default function WifiApp() {
   const [isPairingEnabled, setIsPairingEnabled] = useState(true);
 
+  const PIXEL = 4;
+
   return (
     <View style={Style.root}>
 
@@ -26,7 +28,7 @@ export default function WifiApp() {
 
       <View style={Style.containerBlank}>
         <Text style={Style.textBodyBlack}>Hypercomplex Wifi Paramaters: </Text>
-        <Text style={{...Style.textSmallBlack, 'padding-top': '-4px', 'padding-bottom': '4px'}}>(DO NOT TOUCH!)</Text>
+        <Text style={{...Style.textSmallBlack, 'padding-top': -PIXEL, 'padding-bottom': PIXEL}}>(DO NOT TOUCH!)</Text>
       </View>
 
       <View style={Style.containerSliderThick}>
