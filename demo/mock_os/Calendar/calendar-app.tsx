@@ -1,3 +1,4 @@
+import GridSelect from "../grid-select";
 import CalendarEvent from "./calendar-event";
 import { getDateAfter, getDateBefore } from "./date-utils";
 import WeekView, { organizeWeek } from "./week-view";
@@ -18,17 +19,27 @@ const events: CalendarEvent[] = [
   { date: getDateBefore(new Date(), 3), title: "3 days ago" },
 ];
 
+const views: ((push: (app: JSX.Element, title?: string) => void) => {
+  title: string;
+  view: JSX.Element;
+})[] = [
+  (push) => ({
+    title: "week view",
+    view: (
+      <WeekView
+        today={today}
+        weekdays={organizeWeek(
+          [...new Array(7)].map((_, i) => getDateAfter(sunday, i)),
+          events,
+        )}
+        push={push}
+      />
+    ),
+  }),
+];
+
 export default function CalendarApp(props: {
   push: (app: JSX.Element, title?: string) => void;
 }) {
-  return (
-    <WeekView
-      today={today}
-      weekdays={organizeWeek(
-        [...new Array(7)].map((_, i) => getDateAfter(sunday, i)),
-        events,
-      )}
-      push={props.push}
-    />
-  );
+  return <GridSelect push={props.push} options={views} height="200px" />;
 }

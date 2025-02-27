@@ -8,9 +8,14 @@ export default function GridSelect(props: {
     title: string;
     view: JSX.Element;
   })[];
+  height?: string;
 }) {
+  const rootStyle = {
+    ...style.home,
+    ...{ height: props.height || style.home.height },
+  };
   return (
-    <View style={style.home}>
+    <View style={rootStyle}>
       {props.options
         .map((opt) => opt(props.push))
         .map((opt, index) => {
@@ -37,8 +42,8 @@ export default function GridSelect(props: {
 
 const style = {
   home: {
-    width: "320px",
-    height: "240px",
+    width: "100%",
+    height: "100%",
     "background-color": Colors.light,
     "border-radius": 0,
     "border-width": 0,
