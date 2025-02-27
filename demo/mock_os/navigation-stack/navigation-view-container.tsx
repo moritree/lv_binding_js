@@ -52,6 +52,10 @@ export default function NavigationViewContainer(props: {
             onClick={() =>
               props.showingBluetooth
                 ? props.back()
+                : props.showingWifi || props.showingBattery
+                ? props.swap(<BluetoothApp />, "Bluetooth", {
+                    showingBluetooth: true,
+                  })
                 : props.push(<BluetoothApp />, "Bluetooth", {
                     showingBluetooth: true,
                   })
@@ -64,9 +68,9 @@ export default function NavigationViewContainer(props: {
             onClick={() =>
               props.showingWifi
                 ? props.back()
-                : props.push(<WifiApp />, "Wifi", {
-                    showingWifi: true,
-                  })
+                : props.showingBluetooth || props.showingBattery
+                ? props.swap(<WifiApp />, "Wifi", { showingWifi: true })
+                : props.push(<WifiApp />, "Wifi", { showingWifi: true })
             }
           >
             <Text>{BUILT_IN_SYMBOL.wifi}</Text>
@@ -76,6 +80,10 @@ export default function NavigationViewContainer(props: {
             onClick={() =>
               props.showingBattery
                 ? props.back()
+                : props.showingBluetooth || props.showingWifi
+                ? props.swap(<BatteryApp />, "Battery", {
+                    showingBattery: true,
+                  })
                 : props.push(<BatteryApp />, "Battery", {
                     showingBattery: true,
                   })
