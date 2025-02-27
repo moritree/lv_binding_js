@@ -1,33 +1,23 @@
 import NavigationViewContainer from "./navigation-view-container";
 import React, { useState } from "react";
-import BluetoothApp from "../bluetooth-app";
-import WiFiApp from "../wifi-app";
-import BatteryApp from "../battery-app";
 
 export default function NavigationStack(props: {
-  root: (push: (app: JSX.Element, title?: string) => void) => JSX.Element;
+  root: (
+    push: (app: JSX.Element, title?: string, options?: any) => void,
+  ) => JSX.Element;
 }) {
-  const push = (app: JSX.Element, title?: string) =>
-    setStack((prevStack) => [...prevStack, { title: title, view: app }]);
-
-  const [stack, setStack] = useState<{ title?: string; view: JSX.Element }[]>([
+  const push = (app: JSX.Element, title?: string, options?: any) =>
+    setStack((prevStack) => [
+      ...prevStack,
+      { title: title, view: app, options: options },
+    ]);
+  const [stack, setStack] = useState<
+    { title?: string; view: JSX.Element; options?: any }[]
+  >([
     { view: props.root(push) }, // build root view as base of stack
   ]);
-
   const current = stack.at(-1)!;
-  const isBluetoothOpen = React.isValidElement(current.view) && current.view.type === BluetoothApp;
-  const isWiFiOpen = React.isValidElement(current.view) && current.view.type === WiFiApp;
-  const isBatteryOpen = React.isValidElement(current.view) && current.view.type === BatteryApp;
-  const isSystemAppOpen = isBluetoothOpen || isWiFiOpen || isBatteryOpen;
-
   const back = () => stack.length > 1 && setStack(stack.slice(0, -1));
-
-  const handleSystemAppClick = (app: JSX.Element, title: string) => {
-    if (isSystemAppOpen) {
-      back();
-    }
-    push(app, title);
-  };
 
   return (
     <NavigationViewContainer
@@ -36,9 +26,10 @@ export default function NavigationStack(props: {
       back={back}
       topLevel={stack.length <= 1}
       secondLevel={stack.length <= 2}
-      onBluetoothClick={isBluetoothOpen ? undefined : () => handleSystemAppClick(<BluetoothApp />, "Bluetooth")}
-      onWiFiClick={isWiFiOpen ? undefined : () => handleSystemAppClick(<WiFiApp />, "WiFi")}
-      onBatteryClick={isBatteryOpen ? undefined : () => handleSystemAppClick(<BatteryApp />, "Battery")}
+      push={push}
+      showingBluetooth={current.options?.showingBluetooth}
+      showingWifi={current.options?.showingWifi}
+      showingBattery={current.options?.showingBattery}
     />
   );
 }

@@ -1,4 +1,7 @@
+import BatteryApp from "../battery-app";
+import BluetoothApp from "../bluetooth-app";
 import Colors from "../colors";
+import WifiApp from "../wifi-app";
 import { BUILT_IN_SYMBOL, Button, Text, View } from "lvgljs-ui";
 import React from "react";
 
@@ -8,11 +11,12 @@ export default function NavigationViewContainer(props: {
   view: JSX.Element;
   title?: string;
   back: () => void;
+  push: (app: JSX.Element, title?: string, options?: any) => void;
   topLevel: boolean;
   secondLevel: boolean;
-  onBluetoothClick?: () => void;
-  onWiFiClick?: () => void;
-  onBatteryClick?: () => void;
+  showingBluetooth?: boolean;
+  showingWifi?: boolean;
+  showingBattery?: boolean;
 }) {
   return (
     <View style={style.root}>
@@ -44,19 +48,37 @@ export default function NavigationViewContainer(props: {
         <View style={{ ...style.barSection, "justify-content": "flex-end" }}>
           <Button
             style={style.button}
-            onClick={props.onBluetoothClick || (() => {})}
+            onClick={() =>
+              props.showingBluetooth
+                ? props.back()
+                : props.push(<BluetoothApp />, "Bluetooth", {
+                    showingBluetooth: true,
+                  })
+            }
           >
             <Text>{BUILT_IN_SYMBOL.bluetooth}</Text>
           </Button>
           <Button
             style={style.button}
-            onClick={props.onWiFiClick || (() => {})}
+            onClick={() =>
+              props.showingWifi
+                ? props.back()
+                : props.push(<WifiApp />, "Wifi", {
+                    showingWifi: true,
+                  })
+            }
           >
             <Text>{BUILT_IN_SYMBOL.wifi}</Text>
           </Button>
           <Button
             style={style.button}
-            onClick={props.onBatteryClick || (() => {})}
+            onClick={() =>
+              props.showingBattery
+                ? props.back()
+                : props.push(<BatteryApp />, "Battery", {
+                    showingBattery: true,
+                  })
+            }
           >
             <Text>{BUILT_IN_SYMBOL.battery_2}</Text>
           </Button>
