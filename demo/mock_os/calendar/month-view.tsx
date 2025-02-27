@@ -9,23 +9,7 @@ interface MonthViewProps {
 }
 
 export default function MonthView(props: MonthViewProps) {
-  console.log("Got to month view!!");
-
-  return (
-    <View style={style.root}>
-      {gridDays}
-      {/* <Text
-        style={{
-          "grid-child": true,
-          "grid-row-pos": 1,
-          "grid-column-pos": 1,
-          "background-color": Colors.dark,
-        }}
-      >
-        Testing
-      </Text> */}
-    </View>
-  );
+  return <View style={style.root}>{gridDays}</View>;
 }
 
 const style = {
@@ -39,9 +23,11 @@ const style = {
     display: "grid",
     "grid-template-columns": "1fr 1fr 1fr 1fr 1fr 1fr 1fr",
     "grid-template-rows": "1fr 1fr 1fr 1fr 1fr 1fr",
+    "justify-content": "center", // justify/align required bc otherwise it's asymmetrical :( 7 doesn't fit in well
+    "align-items": "center",
     padding: "4px",
-    "row-spacing": "2px",
-    "column-spacing": "2px",
+    "row-spacing": "4px",
+    "column-spacing": "4px",
   },
   day: {
     padding: 0,
