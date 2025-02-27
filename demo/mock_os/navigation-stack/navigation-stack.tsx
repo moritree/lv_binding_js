@@ -1,5 +1,6 @@
 import NavigationViewContainer from "./navigation-view-container";
 import React, { useState } from "react";
+import SettingsApp from "../settings-app";
 
 export default function NavigationStack(props: {
   root: (push: (app: JSX.Element, title?: string) => void) => JSX.Element;
@@ -12,6 +13,8 @@ export default function NavigationStack(props: {
   ]);
 
   const current = stack.at(-1)!;
+  const isSettingsOpen = React.isValidElement(current.view) && current.view.type === SettingsApp;
+
   return (
     <NavigationViewContainer
       view={current.view}
@@ -19,6 +22,7 @@ export default function NavigationStack(props: {
       back={() => stack.length > 1 && setStack(stack.slice(0, -1))}
       topLevel={stack.length <= 1}
       secondLevel={stack.length <= 2}
+      onBluetoothClick={isSettingsOpen ? undefined : () => push(<SettingsApp />, "Settings")}
     />
   );
 }

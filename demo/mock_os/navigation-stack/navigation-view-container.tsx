@@ -8,6 +8,7 @@ export default function NavigationViewContainer(props: {
   back: () => void;
   topLevel: boolean;
   secondLevel: boolean;
+  onBluetoothClick?: () => void;
 }) {
   return (
     <View style={style.root}>
@@ -27,7 +28,7 @@ export default function NavigationViewContainer(props: {
         </View>
 
         <View style={{...style.barSection, 'justify-content': 'flex-end'}}>
-          <Button style={style.button}>
+          <Button style={style.button} onClick={props.onBluetoothClick || (() => {})}>
             <Text>
               {BUILT_IN_SYMBOL.bluetooth}
             </Text>
