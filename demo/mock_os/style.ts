@@ -140,6 +140,7 @@ const Style = {
     'width': '100%',
     'text-wrap': 1,
     'text-align': 'justify',
+    'padding-top': PIXEL,
   },
   textSmallBlack: { // Small text.
     'font-size': 12,
