@@ -12,6 +12,7 @@ export default function NavigationViewContainer(props: {
   title?: string;
   back: () => void;
   push: (app: JSX.Element, title?: string, options?: any) => void;
+  swap: (app: JSX.Element, title?: string, options?: any) => void;
   topLevel: boolean;
   secondLevel: boolean;
   showingBluetooth?: boolean;

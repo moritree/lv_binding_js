@@ -11,6 +11,12 @@ export default function NavigationStack(props: {
       ...prevStack,
       { title: title, view: app, options: options },
     ]);
+  const swap = (app: JSX.Element, title?: string, options?: any) =>
+    setStack((prevStack) => [
+      ...prevStack.slice(0, -1),
+      { title: title, view: app, options: options },
+    ]);
+
   const [stack, setStack] = useState<
     { title?: string; view: JSX.Element; options?: any }[]
   >([
@@ -27,6 +33,7 @@ export default function NavigationStack(props: {
       topLevel={stack.length <= 1}
       secondLevel={stack.length <= 2}
       push={push}
+      swap={swap}
       showingBluetooth={current.options?.showingBluetooth}
       showingWifi={current.options?.showingWifi}
       showingBattery={current.options?.showingBattery}
