@@ -1,4 +1,4 @@
-import CalendarApp from "./calendar/calendar-app";
+import CalendarApp from "./Calendar/calendar-app";
 import GridSelect from "./grid-select";
 import MessageApp from "./message-app";
 import NavigationStack from "./navigation-stack/navigation-stack";

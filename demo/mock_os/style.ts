@@ -7,7 +7,18 @@ const Style = {
 /*********************
  *      CONTAINERS
  *********************/
-
+  root: {
+    width: "320px",
+    height: "240px",
+    "background-color": Colors.light,
+    "border-radius": 0,
+    "border-width": 0,
+    overflow: "hidden",
+    display: "flex",
+    "flex-direction": "column",
+    "row-spacing": 0,
+    padding: 0,
+  },
   containerMain: { // Main container that wraps all other elements.
     'width': '100%',
     'height': '100%',
@@ -80,7 +91,7 @@ const Style = {
   boxBlack: { // Black box for titles or other elements that need impact.
     'width': '100%',
     'height': 'auto',
-    'background-color': Colors.highlight,
+    'background-color': Colors.dark,
     'border-radius': 0,
     'border-width': 0,
     'padding': PIXEL,
@@ -95,7 +106,7 @@ const Style = {
   boxBlackColumn: { // Black box with a column layout, for side-by-side text boxes, buttons, etc.
     'width': '100%',
     'height': 'auto',
-    'background-color': Colors.highlight,
+    'background-color': Colors.dark,
     'border-radius': 0,
     'border-width': 0,
     'padding': PIXEL,
@@ -164,7 +175,7 @@ const Style = {
   },
   textSmallWhite: { // Small text.
     'font-size': 12,
-    'text-color': Colors.highlight,
+    'text-color': Colors.light,
     'width': '100%',
     'text-wrap': 1,
   },
