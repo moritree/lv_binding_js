@@ -1,4 +1,5 @@
 import Colors from "./colors";
+import { NAV_BAR_HEIGHT } from "./navigation-stack/navigation-view-container";
 import { Button, Text, View } from "lvgljs-ui";
 import React from "react";
 
@@ -11,12 +12,8 @@ export default function GridSelect(props: {
   })[];
   height?: string;
 }) {
-  const rootStyle = {
-    ...style.home,
-    ...{ height: props.height || style.home.height },
-  };
   return (
-    <View style={rootStyle}>
+    <View style={style.root}>
       {props.options
         .map((opt) => opt(props.push))
         .map((opt, index) => {
@@ -42,9 +39,9 @@ export default function GridSelect(props: {
 }
 
 const style = {
-  home: {
+  root: {
     width: "100%",
-    height: "100%",
+    height: 240 - NAV_BAR_HEIGHT + "px",
     "background-color": Colors.light,
     "border-radius": 0,
     "border-width": 0,

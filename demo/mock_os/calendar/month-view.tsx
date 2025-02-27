@@ -1,4 +1,5 @@
 import Colors from "../colors";
+import { NAV_BAR_HEIGHT } from "../navigation-stack/navigation-view-container";
 import {
   daysOfWeek,
   getDateAfter,
@@ -39,7 +40,7 @@ export default function MonthView(props: MonthViewProps) {
 const style = {
   root: {
     width: "100%",
-    height: "200px",
+    height: 240 - NAV_BAR_HEIGHT + "px",
     "background-color": Colors.light,
     "border-radius": 0,
     "border-width": 0,

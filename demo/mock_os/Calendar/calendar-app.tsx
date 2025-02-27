@@ -1,4 +1,5 @@
 import GridSelect from "../grid-select";
+import { NAV_BAR_HEIGHT } from "../navigation-stack/navigation-view-container";
 import CalendarEvent from "./calendar-event";
 import { getDateAfter, getDateBefore, monthsOfYear } from "./date-utils";
 import MonthView from "./month-view";
@@ -48,5 +49,5 @@ const views: ((push: (app: JSX.Element, title?: string) => void) => {
 export default function CalendarApp(props: {
   push: (app: JSX.Element, title?: string) => void;
 }) {
-  return <GridSelect push={props.push} options={views} height="200px" />;
+  return <GridSelect push={props.push} options={views} />;
 }
