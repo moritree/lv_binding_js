@@ -18,17 +18,27 @@ export default function NavigationStack(props: {
   const isBluetoothOpen = React.isValidElement(current.view) && current.view.type === BluetoothApp;
   const isWiFiOpen = React.isValidElement(current.view) && current.view.type === WiFiApp;
   const isBatteryOpen = React.isValidElement(current.view) && current.view.type === BatteryApp;
+  const isSystemAppOpen = isBluetoothOpen || isWiFiOpen || isBatteryOpen;
+
+  const back = () => stack.length > 1 && setStack(stack.slice(0, -1));
+
+  const handleSystemAppClick = (app: JSX.Element, title: string) => {
+    if (isSystemAppOpen) {
+      back();
+    }
+    push(app, title);
+  };
 
   return (
     <NavigationViewContainer
       view={current.view}
       title={current.title}
-      back={() => stack.length > 1 && setStack(stack.slice(0, -1))}
+      back={back}
       topLevel={stack.length <= 1}
       secondLevel={stack.length <= 2}
-      onBluetoothClick={isBluetoothOpen ? undefined : () => push(<BluetoothApp />, "Bluetooth")}
-      onWiFiClick={isWiFiOpen ? undefined : () => push(<WiFiApp />, "WiFi")}
-      onBatteryClick={isBatteryOpen ? undefined : () => push(<BatteryApp />, "Battery")}
+      onBluetoothClick={isBluetoothOpen ? undefined : () => handleSystemAppClick(<BluetoothApp />, "Bluetooth")}
+      onWiFiClick={isWiFiOpen ? undefined : () => handleSystemAppClick(<WiFiApp />, "WiFi")}
+      onBatteryClick={isBatteryOpen ? undefined : () => handleSystemAppClick(<BatteryApp />, "Battery")}
     />
   );
 }
