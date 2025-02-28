@@ -1,12 +1,14 @@
 import Colors from "../colors";
 import { NAV_BAR_HEIGHT } from "../navigation-stack/navigation-view-container";
+import CalendarEvent from "./calendar-event";
 import { getDateAfter, getDateBefore } from "./date-utils";
-import { Text, View } from "lvgljs-ui";
-import React, { useState } from "react";
+import { View } from "lvgljs-ui";
+import React from "react";
 
 interface MonthViewProps {
   today: Date;
   push: (app: JSX.Element, title?: string) => void;
+  events: CalendarEvent[];
 }
 
 export default function MonthView(props: MonthViewProps) {
@@ -24,6 +26,13 @@ export default function MonthView(props: MonthViewProps) {
         ...{
           "grid-row-pos": Math.floor((index + weekdayOfFirst) / 7),
           "grid-column-pos": (index + weekdayOfFirst) % 7,
+        },
+        ...{
+          "background-color": props.events.find(
+            (e) => e.date.getDate() == index + 1,
+          )
+            ? Colors.highlight
+            : style.root["background-color"],
         },
       }}
     />

@@ -10,7 +10,7 @@ const Style = {
   root: {
     width: "100%",
     height: "100%",
-    padding: 0,
+    padding: "4px",
     margin: 0,
     overflow: "auto",
     display: "flex",
@@ -19,14 +19,13 @@ const Style = {
     "row-spacing": 0,
     "scroll-dir": "bottom",
     "border-radius": 0,
-    "border-width": 0,
+    "border-width": 1,
+    "border-side": "top",
+    "border-color": Colors.light,
     "background-color": Colors.light,
   },
-  containerBlank: { // Invisible container for elements not in a box - has pixel padding on left and right-hand side.
-    'padding-left': PIXEL,
-    'padding-right': PIXEL,
-    'padding-top': 0,
-    'padding-bottom': 0,
+  containerBlank: {
+    padding: 0,
     'width': '100%',
     'height': 'auto',
     'border-width': 0,

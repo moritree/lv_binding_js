@@ -92,7 +92,6 @@ const style = {
     height: NAV_BAR_HEIGHT + "px",
     "background-color": Colors.dark,
     padding: "2px",
-    margin: 0,
     "border-radius": 0,
     "border-width": 0,
     display: "flex",

@@ -1,5 +1,4 @@
 import GridSelect from "../grid-select";
-import { NAV_BAR_HEIGHT } from "../navigation-stack/navigation-view-container";
 import CalendarEvent from "./calendar-event";
 import { getDateAfter, getDateBefore, monthsOfYear } from "./date-utils";
 import MonthView from "./month-view";
@@ -42,7 +41,7 @@ const VIEWS: ((push: (app: JSX.Element, title?: string) => void) => {
     buttonTitle: "month view",
     title:
       monthsOfYear[today.getMonth()].slice(0, 3) + " " + today.getFullYear(),
-    view: <MonthView today={today} push={push} />,
+    view: <MonthView today={today} push={push} events={events} />,
   }),
 ];
 

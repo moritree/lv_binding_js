@@ -228,38 +228,36 @@ const style = {
 
 export default function MessageApp() {
   return (
-    <View style={Style.root}>
-      <View style={{ ...Style.root, ...{ "row-spacing": 2 } }}>
-        {messages.map((msg, index) => {
-          const prevMsg = index > 0 ? messages[index - 1] : null;
-          const showFrom = !prevMsg || prevMsg.from !== msg.from;
+    <View style={{ ...Style.root, ...{ "row-spacing": 2 } }}>
+      {messages.map((msg, index) => {
+        const prevMsg = index > 0 ? messages[index - 1] : null;
+        const showFrom = !prevMsg || prevMsg.from !== msg.from;
 
-          return (
-            <View key={index} style={Style.containerBlank}>
-              {msg.from === "You" ? (
-                <>
-                  {showFrom && (
-                    <Text style={style.messageUserYou}>{msg.from}</Text>
-                  )}
-                  <View style={Style.boxMessage}>
-                    <Text style={style.messageBodyYou}>{msg.content}</Text>
-                  </View>
-                </>
-              ) : (
-                <>
-                  {showFrom && (
-                    <Text style={style.messageUserOther}>{msg.from}</Text>
-                  )}
-                  <View style={Style.boxMessage}>
-                    <Text style={style.messageBodyOther}>{msg.content}</Text>
-                  </View>
-                </>
-              )}
-            </View>
-          );
-        })}
-      </View>
-      <View style={{ ...Style.boxBlack, height: "40px", padding: PIXEL * 3 }}>
+        return (
+          <View key={index} style={Style.containerBlank}>
+            {msg.from === "You" ? (
+              <>
+                {showFrom && (
+                  <Text style={style.messageUserYou}>{msg.from}</Text>
+                )}
+                <View style={Style.boxMessage}>
+                  <Text style={style.messageBodyYou}>{msg.content}</Text>
+                </View>
+              </>
+            ) : (
+              <>
+                {showFrom && (
+                  <Text style={style.messageUserOther}>{msg.from}</Text>
+                )}
+                <View style={Style.boxMessage}>
+                  <Text style={style.messageBodyOther}>{msg.content}</Text>
+                </View>
+              </>
+            )}
+          </View>
+        );
+      })}
+      <View style={{ ...Style.boxBlack, height: "40px" }}>
         <Text style={Style.textSmallWhite}>
           Message sending currenty not suported. haha.
         </Text>
