@@ -1,4 +1,4 @@
-import Style from "./style";
+import Style from "../../style";
 import { Button, Slider, Text, View } from "lvgljs-ui";
 import React, { useState } from "react";
 

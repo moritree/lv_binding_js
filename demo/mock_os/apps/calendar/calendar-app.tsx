@@ -1,4 +1,4 @@
-import GridSelect from "../grid-select";
+import GridSelect from "../../components/grid-select";
 import CalendarEvent from "./calendar-event";
 import { getDateAfter, getDateBefore, monthsOfYear } from "./date-utils";
 import MonthView from "./month-view";

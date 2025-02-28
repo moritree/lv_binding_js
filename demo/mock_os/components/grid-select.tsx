@@ -1,5 +1,5 @@
-import Colors from "./colors";
-import { NAV_BAR_HEIGHT } from "./navigation-stack/navigation-view-container";
+import Colors from "../colors";
+import { NAV_BAR_HEIGHT } from "../navigation-stack/navigation-view-container";
 import { Button, Text, View } from "lvgljs-ui";
 import React from "react";
 

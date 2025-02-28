@@ -1,5 +1,5 @@
-import Colors from "./colors";
-import Style from "./style";
+import Colors from "../../colors";
+import Style from "../../style";
 import { Text, View } from "lvgljs-ui";
 import React from "react";
 

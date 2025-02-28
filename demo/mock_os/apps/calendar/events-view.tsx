@@ -1,4 +1,4 @@
-import Colors from "../colors";
+import Colors from "../../colors";
 import CalendarEvent from "./calendar-event";
 import { Text, View } from "lvgljs-ui";
 import React from "react";

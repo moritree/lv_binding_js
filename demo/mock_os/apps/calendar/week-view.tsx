@@ -1,5 +1,5 @@
-import Colors from "../colors";
-import Style from "../style";
+import Colors from "../../colors";
+import Style from "../../style";
 import CalendarEvent from "./calendar-event";
 import { daysOfWeek, monthsOfYear } from "./date-utils";
 import EventsView from "./events-view";

@@ -1,5 +1,5 @@
-import Colors from "../colors";
-import { NAV_BAR_HEIGHT } from "../navigation-stack/navigation-view-container";
+import Colors from "../../colors";
+import { NAV_BAR_HEIGHT } from "../../navigation-stack/navigation-view-container";
 import CalendarEvent from "./calendar-event";
 import { getDateAfter, getDateBefore } from "./date-utils";
 import { View } from "lvgljs-ui";

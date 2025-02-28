@@ -1,7 +1,7 @@
-import BatteryApp from "../battery-app";
-import BluetoothApp from "../bluetooth-app";
+import BatteryApp from "../apps/battery/battery-app";
+import BluetoothApp from "../apps/bluetooth/bluetooth-app";
+import WifiApp from "../apps/wifi/wifi-app";
 import Colors from "../colors";
-import WifiApp from "../wifi-app";
 import { BUILT_IN_SYMBOL, Button, Text, View } from "lvgljs-ui";
 import React from "react";
 

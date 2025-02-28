@@ -1,6 +1,6 @@
-import CalendarApp from "./Calendar/calendar-app";
-import GridSelect from "./grid-select";
-import MessageApp from "./message-app";
+import CalendarApp from "./apps/calendar/calendar-app";
+import MessageApp from "./apps/messages/message-app";
+import GridSelect from "./components/grid-select";
 import NavigationStack from "./navigation-stack/navigation-stack";
 import { Render } from "lvgljs-ui";
 import React from "react";
