@@ -1,11 +1,6 @@
 import Colors from "../colors";
 import { NAV_BAR_HEIGHT } from "../navigation-stack/navigation-view-container";
-import {
-  daysOfWeek,
-  getDateAfter,
-  getDateBefore,
-  monthsOfYear,
-} from "./date-utils";
+import { getDateAfter, getDateBefore } from "./date-utils";
 import { Text, View } from "lvgljs-ui";
 import React, { useState } from "react";
 
@@ -18,7 +13,7 @@ export default function MonthView(props: MonthViewProps) {
   // TODO: are these being computed way too often? do I need to use state instead?
   const firstDay = getDateBefore(props.today, props.today.getDate() - 1);
   const weekdayOfFirst = firstDay.getDay();
-  const daysInMonth = [...new Array(31)]
+  const daysInMonth = [...new Array(32)]
     .map((_, index) => getDateAfter(firstDay, index).getMonth())
     .findIndex((month) => month != props.today.getMonth());
   const gridDays = [...new Array(daysInMonth)].map((_, index) => (
