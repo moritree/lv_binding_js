@@ -7,17 +7,20 @@ const Style = {
 /*********************
  *      CONTAINERS
  *********************/
-  containerMain: { // Main container that wraps all other elements.
-    'width': '100%',
-    'height': '100%',
-    'background-color': Colors.light,
-    'flex-direction': 'column',
-    'padding': 0,
-    'border-radius': 0,
-    'border-width': 0,
-    'display': 'flex',
-    'flex-grow': 1,
-    'row-spacing': 2,
+  root: {
+    width: "100%",
+    height: "100%",
+    padding: 0,
+    margin: 0,
+    overflow: "auto",
+    display: "flex",
+    "flex-direction": "column",
+    "flex-grow": 1,
+    "row-spacing": 0,
+    "scroll-dir": "bottom",
+    "border-radius": 0,
+    "border-width": 0,
+    "background-color": Colors.light,
   },
   containerBlank: { // Invisible container for elements not in a box - has pixel padding on left and right-hand side.
     'padding-left': PIXEL,
@@ -327,22 +330,6 @@ const Style = {
    /*********************
    *      MESSAGE
    *********************/
-
-  root: {
-    width: "100%",
-    height: "100%",
-    padding: 0,
-    margin: 0,
-    overflow: "auto",
-    display: "flex",
-    "flex-direction": "column",
-    "flex-grow": 1,
-    "row-spacing": 0,
-    "scroll-dir": "bottom",
-    "border-radius": 0,
-    "border-width": 0,
-    "background-color": Colors.light,
-  },
   labelView: {
     "border-width": "0px",
     "border-radius": "0px",

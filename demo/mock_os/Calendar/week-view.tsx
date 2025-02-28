@@ -1,4 +1,5 @@
 import Colors from "../colors";
+import Style from "../style";
 import CalendarEvent from "./calendar-event";
 import { daysOfWeek, monthsOfYear } from "./date-utils";
 import EventsView from "./events-view";
@@ -28,7 +29,9 @@ interface WeekDay {
 
 export default function WeekView(props: WeekViewProps) {
   return (
-    <View style={style.root}>
+    <View
+      style={{ ...Style.root, ...{ padding: "2px", "row-spacing": "2px" } }}
+    >
       {props.weekdays.map((day, index) => {
         let viewStyle = style.day;
         let dateStyle = style.dateLabel;
@@ -71,21 +74,6 @@ export default function WeekView(props: WeekViewProps) {
 }
 
 const style = {
-  root: {
-    width: "100%",
-    height: "100%",
-    padding: "2px",
-    margin: 0,
-    overflow: "auto",
-    display: "flex",
-    "flex-direction": "column",
-    "flex-grow": 1,
-    "row-spacing": "2px",
-    "scroll-dir": "bottom",
-    "border-radius": 0,
-    "border-width": 0,
-    "background-color": Colors.light,
-  },
   day: {
     width: "100%",
     height: "40px",
