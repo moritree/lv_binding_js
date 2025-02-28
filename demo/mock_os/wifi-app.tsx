@@ -1,6 +1,6 @@
+import Style from "./style";
 import { Button, Slider, Text, View } from "lvgljs-ui";
 import React, { useState } from "react";
-import Style from "./style";
 
 export default function WifiApp() {
   const [isPairingEnabled, setIsPairingEnabled] = useState(true);
@@ -9,26 +9,33 @@ export default function WifiApp() {
 
   return (
     <View style={Style.root}>
-
-    <View style={Style.containerBlank}>
+      <View style={Style.containerBlank}>
         <Text style={Style.textBodyBlack}>Wifi Settings:</Text>
       </View>
-        
+
       <View style={Style.containerPadded}>
-        <Button 
-          style={Style.buttonWhite} 
+        <Button
+          style={Style.buttonWhite}
           onPressedStyle={Style.buttonWhitePressed}
           onClick={() => setIsPairingEnabled(!isPairingEnabled)}
         >
           <Text style={Style.buttonWhiteText}>
-            Pairing mode: {isPairingEnabled ? 'enabled' : 'disabled'}
+            Pairing mode: {isPairingEnabled ? "enabled" : "disabled"}
           </Text>
         </Button>
       </View>
 
       <View style={Style.containerBlank}>
         <Text style={Style.textBodyBlack}>Hypercomplex Wifi Paramaters: </Text>
-        <Text style={{...Style.textSmallBlack, 'padding-top': -PIXEL, 'padding-bottom': PIXEL}}>(DO NOT TOUCH!)</Text>
+        <Text
+          style={{
+            ...Style.textSmallBlack,
+            "padding-top": -PIXEL,
+            "padding-bottom": PIXEL,
+          }}
+        >
+          (DO NOT TOUCH!)
+        </Text>
       </View>
 
       <View style={Style.containerSliderThick}>
@@ -81,7 +88,6 @@ export default function WifiApp() {
           value={90}
         />
       </View>
-
     </View>
   );
 }

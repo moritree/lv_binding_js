@@ -1,6 +1,6 @@
+import Style from "./style";
 import { Button, Slider, Text, View } from "lvgljs-ui";
 import React, { useState } from "react";
-import Style from "./style";
 
 export default function BatteryApp() {
   const [powerSavingMode, setPowerSavingMode] = useState(false);
@@ -8,28 +8,33 @@ export default function BatteryApp() {
 
   return (
     <View style={Style.root}>
-
-    <View style={Style.containerBlank}>
+      <View style={Style.containerBlank}>
         <Text style={Style.textBodyBlack}>Battery Settings:</Text>
       </View>
-        
+
       <View style={Style.containerPadded}>
-        <Button 
-          style={Style.buttonBlack} 
+        <Button
+          style={Style.buttonBlack}
           onPressedStyle={Style.buttonBlackPressed}
-          onClick={() => {setPowerSavingMode(!powerSavingMode); setPowerWastingMode(true)}}
+          onClick={() => {
+            setPowerSavingMode(!powerSavingMode);
+            setPowerWastingMode(true);
+          }}
         >
           <Text style={Style.buttonBlackText}>
-            Power Saving Mode: {powerSavingMode ? 'enabled' : 'disabled'}
+            Power Saving Mode: {powerSavingMode ? "enabled" : "disabled"}
           </Text>
         </Button>
-        <Button 
-          style={Style.buttonBlack} 
+        <Button
+          style={Style.buttonBlack}
           onPressedStyle={Style.buttonBlackPressed}
-          onClick={() => {setPowerWastingMode(!powerWastingMode); setPowerSavingMode(false)}}
+          onClick={() => {
+            setPowerWastingMode(!powerWastingMode);
+            setPowerSavingMode(false);
+          }}
         >
           <Text style={Style.buttonBlackText}>
-            Power Wasting Mode: {powerWastingMode ? 'disabled' : 'enabled'}
+            Power Wasting Mode: {powerWastingMode ? "disabled" : "enabled"}
           </Text>
         </Button>
       </View>
@@ -48,7 +53,6 @@ export default function BatteryApp() {
           value={10}
         />
       </View>
-
     </View>
   );
 }
