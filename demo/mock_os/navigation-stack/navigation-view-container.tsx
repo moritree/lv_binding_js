@@ -20,8 +20,8 @@ export default function NavigationViewContainer(props: {
   view: JSX.Element;
   title?: string;
   back: () => void;
-  push: (app: JSX.Element, title?: string, options?: any) => void;
-  swap: (app: JSX.Element, title?: string, options?: any) => void;
+  push: (app: JSX.Element, title?: string, openNavBarApp?: string) => void;
+  swap: (app: JSX.Element, title?: string, openNavBarApp?: string) => void;
   topLevel: boolean;
   secondLevel: boolean;
   openNavBarApp?: string;
@@ -58,11 +58,10 @@ export default function NavigationViewContainer(props: {
             <Button
               style={style.button}
               onClick={() => {
-                const title: string = app.title;
                 if (!props.openNavBarApp)
-                  props.push(app.view, app.title, { openNavBarApp: title });
+                  props.push(app.view, app.title, app.title);
                 else if (props.openNavBarApp == app.title) props.back();
-                else props.swap(app.view, app.title, { openNavBarApp: title });
+                else props.swap(app.view, app.title, app.title);
               }}
             >
               <Text>{app.symbol}</Text>
