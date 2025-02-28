@@ -6,6 +6,15 @@ import { BUILT_IN_SYMBOL, Button, Text, View } from "lvgljs-ui";
 import React from "react";
 
 export const NAV_BAR_HEIGHT = 24;
+const NAV_BAR_APPS: { title: string; symbol: string; view: JSX.Element }[] = [
+  {
+    title: "Bluetooth",
+    symbol: BUILT_IN_SYMBOL.bluetooth,
+    view: <BluetoothApp />,
+  },
+  { title: "Wifi", symbol: BUILT_IN_SYMBOL.wifi, view: <WifiApp /> },
+  { title: "Battery", symbol: BUILT_IN_SYMBOL.battery_2, view: <BatteryApp /> },
+];
 
 export default function NavigationViewContainer(props: {
   view: JSX.Element;
@@ -15,9 +24,7 @@ export default function NavigationViewContainer(props: {
   swap: (app: JSX.Element, title?: string, options?: any) => void;
   topLevel: boolean;
   secondLevel: boolean;
-  showingBluetooth?: boolean;
-  showingWifi?: boolean;
-  showingBattery?: boolean;
+  openNavBarApp?: string;
 }) {
   return (
     <View style={style.root}>
@@ -47,50 +54,20 @@ export default function NavigationViewContainer(props: {
         </View>
 
         <View style={{ ...style.barSection, "justify-content": "flex-end" }}>
-          <Button
-            style={style.button}
-            onClick={() =>
-              props.showingBluetooth
-                ? props.back()
-                : props.showingWifi || props.showingBattery
-                ? props.swap(<BluetoothApp />, "Bluetooth", {
-                    showingBluetooth: true,
-                  })
-                : props.push(<BluetoothApp />, "Bluetooth", {
-                    showingBluetooth: true,
-                  })
-            }
-          >
-            <Text>{BUILT_IN_SYMBOL.bluetooth}</Text>
-          </Button>
-          <Button
-            style={style.button}
-            onClick={() =>
-              props.showingWifi
-                ? props.back()
-                : props.showingBluetooth || props.showingBattery
-                ? props.swap(<WifiApp />, "Wifi", { showingWifi: true })
-                : props.push(<WifiApp />, "Wifi", { showingWifi: true })
-            }
-          >
-            <Text>{BUILT_IN_SYMBOL.wifi}</Text>
-          </Button>
-          <Button
-            style={style.button}
-            onClick={() =>
-              props.showingBattery
-                ? props.back()
-                : props.showingBluetooth || props.showingWifi
-                ? props.swap(<BatteryApp />, "Battery", {
-                    showingBattery: true,
-                  })
-                : props.push(<BatteryApp />, "Battery", {
-                    showingBattery: true,
-                  })
-            }
-          >
-            <Text>{BUILT_IN_SYMBOL.battery_2}</Text>
-          </Button>
+          {NAV_BAR_APPS.map((app) => (
+            <Button
+              style={style.button}
+              onClick={() => {
+                const title: string = app.title;
+                if (!props.openNavBarApp)
+                  props.push(app.view, app.title, { openNavBarApp: title });
+                else if (props.openNavBarApp == app.title) props.back();
+                else props.swap(app.view, app.title, { openNavBarApp: title });
+              }}
+            >
+              <Text>{app.symbol}</Text>
+            </Button>
+          ))}
         </View>
       </View>
       {props.view}
