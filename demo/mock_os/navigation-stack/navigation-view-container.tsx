@@ -112,7 +112,7 @@ const style = {
     display: "flex",
     "flex-direction": "row",
     "justify-content": "flex-start",
-    "column-spacing": "2px",
+    "column-spacing": "6px",
   },
   title: {
     "padding-top": "2px",
