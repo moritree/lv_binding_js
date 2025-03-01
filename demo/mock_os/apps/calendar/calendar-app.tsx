@@ -17,6 +17,12 @@ const events: CalendarEvent[] = [
     description:
       "But this one also has a description. A longer description, which forces line wrap.",
   },
+  {
+    date: new Date(),
+    title: "Right now once again",
+    description:
+      "But this one also has a description. A longer description, which forces line wrap. But EVEN LONGER! For even more lines! Because I hate brevity.",
+  },
   { date: getDateBefore(new Date(), 3), title: "3 days ago" },
 ];
 

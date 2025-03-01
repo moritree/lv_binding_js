@@ -1,6 +1,10 @@
 import Colors from "../../colors";
+import BlackButton from "../../components/black-button";
+import ShadowButton from "../../components/shadow-button";
+import { NAV_BAR_HEIGHT } from "../../navigation-stack/navigation-view-container";
+import Style from "../../style";
 import CalendarEvent from "./calendar-event";
-import { Text, View } from "lvgljs-ui";
+import { BUILT_IN_SYMBOL, Text, View } from "lvgljs-ui";
 import React from "react";
 
 interface EventsViewProps {
@@ -9,38 +13,37 @@ interface EventsViewProps {
 
 export default function EventsView(props: EventsViewProps) {
   return (
-    <View style={style.root}>
-      {props.events.map((event) => (
-        <View style={style.event}>
-          <View style={style.eventHeader}>
-            <Text style={style.text}>{event.date.toTimeString()}</Text>
-            <Text style={style.text}>{event.title}</Text>
+    <View style={{ ...Style.root, ...{ overflow: "hidden", padding: 0 } }}>
+      <View
+        style={{
+          ...Style.root,
+          ...{ "row-spacing": "4px", height: 240 - NAV_BAR_HEIGHT * 2 + "px" },
+        }}
+      >
+        {props.events.map((event) => (
+          <View style={style.event}>
+            <View style={style.eventHeader}>
+              <Text style={style.text}>{event.date.toTimeString()}</Text>
+              <Text style={style.text}>{event.title}</Text>
+            </View>
+            {event.description && (
+              <Text style={style.eventDescription}>{event.description}</Text>
+            )}
           </View>
-          {event.description && (
-            <Text style={style.eventDescription}>{event.description}</Text>
-          )}
-        </View>
-      ))}
+        ))}
+      </View>
+      <View style={style.buttonContainer}>
+        <ShadowButton
+          text={BUILT_IN_SYMBOL.plus}
+          onClick={() => console.log("Click")}
+          style={{ width: "36px" }}
+        />
+      </View>
     </View>
   );
 }
 
 const style = {
-  root: {
-    width: "100%",
-    height: "100%",
-    padding: "2px",
-    margin: 0,
-    overflow: "auto",
-    display: "flex",
-    "flex-direction": "column",
-    "flex-grow": 1,
-    "row-spacing": "2px",
-    "scroll-dir": "bottom",
-    "border-radius": 0,
-    "border-width": 0,
-    "background-color": Colors.light,
-  },
   event: {
     width: "100%",
     height: "auto",
@@ -57,7 +60,6 @@ const style = {
     height: "auto",
     overflow: "hidden",
     padding: 0,
-    margin: 0,
     "background-color": Colors.light,
     "border-width": 0,
     "border-radius": 0,
@@ -74,5 +76,17 @@ const style = {
     height: "auto",
     "background-color": Colors.dark,
     "font-size": 12,
+  },
+  buttonContainer: {
+    width: "100%",
+    height: NAV_BAR_HEIGHT + "px",
+    "background-color": Colors.light,
+    "border-radius": 0,
+    "border-width": 0,
+    display: "flex",
+    "flex-direction": "row",
+    "justify-content": "space-between",
+    "align-content": "center",
+    overflow: "hidden",
   },
 };

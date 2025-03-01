@@ -1,5 +1,6 @@
 import Colors from "../colors";
-import { Button, Text } from "lvgljs-ui";
+import Style from "../style";
+import { Button, Text, View } from "lvgljs-ui";
 import React from "react";
 
 export default function ShadowButton(props: {
@@ -9,24 +10,31 @@ export default function ShadowButton(props: {
   onPressedStyle?: any;
 }) {
   return (
-    <Button
-      style={{ ...style.button, ...props.style }}
-      onPressedStyle={{
-        ...style.pressed,
-        ...(props.onPressedStyle || props.style || {}),
-      }}
-      onClick={props.onClick}
+    <View
+      style={{ ...Style.containerBlank, ...{ padding: "2px", width: "auto" } }}
     >
-      <Text style={{ "text-color": Colors.dark }}>{props.text}</Text>
-    </Button>
+      <Button
+        style={{ ...style.button, ...props.style }}
+        onPressedStyle={{
+          ...style.pressed,
+          ...(props.onPressedStyle || props.style || {}),
+        }}
+        onClick={props.onClick}
+      >
+        <Text style={{ "text-color": Colors.dark }}>{props.text}</Text>
+      </Button>
+    </View>
   );
 }
 
 const style = {
   button: {
+    display: "flex",
+    "flex-direction": "row",
+    "justify-content": "center",
     "background-color": Colors.light,
     "border-radius": 0,
-    "border-width": 2,
+    "border-width": 1,
     padding: "2px",
     "transition-property": "background-color",
     "transition-duration": "0",
@@ -34,8 +42,8 @@ const style = {
     "transition-delay": "0",
     "shadow-width": "2px",
     "shadow-color": Colors.dark,
-    "shadow-offset-x": 4,
-    "shadow-offset-y": 4,
+    "shadow-offset-x": 2,
+    "shadow-offset-y": 2,
     "shadow-opacity": 1,
   },
   pressed: {

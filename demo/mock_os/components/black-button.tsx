@@ -1,5 +1,6 @@
 import Colors from "../colors";
-import { Button, Text } from "lvgljs-ui";
+import Style from "../style";
+import { Button, Text, View } from "lvgljs-ui";
 import React from "react";
 
 export default function BlackButton(props: {
@@ -9,21 +10,28 @@ export default function BlackButton(props: {
   onPressedStyle?: any;
 }) {
   return (
-    <Button
-      style={{ ...style.button, ...props.style }}
-      onPressedStyle={{
-        ...style.pressed,
-        ...(props.onPressedStyle || props.style || {}),
-      }}
-      onClick={props.onClick}
+    <View
+      style={{ ...Style.containerBlank, ...{ padding: "2px", width: "auto" } }}
     >
-      <Text style={{ "text-color": Colors.light }}>{props.text}</Text>
-    </Button>
+      <Button
+        style={{ ...style.button, ...props.style }}
+        onPressedStyle={{
+          ...style.pressed,
+          ...(props.onPressedStyle || props.style || {}),
+        }}
+        onClick={props.onClick}
+      >
+        <Text style={{ "text-color": Colors.light }}>{props.text}</Text>
+      </Button>
+    </View>
   );
 }
 
 const style = {
   button: {
+    display: "flex",
+    "flex-direction": "row",
+    "justify-content": "center",
     "background-color": Colors.dark,
     "border-radius": 0,
     "border-width": 0,

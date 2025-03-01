@@ -2,6 +2,7 @@ import Colors from "../../colors";
 import { NAV_BAR_HEIGHT } from "../../navigation-stack/navigation-view-container";
 import CalendarEvent from "./calendar-event";
 import { getDateAfter, getDateBefore } from "./date-utils";
+import EventsView from "./events-view";
 import { View } from "lvgljs-ui";
 import React from "react";
 
@@ -18,27 +19,40 @@ export default function MonthView(props: MonthViewProps) {
   const daysInMonth = [...new Array(32)]
     .map((_, index) => getDateAfter(firstDay, index).getMonth())
     .findIndex((month) => month != props.today.getMonth());
-  const gridDays = [...new Array(daysInMonth)].map((_, index) => (
-    <View
-      key={index}
-      style={{
-        ...style.day,
-        ...{
-          "grid-row-pos": Math.floor((index + weekdayOfFirst) / 7),
-          "grid-column-pos": (index + weekdayOfFirst) % 7,
-        },
-        ...{
-          "background-color": props.events.find(
-            (e) => e.date.getDate() == index + 1,
-          )
-            ? Colors.highlight
-            : style.root["background-color"],
-        },
-      }}
-    />
-  ));
 
-  return <View style={style.root}>{gridDays}</View>;
+  return (
+    <View style={style.root}>
+      {[...new Array(daysInMonth)].map((_, index) => (
+        <View
+          key={index}
+          style={{
+            ...style.day,
+            ...{
+              "grid-row-pos": Math.floor((index + weekdayOfFirst) / 7),
+              "grid-column-pos": (index + weekdayOfFirst) % 7,
+            },
+            ...{
+              "background-color": props.events.find(
+                (e) => e.date.getDate() == index + 1,
+              )
+                ? Colors.highlight
+                : style.root["background-color"],
+            },
+          }}
+          onClick={() => {
+            props.push(
+              <EventsView
+                events={props.events.filter(
+                  (e) => e.date.getDate() == index + 1,
+                )}
+              />,
+              "on this day...",
+            );
+          }}
+        />
+      ))}
+    </View>
+  );
 }
 
 const style = {
