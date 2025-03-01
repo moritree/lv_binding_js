@@ -19,9 +19,7 @@ const Style = {
     "row-spacing": 0,
     "scroll-dir": "bottom",
     "border-radius": 0,
-    "border-width": 1,
-    "border-side": "top",
-    "border-color": Colors.light,
+    "border-width": 0,
     "background-color": Colors.light,
   },
   containerBlank: {
