@@ -5,7 +5,7 @@ import Colors from "../colors";
 import { BUILT_IN_SYMBOL, Button, Text, View } from "lvgljs-ui";
 import React from "react";
 
-export const NAV_BAR_HEIGHT = 24;
+export const NAV_BAR_HEIGHT = 36;
 const NAV_BAR_APPS: { title: string; symbol: string; view: JSX.Element }[] = [
   {
     title: "Bluetooth",
@@ -91,12 +91,13 @@ const style = {
     width: "100%",
     height: NAV_BAR_HEIGHT + "px",
     "background-color": Colors.dark,
-    padding: "2px",
+    padding: "4px",
     "border-radius": 0,
     "border-width": 0,
     display: "flex",
     "flex-direction": "row",
     "justify-content": "space-between",
+    "align-content": "center",
   },
   barSection: {
     "padding-left": 0,
