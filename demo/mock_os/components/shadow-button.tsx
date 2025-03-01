@@ -32,6 +32,7 @@ const style = {
     display: "flex",
     "flex-direction": "row",
     "justify-content": "center",
+    "align-content": "center",
     "background-color": Colors.light,
     "border-radius": 0,
     "border-width": 1,

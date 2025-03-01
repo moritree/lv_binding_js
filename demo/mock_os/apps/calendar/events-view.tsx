@@ -36,7 +36,7 @@ export default function EventsView(props: EventsViewProps) {
         <ShadowButton
           text={BUILT_IN_SYMBOL.plus}
           onClick={() => console.log("Click")}
-          style={{ width: "36px" }}
+          style={{ width: "30px", height: "30px" }}
         />
       </View>
     </View>
