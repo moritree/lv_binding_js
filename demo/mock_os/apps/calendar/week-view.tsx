@@ -29,7 +29,7 @@ interface WeekDay {
 
 export default function WeekView(props: WeekViewProps) {
   return (
-    <View style={{ ...Style.root, ...{ "row-spacing": "2px" } }}>
+    <View style={{ ...Style.root, ...{ "row-spacing": "4px" } }}>
       {props.weekdays.map((day, index) => {
         let viewStyle = style.day;
         let dateStyle = style.dateLabel;
