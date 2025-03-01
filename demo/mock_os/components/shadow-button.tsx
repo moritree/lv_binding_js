@@ -5,11 +5,16 @@ import React from "react";
 export default function ShadowButton(props: {
   text: string;
   onClick?: () => void;
+  style?: any;
+  onPressedStyle?: any;
 }) {
   return (
     <Button
-      style={style.button}
-      onPressedStyle={style.pressed}
+      style={{ ...style.button, ...props.style }}
+      onPressedStyle={{
+        ...style.pressed,
+        ...(props.onPressedStyle || props.style || {}),
+      }}
       onClick={props.onClick}
     >
       <Text style={{ "text-color": Colors.dark }}>{props.text}</Text>
