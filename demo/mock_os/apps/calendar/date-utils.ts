@@ -6,6 +6,13 @@ export function getDateAfter(date: Date, days: number) {
   return getDateBefore(date, -days)
 }
 
+export function roundToNearestMinute(date: Date) {
+  const rounded = new Date(date)
+  rounded.setSeconds(0, 0);
+  if (date.getSeconds() >= 30) rounded.setMinutes(date.getMinutes() + 1);
+  return rounded;
+}
+
 // I'm pretty sure this is genuinely just how you do this in JS (without external libs)
 export const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 export const monthsOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]

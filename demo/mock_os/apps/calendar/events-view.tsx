@@ -4,6 +4,7 @@ import ShadowButton from "../../components/shadow-button";
 import { NAV_BAR_HEIGHT } from "../../navigation-stack/navigation-view-container";
 import Style from "../../style";
 import CalendarEvent from "./calendar-event";
+import { roundToNearestMinute } from "./date-utils";
 import { BUILT_IN_SYMBOL, Text, View } from "lvgljs-ui";
 import React from "react";
 
@@ -23,7 +24,9 @@ export default function EventsView(props: EventsViewProps) {
         {props.events.map((event) => (
           <View style={style.event}>
             <View style={style.eventHeader}>
-              <Text style={style.text}>{event.date.toTimeString()}</Text>
+              <Text style={style.text}>
+                {roundToNearestMinute(event.date).toTimeString()}
+              </Text>
               <Text style={style.text}>{event.title}</Text>
             </View>
             {event.description && (
