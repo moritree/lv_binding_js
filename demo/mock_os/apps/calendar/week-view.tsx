@@ -51,10 +51,7 @@ export default function WeekView(props: WeekViewProps) {
                     3,
                   )} ${day.date.getDate()} ${monthsOfYear[
                     day.date.getMonth()
-                  ].slice(0, 3)} '${day.date
-                    .getFullYear()
-                    .toString()
-                    .slice(2)}`,
+                  ].slice(0, 3)} ${day.date.getFullYear().toString().slice(2)}`,
                 );
             }}
           >

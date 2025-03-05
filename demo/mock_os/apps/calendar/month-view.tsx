@@ -1,7 +1,12 @@
 import Colors from "../../colors";
 import { NAV_BAR_HEIGHT } from "../../navigation-stack/navigation-view-container";
 import CalendarEvent from "./calendar-event";
-import { getDateAfter, getDateBefore } from "./date-utils";
+import {
+  daysOfWeek,
+  getDateAfter,
+  getDateBefore,
+  monthsOfYear,
+} from "./date-utils";
 import EventsView from "./events-view";
 import { View } from "lvgljs-ui";
 import React from "react";
@@ -22,35 +27,44 @@ export default function MonthView(props: MonthViewProps) {
 
   return (
     <View style={style.root}>
-      {[...new Array(daysInMonth)].map((_, index) => (
-        <View
-          key={index}
-          style={{
-            ...style.day,
-            ...{
-              "grid-row-pos": Math.floor((index + weekdayOfFirst) / 7),
-              "grid-column-pos": (index + weekdayOfFirst) % 7,
-            },
-            ...{
-              "background-color": props.events.find(
-                (e) => e.date.getDate() == index + 1,
-              )
-                ? Colors.highlight
-                : style.root["background-color"],
-            },
-          }}
-          onClick={() => {
-            props.push(
-              <EventsView
-                events={props.events.filter(
+      {[...new Array(daysInMonth)].map((_, index) => {
+        const day = getDateAfter(firstDay, index);
+        return (
+          <View
+            key={index}
+            style={{
+              ...style.day,
+              ...{
+                "grid-row-pos": Math.floor((index + weekdayOfFirst) / 7),
+                "grid-column-pos": (index + weekdayOfFirst) % 7,
+              },
+              ...{
+                "background-color": props.events.find(
                   (e) => e.date.getDate() == index + 1,
-                )}
-              />,
-              "on this day...",
-            );
-          }}
-        />
-      ))}
+                )
+                  ? Colors.highlight
+                  : style.root["background-color"],
+              },
+            }}
+            onClick={() => {
+              props.push(
+                <EventsView
+                  events={props.events.filter(
+                    (e) => e.date.getDate() == index + 1,
+                  )}
+                />,
+                `${daysOfWeek[day.getDay()].slice(
+                  0,
+                  3,
+                )} ${day.getDate()} ${monthsOfYear[day.getMonth()].slice(
+                  0,
+                  3,
+                )} ${day.getFullYear().toString().slice(2)}`,
+              );
+            }}
+          />
+        );
+      })}
     </View>
   );
 }
