@@ -1,5 +1,7 @@
 import Colors from "../../colors";
+import BlackButton from "../../components/black-button";
 import { NAV_BAR_HEIGHT } from "../../navigation-stack/navigation-view-container";
+import Style from "../../style";
 import CalendarEvent from "./calendar-event";
 import {
   daysOfWeek,
@@ -9,7 +11,7 @@ import {
   sameDate,
 } from "./date-utils";
 import EventsView from "./events-view";
-import { View } from "lvgljs-ui";
+import { BUILT_IN_SYMBOL, View } from "lvgljs-ui";
 import React from "react";
 
 interface MonthViewProps {
@@ -27,50 +29,63 @@ export default function MonthView(props: MonthViewProps) {
     .findIndex((month) => month != props.today.getMonth());
 
   return (
-    <View style={style.root}>
-      {[...new Array(daysInMonth)].map((_, index) => {
-        const day = getDateAfter(firstDay, index);
-        return (
-          <View
-            key={index}
-            style={{
-              ...style.day,
-              ...{
-                "grid-row-pos": Math.floor((index + weekdayOfFirst) / 7),
-                "grid-column-pos": (index + weekdayOfFirst) % 7,
-              },
-              ...{
-                "background-color": props.events.find(
-                  (e) => e.date.getDate() == index + 1,
-                )
-                  ? Colors.highlight
-                  : style.root["background-color"],
-              },
-            }}
-            onClick={() => {
-              props.push(
-                <EventsView
-                  events={props.events.filter((e) => sameDate(e.date, day))}
-                />,
-                `${daysOfWeek[day.getDay()].slice(
-                  0,
-                  3,
-                )} ${day.getDate()} ${monthsOfYear[day.getMonth()].slice(
-                  0,
-                  3,
-                )} ${day.getFullYear().toString().slice(2)}`,
-              );
-            }}
-          />
-        );
-      })}
+    <View
+      style={{
+        ...Style.root,
+        ...{
+          "flex-direction": "row",
+          overflow: "hidden",
+          padding: "0",
+          "column-spacing": 0,
+        },
+      }}
+    >
+      <View style={style.gridRoot}>
+        {[...new Array(daysInMonth)].map((_, index) => {
+          const day = getDateAfter(firstDay, index);
+          return (
+            <View
+              key={index}
+              style={{
+                ...style.day,
+                ...{
+                  "grid-row-pos": Math.floor((index + weekdayOfFirst) / 7),
+                  "grid-column-pos": (index + weekdayOfFirst) % 7,
+                },
+                ...{
+                  "background-color": props.events.find(
+                    (e) => e.date.getDate() == index + 1,
+                  )
+                    ? Colors.highlight
+                    : style.gridRoot["background-color"],
+                },
+              }}
+              onClick={() => {
+                props.push(
+                  <EventsView
+                    events={props.events.filter((e) => sameDate(e.date, day))}
+                  />,
+                  `${daysOfWeek[day.getDay()].slice(
+                    0,
+                    3,
+                  )} ${day.getDate()} ${monthsOfYear[day.getMonth()].slice(
+                    0,
+                    3,
+                  )} ${day.getFullYear().toString().slice(2)}`,
+                );
+              }}
+            />
+          );
+        })}
+      </View>
+      <View style={style.sidebar}></View>
     </View>
   );
 }
 
 const style = {
-  root: {
-    width: "100%",
+  gridRoot: {
+    width: 320 - NAV_BAR_HEIGHT + "px",
     height: 240 - NAV_BAR_HEIGHT + "px",
     "background-color": Colors.light,
     "border-radius": 0,
@@ -97,5 +112,17 @@ const style = {
     display: "flex",
     "justify-content": "center",
     "align-content": "center",
+  },
+  sidebar: {
+    ...Style.root,
+    ...{
+      width: "100%",
+      height: "100%",
+      "background-color": Colors.dark,
+      overflow: "hidden",
+      padding: "0",
+      "justify-content": "center",
+      "align-content": "center",
+    },
   },
 };
