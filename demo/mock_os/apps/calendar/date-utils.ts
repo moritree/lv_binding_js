@@ -13,6 +13,16 @@ export function roundToNearestMinute(date: Date) {
   return rounded;
 }
 
+export function twelveHourTime(date: Date): string {
+  let amPm = "AM";
+  let hour = date.getHours();
+  if (hour >= 12) {
+    amPm = "PM"
+    if (hour > 12) hour -= 12;
+  }
+  return date.getHours() + ":" + date.getMinutes() + " " + amPm
+}
+
 // I'm pretty sure this is genuinely just how you do this in JS (without external libs)
 export const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 export const monthsOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
