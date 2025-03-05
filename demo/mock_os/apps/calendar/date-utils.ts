@@ -23,6 +23,10 @@ export function twelveHourTime(date: Date): string {
   return date.getHours() + ":" + date.getMinutes() + " " + amPm
 }
 
+export function sameDate(a: Date, b: Date): boolean {
+  return a.getDate() == b.getDate() && a.getMonth() == b.getMonth() && a.getFullYear() == b.getFullYear()
+}
+
 // I'm pretty sure this is genuinely just how you do this in JS (without external libs)
 export const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 export const monthsOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]

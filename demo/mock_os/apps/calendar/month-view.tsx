@@ -6,6 +6,7 @@ import {
   getDateAfter,
   getDateBefore,
   monthsOfYear,
+  sameDate,
 } from "./date-utils";
 import EventsView from "./events-view";
 import { View } from "lvgljs-ui";
@@ -49,9 +50,7 @@ export default function MonthView(props: MonthViewProps) {
             onClick={() => {
               props.push(
                 <EventsView
-                  events={props.events.filter(
-                    (e) => e.date.getDate() == index + 1,
-                  )}
+                  events={props.events.filter((e) => sameDate(e.date, day))}
                 />,
                 `${daysOfWeek[day.getDay()].slice(
                   0,
