@@ -46,7 +46,15 @@ export default function WeekView(props: WeekViewProps) {
               if (day.events.length)
                 props.push(
                   <EventsView events={day.events} />,
-                  "on this day...",
+                  `${daysOfWeek[day.date.getDay()].slice(
+                    0,
+                    3,
+                  )} ${day.date.getDate()} ${monthsOfYear[
+                    day.date.getMonth()
+                  ].slice(0, 3)} '${day.date
+                    .getFullYear()
+                    .toString()
+                    .slice(2)}`,
                 );
             }}
           >
