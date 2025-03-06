@@ -5,7 +5,9 @@ import React from "react";
 
 export default function GridSelect(props: {
   push: (app: JSX.Element, title?: string) => void;
-  options: ((push: (app: JSX.Element, title?: string) => void) => {
+  options: ((
+    push: (app: JSX.Element, title?: string, getTitle?: () => string) => void,
+  ) => {
     title: string;
     view: JSX.Element;
     buttonTitle?: string;

@@ -26,7 +26,9 @@ const events: CalendarEvent[] = [
   { date: getDateBefore(new Date(), 3), title: "3 days ago" },
 ];
 
-const VIEWS: ((push: (app: JSX.Element, title?: string) => void) => {
+const VIEWS: ((
+  push: (app: JSX.Element, title?: string, getTitle?: () => string) => void,
+) => {
   title: string;
   view: JSX.Element;
 })[] = [
@@ -52,7 +54,7 @@ const VIEWS: ((push: (app: JSX.Element, title?: string) => void) => {
 ];
 
 export default function CalendarApp(props: {
-  push: (app: JSX.Element, title?: string) => void;
+  push: (app: JSX.Element, title?: string, getTitle?: () => string) => void;
 }) {
   return <GridSelect push={props.push} options={VIEWS} />;
 }
