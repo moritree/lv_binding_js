@@ -11,7 +11,7 @@ import {
   sameDate,
 } from "./date-utils";
 import EventsView from "./events-view";
-import { BUILT_IN_SYMBOL, View } from "lvgljs-ui";
+import { BUILT_IN_SYMBOL, Button, Text, View } from "lvgljs-ui";
 import React from "react";
 
 interface MonthViewProps {
@@ -78,7 +78,18 @@ export default function MonthView(props: MonthViewProps) {
           );
         })}
       </View>
-      <View style={style.sidebar}></View>
+      <View style={style.sidebar}>
+        <Button style={style.button} onPressedStyle={style.pressed}>
+          <Text style={{ "text-color": Colors.light }}>
+            {BUILT_IN_SYMBOL.up}
+          </Text>
+        </Button>
+        <Button style={style.button} onPressedStyle={style.pressed}>
+          <Text style={{ "text-color": Colors.light }}>
+            {BUILT_IN_SYMBOL.down}
+          </Text>
+        </Button>
+      </View>
     </View>
   );
 }
@@ -118,11 +129,41 @@ const style = {
     ...{
       width: "100%",
       height: "100%",
-      "background-color": Colors.dark,
+      "background-color": Colors.light,
       overflow: "hidden",
-      padding: "0",
+      // padding: "0",
+      // "padding-right": "4px",
       "justify-content": "center",
       "align-content": "center",
+      "row-spacing": "4px",
     },
+  },
+  button: {
+    display: "flex",
+    width: "100%",
+    "flex-direction": "row",
+    "justify-content": "center",
+    "background-color": Colors.dark,
+    "border-radius": 0,
+    "border-width": 0,
+    padding: "4px",
+    "transition-property": "background-color",
+    "transition-duration": "0",
+    "transition-timing-function": "linear",
+    "transition-delay": "0",
+    "shadow-opacity": 0,
+    "flex-grow": 1,
+    "align-content": "center",
+  },
+  pressed: {
+    "background-color": Colors.highlight,
+    "border-radius": 0,
+    padding: "2px",
+    "border-width": "2px",
+    "border-color": Colors.dark,
+    "transition-property": "background-color",
+    "transition-duration": "0",
+    "transition-timing-function": "linear",
+    "transition-delay": "0",
   },
 };

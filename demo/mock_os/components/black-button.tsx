@@ -11,7 +11,10 @@ export default function BlackButton(props: {
 }) {
   return (
     <View
-      style={{ ...Style.containerBlank, ...{ padding: "2px", width: "auto" } }}
+      style={{
+        ...Style.containerBlank,
+        ...{ padding: "2px", width: "auto", height: "auto" },
+      }}
     >
       <Button
         style={{ ...style.button, ...props.style }}
