@@ -1,13 +1,27 @@
 import NavigationViewContainer from "./navigation-view-container";
 import React, { useState } from "react";
 
-export default function NavigationStack(props: {
+interface StackItem {
+  view: JSX.Element;
+  title?: string;
+  getTitle?: () => string;
+  openNavBarApp?: string;
+}
+
+interface NavigationStackProps {
   root: (
-    push: (app: JSX.Element, title?: string, getTitle?: () => string) => void,
+    push: (
+      view: JSX.Element,
+      title?: string,
+      getTitle?: () => string,
+      openNavBarApp?: string,
+    ) => void,
   ) => JSX.Element;
-}) {
+}
+
+export default function NavigationStack(props: NavigationStackProps) {
   const push = (
-    app: JSX.Element,
+    view: JSX.Element,
     title?: string,
     getTitle?: () => string,
     openNavBarApp?: string,
@@ -15,15 +29,15 @@ export default function NavigationStack(props: {
     setStack((prevStack) => [
       ...prevStack,
       {
-        title: title,
-        getTitle: getTitle,
-        view: app,
-        openNavBarApp: openNavBarApp,
+        view,
+        title,
+        getTitle,
+        openNavBarApp,
       },
     ]);
   };
   const swap = (
-    app: JSX.Element,
+    view: JSX.Element,
     title?: string,
     getTitle?: () => string,
     openNavBarApp?: string,
@@ -31,21 +45,14 @@ export default function NavigationStack(props: {
     setStack((prevStack) => [
       ...prevStack.slice(0, -1),
       {
-        title: title,
-        getTitle: getTitle,
-        view: app,
-        openNavBarApp: openNavBarApp,
+        view,
+        title,
+        getTitle,
+        openNavBarApp,
       },
     ]);
 
-  const [stack, setStack] = useState<
-    {
-      title?: string;
-      getTitle?: () => string;
-      view: JSX.Element;
-      openNavBarApp?: string;
-    }[]
-  >([
+  const [stack, setStack] = useState<StackItem[]>([
     { view: props.root(push) }, // build root view as base of stack
   ]);
   const current = stack.at(-1)!;

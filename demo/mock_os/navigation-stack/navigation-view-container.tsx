@@ -3,6 +3,7 @@ import BluetoothApp from "../apps/bluetooth/bluetooth-app";
 import WifiApp from "../apps/wifi/wifi-app";
 import Colors from "../colors";
 import { BUILT_IN_SYMBOL, Button, Text, View } from "lvgljs-ui";
+import { ColorType } from "lvgljs-ui/core/style/color";
 import React from "react";
 
 export const NAV_BAR_HEIGHT = 36;
@@ -22,13 +23,13 @@ export default function NavigationViewContainer(props: {
   getTitle?: () => string;
   back: () => void;
   push: (
-    app: JSX.Element,
+    view: JSX.Element,
     title?: string,
     getTitle?: () => string,
     openNavBarApp?: string,
   ) => void;
   swap: (
-    app: JSX.Element,
+    view: JSX.Element,
     title?: string,
     getTitle?: () => string,
     openNavBarApp?: string,
