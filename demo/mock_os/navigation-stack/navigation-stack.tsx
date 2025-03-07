@@ -4,50 +4,32 @@ import React, { useState } from "react";
 interface StackItem {
   view: JSX.Element;
   title?: string;
-  getTitle?: () => string;
   openNavBarApp?: string;
 }
 
 interface NavigationStackProps {
   root: (
-    push: (
-      view: JSX.Element,
-      title?: string,
-      getTitle?: () => string,
-      openNavBarApp?: string,
-    ) => void,
+    push: (view: JSX.Element, title?: string, openNavBarApp?: string) => void,
   ) => JSX.Element;
 }
 
 export default function NavigationStack(props: NavigationStackProps) {
-  const push = (
-    view: JSX.Element,
-    title?: string,
-    getTitle?: () => string,
-    openNavBarApp?: string,
-  ) => {
+  const push = (view: JSX.Element, title?: string, openNavBarApp?: string) => {
     setStack((prevStack) => [
       ...prevStack,
       {
         view,
         title,
-        getTitle,
         openNavBarApp,
       },
     ]);
   };
-  const swap = (
-    view: JSX.Element,
-    title?: string,
-    getTitle?: () => string,
-    openNavBarApp?: string,
-  ) =>
+  const swap = (view: JSX.Element, title?: string, openNavBarApp?: string) =>
     setStack((prevStack) => [
       ...prevStack.slice(0, -1),
       {
         view,
         title,
-        getTitle,
         openNavBarApp,
       },
     ]);
@@ -62,7 +44,6 @@ export default function NavigationStack(props: NavigationStackProps) {
     <NavigationViewContainer
       view={current.view}
       title={current.title}
-      getTitle={current.getTitle}
       back={back}
       topLevel={stack.length <= 1}
       secondLevel={stack.length <= 2}

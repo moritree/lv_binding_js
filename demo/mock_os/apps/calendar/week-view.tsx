@@ -19,7 +19,7 @@ export function organizeWeek(weekdays: Date[], events: CalendarEvent[]) {
 interface WeekViewProps {
   today: Date;
   weekdays: WeekDay[];
-  push: (app: JSX.Element, title?: string, getTitle?: () => string) => void;
+  push: (app: JSX.Element, title?: string) => void;
 }
 
 interface WeekDay {
@@ -46,17 +46,12 @@ export default function WeekView(props: WeekViewProps) {
               if (day.events.length)
                 props.push(
                   <EventsView events={day.events} />,
-                  undefined,
-                  () =>
-                    `${daysOfWeek[day.date.getDay()].slice(
-                      0,
-                      3,
-                    )} ${day.date.getDate()} ${monthsOfYear[
-                      day.date.getMonth()
-                    ].slice(0, 3)} ${day.date
-                      .getFullYear()
-                      .toString()
-                      .slice(2)}`,
+                  `${daysOfWeek[day.date.getDay()].slice(
+                    0,
+                    3,
+                  )} ${day.date.getDate()} ${monthsOfYear[
+                    day.date.getMonth()
+                  ].slice(0, 3)} ${day.date.getFullYear().toString().slice(2)}`,
                 );
             }}
           >

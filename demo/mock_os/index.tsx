@@ -5,9 +5,7 @@ import NavigationStack from "./navigation-stack/navigation-stack";
 import { Render } from "lvgljs-ui";
 import React from "react";
 
-const APPS: ((
-  push: (app: JSX.Element, title?: string, getTitle?: () => string) => void,
-) => {
+const APPS: ((push: (app: JSX.Element, title?: string) => void) => {
   title: string;
   view: JSX.Element;
 })[] = [

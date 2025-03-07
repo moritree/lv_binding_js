@@ -20,26 +20,13 @@ const NAV_BAR_APPS: { title: string; symbol: string; view: JSX.Element }[] = [
 export default function NavigationViewContainer(props: {
   view: JSX.Element;
   title?: string;
-  getTitle?: () => string;
   back: () => void;
-  push: (
-    view: JSX.Element,
-    title?: string,
-    getTitle?: () => string,
-    openNavBarApp?: string,
-  ) => void;
-  swap: (
-    view: JSX.Element,
-    title?: string,
-    getTitle?: () => string,
-    openNavBarApp?: string,
-  ) => void;
+  push: (view: JSX.Element, title?: string, openNavBarApp?: string) => void;
+  swap: (view: JSX.Element, title?: string, openNavBarApp?: string) => void;
   topLevel: boolean;
   secondLevel: boolean;
   openNavBarApp?: string;
 }) {
-  console.log("getTitle");
-  console.log(props.getTitle);
   return (
     <View style={style.root}>
       <View style={style.bar}>
@@ -64,9 +51,7 @@ export default function NavigationViewContainer(props: {
         </View>
 
         <View style={{ ...style.barSection, "justify-content": "center" }}>
-          <Text style={style.title}>
-            {props.title || props.getTitle?.() || "ZuniBax OS"}
-          </Text>
+          <Text style={style.title}>{props.title || "ZuniBax OS"}</Text>
         </View>
 
         <View style={{ ...style.barSection, "justify-content": "flex-end" }}>
@@ -75,9 +60,9 @@ export default function NavigationViewContainer(props: {
               style={style.button}
               onClick={() => {
                 if (!props.openNavBarApp)
-                  props.push(app.view, app.title, undefined, app.title);
+                  props.push(app.view, app.title, app.title);
                 else if (props.openNavBarApp == app.title) props.back();
-                else props.swap(app.view, app.title, undefined, app.title);
+                else props.swap(app.view, app.title, app.title);
               }}
             >
               <Text>{app.symbol}</Text>
