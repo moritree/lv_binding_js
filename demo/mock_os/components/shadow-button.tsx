@@ -1,6 +1,7 @@
 import Colors from "../colors";
 import Style from "../style";
 import { Button, Text, View } from "lvgljs-ui";
+import { StyleProps } from "lvgljs-ui/core/style";
 import React from "react";
 
 export default function ShadowButton(props: {
@@ -11,7 +12,12 @@ export default function ShadowButton(props: {
 }) {
   return (
     <View
-      style={{ ...Style.containerBlank, ...{ padding: "2px", width: "auto" } }}
+      style={
+        {
+          ...Style.containerBlank,
+          ...{ padding: 2, width: "auto" },
+        } as StyleProps
+      }
     >
       <Button
         style={{ ...style.button, ...props.style }}

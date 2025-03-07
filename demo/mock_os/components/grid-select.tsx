@@ -1,6 +1,7 @@
 import Colors from "../colors";
 import { NAV_BAR_HEIGHT } from "../navigation-stack/navigation-view-container";
 import { Button, Text, View } from "lvgljs-ui";
+import { StyleProps } from "lvgljs-ui/core/style";
 import React from "react";
 
 export default function GridSelect(props: {
@@ -13,7 +14,7 @@ export default function GridSelect(props: {
   height?: string;
 }) {
   return (
-    <View style={style.root}>
+    <View style={style.root as StyleProps}>
       {props.options
         .map((opt) => opt(props.push))
         .map((opt, index) => {
@@ -24,7 +25,7 @@ export default function GridSelect(props: {
           return (
             <Button
               key={index}
-              style={{ ...style.appButton, ...gridPos }}
+              style={{ ...style.appButton, ...gridPos } as StyleProps}
               onPressedStyle={style.pressed}
               onClick={() => props.push(opt.view, opt.title)}
             >

@@ -1,17 +1,20 @@
 import Style from "../../style";
 import { Button, Slider, Text, View } from "lvgljs-ui";
+import { StyleProps } from "lvgljs-ui/core/style";
 import React, { useState } from "react";
 
 export default function BluetoothApp() {
   const [isPairingEnabled, setIsPairingEnabled] = useState(true);
 
   return (
-    <View style={Style.root}>
-      <View style={Style.containerBlank}>
-        <Text style={Style.textBodyBlack}>Bluetooth Settings:</Text>
+    <View style={Style.root as StyleProps}>
+      <View style={Style.containerBlank as StyleProps}>
+        <Text style={Style.textBodyBlack as StyleProps}>
+          Bluetooth Settings:
+        </Text>
       </View>
 
-      <View style={Style.containerPadded}>
+      <View style={Style.containerPadded as StyleProps}>
         <Button
           style={Style.buttonWhite}
           onPressedStyle={Style.buttonWhitePressed}
@@ -23,13 +26,13 @@ export default function BluetoothApp() {
         </Button>
       </View>
 
-      <View style={Style.containerBlank}>
-        <Text style={Style.textBodyBlack}>Blueness:</Text>
+      <View style={Style.containerBlank as StyleProps}>
+        <Text style={Style.textBodyBlack as StyleProps}>Blueness:</Text>
       </View>
 
-      <View style={Style.containerSlider}>
+      <View style={Style.containerSlider as StyleProps}>
         <Slider
-          style={Style.slider}
+          style={Style.slider as StyleProps}
           indicatorStyle={Style.sliderIndicator}
           knobStyle={Style.sliderKnob}
           onIndicatorPressedStyle={Style.sliderIndicatorPressed}
@@ -38,13 +41,13 @@ export default function BluetoothApp() {
         />
       </View>
 
-      <View style={Style.containerBlank}>
-        <Text style={Style.textBodyBlack}>Toothsomness:</Text>
+      <View style={Style.containerBlank as StyleProps}>
+        <Text style={Style.textBodyBlack as StyleProps}>Toothsomness:</Text>
       </View>
 
-      <View style={Style.containerSlider}>
+      <View style={Style.containerSlider as StyleProps}>
         <Slider
-          style={Style.slider}
+          style={Style.slider as StyleProps}
           indicatorStyle={Style.sliderIndicator}
           knobStyle={Style.sliderKnob}
           onIndicatorPressedStyle={Style.sliderIndicatorPressed}

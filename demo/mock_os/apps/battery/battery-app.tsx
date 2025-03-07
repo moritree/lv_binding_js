@@ -1,5 +1,6 @@
 import Style from "../../style";
 import { Button, Slider, Text, View } from "lvgljs-ui";
+import { StyleProps } from "lvgljs-ui/core/style";
 import React, { useState } from "react";
 
 export default function BatteryApp() {
@@ -7,12 +8,12 @@ export default function BatteryApp() {
   const [powerWastingMode, setPowerWastingMode] = useState(false);
 
   return (
-    <View style={Style.root}>
-      <View style={Style.containerBlank}>
-        <Text style={Style.textBodyBlack}>Battery Settings:</Text>
+    <View style={Style.root as StyleProps}>
+      <View style={Style.containerBlank as StyleProps}>
+        <Text style={Style.textBodyBlack as StyleProps}>Battery Settings:</Text>
       </View>
 
-      <View style={Style.containerPadded}>
+      <View style={Style.containerPadded as StyleProps}>
         <Button
           style={Style.buttonBlack}
           onPressedStyle={Style.buttonBlackPressed}
@@ -39,13 +40,15 @@ export default function BatteryApp() {
         </Button>
       </View>
 
-      <View style={Style.containerBlank}>
-        <Text style={Style.textBodyBlack}>Battery Efficency:</Text>
+      <View style={Style.containerBlank as StyleProps}>
+        <Text style={Style.textBodyBlack as StyleProps}>
+          Battery Efficency:
+        </Text>
       </View>
 
-      <View style={Style.containerSlider}>
+      <View style={Style.containerSlider as StyleProps}>
         <Slider
-          style={Style.slider}
+          style={Style.slider as StyleProps}
           indicatorStyle={Style.sliderIndicator}
           knobStyle={Style.sliderKnob}
           onIndicatorPressedStyle={Style.sliderIndicatorPressed}

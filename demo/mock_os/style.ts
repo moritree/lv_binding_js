@@ -3,14 +3,13 @@ import Colors from "./colors";
 const PIXEL = 4;
 
 const Style = {
-
 /*********************
  *      CONTAINERS
  *********************/
   root: {
     width: "100%",
     height: "100%",
-    padding: "4px",
+    padding: 4,
     margin: 0,
     overflow: "auto",
     display: "flex",

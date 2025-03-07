@@ -3,7 +3,7 @@ import BluetoothApp from "../apps/bluetooth/bluetooth-app";
 import WifiApp from "../apps/wifi/wifi-app";
 import Colors from "../colors";
 import { BUILT_IN_SYMBOL, Button, Text, View } from "lvgljs-ui";
-import { ColorType } from "lvgljs-ui/core/style/color";
+import { StyleProps } from "lvgljs-ui/core/style";
 import React from "react";
 
 export const NAV_BAR_HEIGHT = 36;
@@ -28,10 +28,13 @@ export default function NavigationViewContainer(props: {
   openNavBarApp?: string;
 }) {
   return (
-    <View style={style.root}>
-      <View style={style.bar}>
-        <View style={style.barSection}>
-          <Button style={style.button} onClick={() => props.back()}>
+    <View style={style.root as StyleProps}>
+      <View style={style.bar as StyleProps}>
+        <View style={style.barSection as StyleProps}>
+          <Button
+            style={style.button as StyleProps}
+            onClick={() => props.back()}
+          >
             <Text>
               {props.topLevel
                 ? BUILT_IN_SYMBOL.bars
@@ -40,7 +43,7 @@ export default function NavigationViewContainer(props: {
                 : BUILT_IN_SYMBOL.left}
             </Text>
           </Button>
-          <Text style={style.title}>
+          <Text style={style.title as StyleProps}>
             {new Date()
               .toLocaleTimeString()
               .split(":")
@@ -50,14 +53,24 @@ export default function NavigationViewContainer(props: {
           </Text>
         </View>
 
-        <View style={{ ...style.barSection, "justify-content": "center" }}>
-          <Text style={style.title}>{props.title || "ZuniBax OS"}</Text>
+        <View
+          style={
+            { ...style.barSection, "justify-content": "center" } as StyleProps
+          }
+        >
+          <Text style={style.title as StyleProps}>
+            {props.title || "ZuniBax OS"}
+          </Text>
         </View>
 
-        <View style={{ ...style.barSection, "justify-content": "flex-end" }}>
+        <View
+          style={
+            { ...style.barSection, "justify-content": "flex-end" } as StyleProps
+          }
+        >
           {NAV_BAR_APPS.map((app) => (
             <Button
-              style={style.button}
+              style={style.button as StyleProps}
               onClick={() => {
                 if (!props.openNavBarApp)
                   props.push(app.view, app.title, app.title);
@@ -77,8 +90,8 @@ export default function NavigationViewContainer(props: {
 
 const style = {
   root: {
-    width: "320px",
-    height: "240px",
+    width: 320,
+    height: 240,
     "background-color": Colors.light,
     "border-radius": 0,
     "border-width": 0,
@@ -104,7 +117,7 @@ const style = {
   },
   barSection: {
     "padding-left": 0,
-    "padding-right": "2px",
+    "padding-right": 2,
     "padding-top": 0,
     "padding-bottom": 0,
     width: "33%",
@@ -115,11 +128,11 @@ const style = {
     display: "flex",
     "flex-direction": "row",
     "justify-content": "flex-start",
-    "column-spacing": "6px",
+    "column-spacing": 6,
   },
   title: {
-    "padding-top": "2px",
-    "font-size": "14px",
+    "padding-top": 2,
+    "font-size": 14,
     "text-color": Colors.light,
     width: "fit-content",
     "text-align": "center",

@@ -1,11 +1,11 @@
 import Colors from "../../colors";
-import BlackButton from "../../components/black-button";
 import ShadowButton from "../../components/shadow-button";
 import { NAV_BAR_HEIGHT } from "../../navigation-stack/navigation-view-container";
 import Style from "../../style";
 import CalendarEvent from "./calendar-event";
 import { roundToNearestMinute, twelveHourTime } from "./date-utils";
 import { BUILT_IN_SYMBOL, Text, View } from "lvgljs-ui";
+import { StyleProps } from "lvgljs-ui/core/style";
 import React from "react";
 
 interface EventsViewProps {
@@ -14,29 +14,37 @@ interface EventsViewProps {
 
 export default function EventsView(props: EventsViewProps) {
   return (
-    <View style={{ ...Style.root, ...{ overflow: "hidden", padding: 0 } }}>
+    <View
+      style={
+        { ...Style.root, ...{ overflow: "hidden", padding: 0 } } as StyleProps
+      }
+    >
       <View
-        style={{
-          ...Style.root,
-          ...{ "row-spacing": "4px", height: 240 - NAV_BAR_HEIGHT * 2 + "px" },
-        }}
+        style={
+          {
+            ...Style.root,
+            ...{ "row-spacing": 4, height: 240 - NAV_BAR_HEIGHT * 2 },
+          } as StyleProps
+        }
       >
         {props.events.map((event) => {
           const rounded = roundToNearestMinute(event.date);
           return (
-            <View style={style.event}>
-              <View style={style.eventHeader}>
+            <View style={style.event as StyleProps}>
+              <View style={style.eventHeader as StyleProps}>
                 <Text style={style.text}>{twelveHourTime(rounded)}</Text>
                 <Text style={style.text}>{event.title}</Text>
               </View>
               {event.description && (
-                <Text style={style.eventDescription}>{event.description}</Text>
+                <Text style={style.eventDescription as StyleProps}>
+                  {event.description}
+                </Text>
               )}
             </View>
           );
         })}
       </View>
-      <View style={style.buttonContainer}>
+      <View style={style.buttonContainer as StyleProps}>
         <ShadowButton
           text={BUILT_IN_SYMBOL.plus}
           onClick={() => console.log("Click")}
@@ -51,9 +59,9 @@ const style = {
   event: {
     width: "100%",
     height: "auto",
-    padding: "6px",
+    padding: 6,
     "background-color": Colors.light,
-    "border-width": "1px",
+    "border-width": 1,
     "border-radius": 0,
     "border-color": Colors.dark,
     display: "flex",
@@ -83,7 +91,7 @@ const style = {
   },
   buttonContainer: {
     width: "100%",
-    height: NAV_BAR_HEIGHT + "px",
+    height: NAV_BAR_HEIGHT,
     "background-color": Colors.light,
     "border-radius": 0,
     "border-width": 0,

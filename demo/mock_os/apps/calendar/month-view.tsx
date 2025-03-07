@@ -1,5 +1,4 @@
 import Colors from "../../colors";
-import BlackButton from "../../components/black-button";
 import { NAV_BAR_HEIGHT } from "../../navigation-stack/navigation-view-container";
 import Style from "../../style";
 import CalendarEvent from "./calendar-event";
@@ -12,6 +11,7 @@ import {
 } from "./date-utils";
 import EventsView from "./events-view";
 import { BUILT_IN_SYMBOL, Button, Text, View } from "lvgljs-ui";
+import { StyleProps } from "lvgljs-ui/core/style";
 import React from "react";
 
 interface MonthViewProps {
@@ -30,36 +30,40 @@ export default function MonthView(props: MonthViewProps) {
 
   return (
     <View
-      style={{
-        ...Style.root,
-        ...{
-          "flex-direction": "row",
-          overflow: "hidden",
-          padding: "0",
-          "column-spacing": 0,
-        },
-      }}
+      style={
+        {
+          ...Style.root,
+          ...{
+            "flex-direction": "row",
+            overflow: "hidden",
+            padding: 0,
+            "column-spacing": 0,
+          },
+        } as StyleProps
+      }
     >
-      <View style={style.gridRoot}>
+      <View style={style.gridRoot as StyleProps}>
         {[...new Array(daysInMonth)].map((_, index) => {
           const day = getDateAfter(firstDay, index);
           return (
             <View
               key={index}
-              style={{
-                ...style.day,
-                ...{
-                  "grid-row-pos": Math.floor((index + weekdayOfFirst) / 7),
-                  "grid-column-pos": (index + weekdayOfFirst) % 7,
-                },
-                ...{
-                  "background-color": props.events.find(
-                    (e) => e.date.getDate() == index + 1,
-                  )
-                    ? Colors.highlight
-                    : style.gridRoot["background-color"],
-                },
-              }}
+              style={
+                {
+                  ...style.day,
+                  ...{
+                    "grid-row-pos": Math.floor((index + weekdayOfFirst) / 7),
+                    "grid-column-pos": (index + weekdayOfFirst) % 7,
+                  },
+                  ...{
+                    "background-color": props.events.find(
+                      (e) => e.date.getDate() == index + 1,
+                    )
+                      ? Colors.highlight
+                      : style.gridRoot["background-color"],
+                  },
+                } as StyleProps
+              }
               onClick={() => {
                 props.push(
                   <EventsView
@@ -78,13 +82,19 @@ export default function MonthView(props: MonthViewProps) {
           );
         })}
       </View>
-      <View style={style.sidebar}>
-        <Button style={style.button} onPressedStyle={style.pressed}>
+      <View style={style.sidebar as StyleProps}>
+        <Button
+          style={style.button as StyleProps}
+          onPressedStyle={style.pressed as StyleProps}
+        >
           <Text style={{ "text-color": Colors.light }}>
             {BUILT_IN_SYMBOL.up}
           </Text>
         </Button>
-        <Button style={style.button} onPressedStyle={style.pressed}>
+        <Button
+          style={style.button as StyleProps}
+          onPressedStyle={style.pressed as StyleProps}
+        >
           <Text style={{ "text-color": Colors.light }}>
             {BUILT_IN_SYMBOL.down}
           </Text>
@@ -157,8 +167,8 @@ const style = {
   pressed: {
     "background-color": Colors.highlight,
     "border-radius": 0,
-    padding: "2px",
-    "border-width": "2px",
+    padding: 2,
+    "border-width": 2,
     "border-color": Colors.dark,
     "transition-property": "background-color",
     "transition-duration": "0",

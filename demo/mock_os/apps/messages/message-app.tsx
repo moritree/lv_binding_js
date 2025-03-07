@@ -1,6 +1,7 @@
 import Colors from "../../colors";
 import Style from "../../style";
 import { Text, View } from "lvgljs-ui";
+import { StyleProps } from "lvgljs-ui/core/style";
 import React from "react";
 
 const PIXEL = 4;
@@ -228,37 +229,45 @@ const style = {
 
 export default function MessageApp() {
   return (
-    <View style={{ ...Style.root, ...{ "row-spacing": 2 } }}>
+    <View style={{ ...Style.root, ...{ "row-spacing": 2 } } as StyleProps}>
       {messages.map((msg, index) => {
         const prevMsg = index > 0 ? messages[index - 1] : null;
         const showFrom = !prevMsg || prevMsg.from !== msg.from;
 
         return (
-          <View key={index} style={Style.containerBlank}>
+          <View key={index} style={Style.containerBlank as StyleProps}>
             {msg.from === "You" ? (
               <>
                 {showFrom && (
-                  <Text style={style.messageUserYou}>{msg.from}</Text>
+                  <Text style={style.messageUserYou as StyleProps}>
+                    {msg.from}
+                  </Text>
                 )}
-                <View style={Style.boxMessage}>
-                  <Text style={style.messageBodyYou}>{msg.content}</Text>
+                <View style={Style.boxMessage as StyleProps}>
+                  <Text style={style.messageBodyYou as StyleProps}>
+                    {msg.content}
+                  </Text>
                 </View>
               </>
             ) : (
               <>
                 {showFrom && (
-                  <Text style={style.messageUserOther}>{msg.from}</Text>
+                  <Text style={style.messageUserOther as StyleProps}>
+                    {msg.from}
+                  </Text>
                 )}
-                <View style={Style.boxMessage}>
-                  <Text style={style.messageBodyOther}>{msg.content}</Text>
+                <View style={Style.boxMessage as StyleProps}>
+                  <Text style={style.messageBodyOther as StyleProps}>
+                    {msg.content}
+                  </Text>
                 </View>
               </>
             )}
           </View>
         );
       })}
-      <View style={{ ...Style.boxBlack, height: "40px" }}>
-        <Text style={Style.textSmallWhite}>
+      <View style={{ ...Style.boxBlack, height: 40 } as StyleProps}>
+        <Text style={Style.textSmallWhite as StyleProps}>
           Message sending currenty not suported. haha.
         </Text>
       </View>
